@@ -1,6 +1,8 @@
 # Goal
 
-Support as many W3C standards as possible, provide non-invasive interfaces for developers.
+* Support as many W3C standards as possible.
+* provide non-invasive interfaces for developers.
+* No compromise for peformance.
 
 # How it works
 
@@ -12,13 +14,11 @@ In iOS 7 we access the UIWebView's JavaScript context through JavaScriptCore fra
 
 In iOS 8 we choose WKWebView for performance consideration, and use documented `postMessage` for bridge communication.
 
-By the way, I really hope we can access the JavaScript context of WKWebView too, however, WKWebView is a dependent-process architecture. 
-
 ### Consistent API
 
-The LydiaWebView will detect the iOS version automatically, we will use backed WKWebView first and fall back to UIWebView in iOS 7.
+The YJWebView will detect the iOS version automatically, we will use backed WKWebView first and fall back to UIWebView in iOS 7.
 
-Most important, LydiaWebView expose consistent API for developers, you don't have to worry about the iOS version.
+Most important, YJWebView expose consistent API for developers, you don't have to worry about the iOS version.
 
 
 # Getting started.
@@ -28,15 +28,24 @@ Most important, LydiaWebView expose consistent API for developers, you don't hav
 In your `Podfile`
 
 ```
-pod 'LydiaWebView'
+pod 'YJWebView'
 ```
 
-and `#import 'LydiaWebView.h'`, we are ready to go.
+and `#import 'YJWebViewFactory.h'`, we are ready to go.
 
 ## Demo
 
 ```
+YJWebView *webView = [YJWebViewFactory webViewWithFrame:self.view.bounds];
+webView.yjwebViewDelegate = self;
+[self.view addSubview:webView];
+    
+[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
 ```
+
+## Properties & Methods
+
+## Delegates
 
 # Standard we support
 
