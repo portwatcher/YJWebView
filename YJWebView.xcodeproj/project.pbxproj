@@ -14,6 +14,13 @@
 		C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3EB94531B5CF00400F0144B /* Images.xcassets */; };
 		C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EB94551B5CF00400F0144B /* LaunchScreen.xib */; };
 		C3EB94631B5CF00400F0144B /* YJWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94621B5CF00400F0144B /* YJWebViewTests.m */; };
+		C3EB94731B5CF09700F0144B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB94701B5CF05D00F0144B /* WebKit.framework */; };
+		C3EB94741B5CF09C00F0144B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */; };
+		C3EB947B1B5CF12700F0144B /* YJHybridBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB947A1B5CF12700F0144B /* YJHybridBridge.m */; };
+		C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB947E1B5CF13800F0144B /* MessageHub.m */; };
+		C3EB94821B5CF14200F0144B /* YJWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94811B5CF14200F0144B /* YJWKWebView.m */; };
+		C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94841B5CF14A00F0144B /* YJUIWebView.m */; };
+		C3EB94881B5CF16400F0144B /* YJWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94871B5CF16400F0144B /* YJWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,18 @@
 		C3EB945C1B5CF00400F0144B /* YJWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YJWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94611B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94621B5CF00400F0144B /* YJWebViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJWebViewTests.m; sourceTree = "<group>"; };
+		C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		C3EB94701B5CF05D00F0144B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C3EB94791B5CF12700F0144B /* YJHybridBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJHybridBridge.h; sourceTree = "<group>"; };
+		C3EB947A1B5CF12700F0144B /* YJHybridBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJHybridBridge.m; sourceTree = "<group>"; };
+		C3EB947D1B5CF13800F0144B /* MessageHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHub.h; sourceTree = "<group>"; };
+		C3EB947E1B5CF13800F0144B /* MessageHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHub.m; sourceTree = "<group>"; };
+		C3EB94801B5CF14200F0144B /* YJWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWKWebView.h; sourceTree = "<group>"; };
+		C3EB94811B5CF14200F0144B /* YJWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWKWebView.m; sourceTree = "<group>"; };
+		C3EB94831B5CF14A00F0144B /* YJUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJUIWebView.h; sourceTree = "<group>"; };
+		C3EB94841B5CF14A00F0144B /* YJUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
+		C3EB94861B5CF16400F0144B /* YJWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
+		C3EB94871B5CF16400F0144B /* YJWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EB94741B5CF09C00F0144B /* JavaScriptCore.framework in Frameworks */,
+				C3EB94731B5CF09700F0144B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +102,7 @@
 		C3EB94451B5CF00400F0144B /* YJWebView */ = {
 			isa = PBXGroup;
 			children = (
+				C3EB94751B5CF0F800F0144B /* WebView */,
 				C3EB944A1B5CF00400F0144B /* AppDelegate.h */,
 				C3EB944B1B5CF00400F0144B /* AppDelegate.m */,
 				C3EB944D1B5CF00400F0144B /* ViewController.h */,
@@ -88,6 +110,7 @@
 				C3EB94501B5CF00400F0144B /* Main.storyboard */,
 				C3EB94531B5CF00400F0144B /* Images.xcassets */,
 				C3EB94551B5CF00400F0144B /* LaunchScreen.xib */,
+				C3EB94721B5CF06A00F0144B /* Vendors */,
 				C3EB94461B5CF00400F0144B /* Supporting Files */,
 			);
 			path = YJWebView;
@@ -117,6 +140,64 @@
 				C3EB94611B5CF00400F0144B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C3EB94721B5CF06A00F0144B /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB94701B5CF05D00F0144B /* WebKit.framework */,
+				C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		C3EB94751B5CF0F800F0144B /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB94861B5CF16400F0144B /* YJWebView.h */,
+				C3EB94871B5CF16400F0144B /* YJWebView.m */,
+				C3EB94781B5CF11700F0144B /* HybridBridge */,
+				C3EB94771B5CF10A00F0144B /* WKWebView */,
+				C3EB94761B5CF10000F0144B /* UIWebView */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
+		C3EB94761B5CF10000F0144B /* UIWebView */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB94831B5CF14A00F0144B /* YJUIWebView.h */,
+				C3EB94841B5CF14A00F0144B /* YJUIWebView.m */,
+			);
+			name = UIWebView;
+			sourceTree = "<group>";
+		};
+		C3EB94771B5CF10A00F0144B /* WKWebView */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB94801B5CF14200F0144B /* YJWKWebView.h */,
+				C3EB94811B5CF14200F0144B /* YJWKWebView.m */,
+			);
+			name = WKWebView;
+			sourceTree = "<group>";
+		};
+		C3EB94781B5CF11700F0144B /* HybridBridge */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB947C1B5CF12C00F0144B /* MessageHub */,
+				C3EB94791B5CF12700F0144B /* YJHybridBridge.h */,
+				C3EB947A1B5CF12700F0144B /* YJHybridBridge.m */,
+			);
+			name = HybridBridge;
+			sourceTree = "<group>";
+		};
+		C3EB947C1B5CF12C00F0144B /* MessageHub */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB947D1B5CF13800F0144B /* MessageHub.h */,
+				C3EB947E1B5CF13800F0144B /* MessageHub.m */,
+			);
+			name = MessageHub;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EB94821B5CF14200F0144B /* YJWKWebView.m in Sources */,
 				C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */,
+				C3EB94881B5CF16400F0144B /* YJWebView.m in Sources */,
+				C3EB947B1B5CF12700F0144B /* YJHybridBridge.m in Sources */,
+				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
+				C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */,
 				C3EB94491B5CF00400F0144B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
