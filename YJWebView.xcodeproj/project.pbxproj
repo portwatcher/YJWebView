@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3333E071B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */; };
 		C3EB94491B5CF00400F0144B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94481B5CF00400F0144B /* main.m */; };
 		C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944B1B5CF00400F0144B /* AppDelegate.m */; };
 		C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944E1B5CF00400F0144B /* ViewController.m */; };
@@ -20,7 +21,7 @@
 		C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB947E1B5CF13800F0144B /* MessageHub.m */; };
 		C3EB94821B5CF14200F0144B /* YJWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94811B5CF14200F0144B /* YJWKWebView.m */; };
 		C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94841B5CF14A00F0144B /* YJUIWebView.m */; };
-		C3EB94881B5CF16400F0144B /* YJWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94871B5CF16400F0144B /* YJWebView.m */; };
+		C3EB94881B5CF16400F0144B /* YJWebViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3333E041B5D1A8700241DAA /* YJWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
+		C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
+		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94471B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94481B5CF00400F0144B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -57,9 +61,8 @@
 		C3EB94811B5CF14200F0144B /* YJWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWKWebView.m; sourceTree = "<group>"; };
 		C3EB94831B5CF14A00F0144B /* YJUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJUIWebView.h; sourceTree = "<group>"; };
 		C3EB94841B5CF14A00F0144B /* YJUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
-		C3EB94861B5CF16400F0144B /* YJWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
-		C3EB94871B5CF16400F0144B /* YJWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebView.m; sourceTree = "<group>"; };
-		C3EB94891B5CFD5E00F0144B /* YJWebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
+		C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewFactory.h; sourceTree = "<group>"; };
+		C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebViewFactory.m; sourceTree = "<group>"; };
 		C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3333E081B5D279900241DAA /* UIWebView+JSContext */ = {
+			isa = PBXGroup;
+			children = (
+				C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */,
+				C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */,
+			);
+			name = "UIWebView+JSContext";
+			sourceTree = "<group>";
+		};
 		C3EB943A1B5CF00400F0144B = {
 			isa = PBXGroup;
 			children = (
@@ -157,9 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */,
-				C3EB94891B5CFD5E00F0144B /* YJWebViewDelegate.h */,
-				C3EB94861B5CF16400F0144B /* YJWebView.h */,
-				C3EB94871B5CF16400F0144B /* YJWebView.m */,
+				C3333E041B5D1A8700241DAA /* YJWebViewDelegate.h */,
+				C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */,
+				C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */,
 				C3EB94781B5CF11700F0144B /* HybridBridge */,
 				C3EB94771B5CF10A00F0144B /* WKWebView */,
 				C3EB94761B5CF10000F0144B /* UIWebView */,
@@ -170,6 +182,7 @@
 		C3EB94761B5CF10000F0144B /* UIWebView */ = {
 			isa = PBXGroup;
 			children = (
+				C3333E081B5D279900241DAA /* UIWebView+JSContext */,
 				C3EB94831B5CF14A00F0144B /* YJUIWebView.h */,
 				C3EB94841B5CF14A00F0144B /* YJUIWebView.m */,
 			);
@@ -304,9 +317,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3333E071B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m in Sources */,
 				C3EB94821B5CF14200F0144B /* YJWKWebView.m in Sources */,
 				C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */,
-				C3EB94881B5CF16400F0144B /* YJWebView.m in Sources */,
+				C3EB94881B5CF16400F0144B /* YJWebViewFactory.m in Sources */,
 				C3EB947B1B5CF12700F0144B /* YJHybridBridge.m in Sources */,
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
@@ -508,6 +522,7 @@
 				C3EB94681B5CF00400F0144B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3EB94691B5CF00400F0144B /* Build configuration list for PBXNativeTarget "YJWebViewTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +531,7 @@
 				C3EB946B1B5CF00400F0144B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

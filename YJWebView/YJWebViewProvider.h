@@ -11,23 +11,24 @@
 
 @protocol YJWebViewProvider <NSObject>
 
-@property (nonatomic, weak) id <YJWebViewDelegate> delegate;
+@property (nonatomic, weak) id <YJWebViewDelegate> yjwebViewDelegate;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) NSURL *URL;
-@property (nonatomic, strong) NSString *title;
-@property BOOL isLoading;
+@property (nonatomic, strong, readonly) NSURL *URL;
+@property (nonatomic, strong, readonly) NSString *title;
+@property (nonatomic) BOOL loaded;
 
 @property BOOL canGoBack;
 @property BOOL canGoForward;
 
-- (void)stop;
+- (void)stopLoading;
 - (void)reload;
 - (void)goBack;
 - (void)goForward;
-- (void)loadURL:(NSURL *)url;
+- (void)loadRequest:(NSURLRequest *)request;
 
-- (void)insertCSS:(NSString *)css;
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
+- (void)removeCSSWithIdentifier:(NSString *)identifier;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *)) completionHandler;
 
 @end

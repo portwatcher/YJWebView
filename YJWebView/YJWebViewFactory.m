@@ -6,9 +6,11 @@
 //  Copyright (c) 2015年 Tinydust Technonogy Ltd. All rights reserved.
 //
 
-#import "YJWebView.h"
+#import "YJWebViewFactory.h"
+#import "YJWKWebView.h"
+#import "YJUIWebView.h"
 
-@implementation YJWebView
+@implementation YJWebViewFactory
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -18,7 +20,7 @@
 }
 */
 
-+ (id)webViewWithFrame:(CGRect)frame {
++ (YJWebView *)webViewWithFrame:(CGRect)frame {
     if (NSClassFromString(@"WKWebView")) {
         return [[YJWKWebView alloc] initWithFrame:frame];
     } else {

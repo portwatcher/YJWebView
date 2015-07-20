@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YJWebViewProvider.h"
 
-@interface YJWebView : UIView <YJWebViewProvider>
+typedef UIView<YJWebViewProvider> YJWebView;
 
-+ (id)webViewWithFrame:(CGRect)frame;
+@interface YJWebViewFactory : UIView
+
++ (YJWebView *)webViewWithFrame:(CGRect)frame;
 
 @end

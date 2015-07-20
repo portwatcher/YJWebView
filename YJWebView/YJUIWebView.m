@@ -7,6 +7,13 @@
 //
 
 #import "YJUIWebView.h"
+#import <objc/runtime.h>
+
+@interface YJUIWebView ()
+
+@property (nonatomic, strong) JSContext *jsContext;
+
+@end
 
 @implementation YJUIWebView
 
@@ -21,23 +28,60 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.delegate = self;
         self.scalesPageToFit = YES;
         self.allowsInlineMediaPlayback = YES;
+        self.keyboardDisplayRequiresUserAction = NO;
     }
     return self;
 }
 
-- (void)loadURL:(NSURL *)url {
-    [self loadRequest:[NSURLRequest requestWithURL:url]];
+# pragma getters
+
+- (NSString *)title {
+    return [self stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
-- (void)insertCSS:(NSString *)css {
-    
+- (NSURL *)URL {
+    return [NSURL URLWithString:[self stringByEvaluatingJavaScriptFromString:@"location.href"]];
+}
+
+# pragma methods
+
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
+    NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
+    [self stringByEvaluatingJavaScriptFromString:stringToEval];
+}
+
+- (void)removeCSSWithIdentifier:(NSString *)identifier {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _element = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
     [self stringByEvaluatingJavaScriptFromString:js];
     completionHandler(nil, nil);
+}
+
+# pragma delegates
+
+- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx {
+    self.jsContext = ctx;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
 }
 
 @end

@@ -8,18 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "YJWebViewDelegate.h"
+#import "YJWebViewProvider.h"
+#import "UIWebView+TS_JavaScriptContext.h"
+@import JavaScriptCore;
 
-@interface YJUIWebView : UIWebView
+@interface YJUIWebView : UIWebView <YJWebViewProvider, UIWebViewDelegate, TSWebViewDelegate>
 
-@property (nonatomic, assign) id <YJWebViewDelegate> yjDelegate;
+@property (nonatomic, assign) id <YJWebViewDelegate> yjwebViewDelegate;
 
-@property (nonatomic, strong) NSURL *URL;
-@property (nonatomic, strong) NSString *title;
-@property BOOL isLoading;
+@property (nonatomic, strong, readonly) NSURL *URL;
+@property (nonatomic, strong, readonly) NSString *title;
+@property (nonatomic) BOOL loaded;
 
-- (void)loadURL:(NSURL *)url;
-
-- (void)insertCSS:(NSString *)css;
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
+- (void)removeCSSWithIdentifier:(NSString *)identifier;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *)) completionHandler;
 
 @end
