@@ -11,10 +11,12 @@
 @implementation YJWKWebView
 
 - (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame configuration:nil];
+    self = [super initWithFrame:frame];
     if (self) {
         self.navigationDelegate = self;
         self.UIDelegate = self;
+        self.configuration.allowsInlineMediaPlayback = YES;
+        self.configuration.mediaPlaybackRequiresUserAction = NO;
     }
     return self;
 }
