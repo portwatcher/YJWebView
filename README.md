@@ -50,4 +50,7 @@ webView.yjwebViewDelegate = self;
 # Standard we support
 
 ## Browser API
-
+* navigator.vibrate
+* notification
+* service worker
+* ES6 promise
