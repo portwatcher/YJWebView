@@ -7,8 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YJWebViewDelegate.h"
 @import WebKit;
 
 @interface YJWKWebView : WKWebView
+
+@property (nonatomic, assign) id <YJWebViewDelegate> delegate;
+
+//@property (nonatomic, strong) NSURL *url;
+@property BOOL isLoading;
+
+- (void)loadURL:(NSURL *)url;
+
+- (void)insertCSS:(NSString *)css;
+- (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *)) completionHandler;
 
 @end

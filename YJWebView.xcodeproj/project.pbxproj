@@ -59,6 +59,8 @@
 		C3EB94841B5CF14A00F0144B /* YJUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
 		C3EB94861B5CF16400F0144B /* YJWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
 		C3EB94871B5CF16400F0144B /* YJWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebView.m; sourceTree = "<group>"; };
+		C3EB94891B5CFD5E00F0144B /* YJWebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
+		C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,8 @@
 		C3EB94751B5CF0F800F0144B /* WebView */ = {
 			isa = PBXGroup;
 			children = (
+				C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */,
+				C3EB94891B5CFD5E00F0144B /* YJWebViewDelegate.h */,
 				C3EB94861B5CF16400F0144B /* YJWebView.h */,
 				C3EB94871B5CF16400F0144B /* YJWebView.m */,
 				C3EB94781B5CF11700F0144B /* HybridBridge */,

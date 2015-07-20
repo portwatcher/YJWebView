@@ -18,38 +18,12 @@
 }
 */
 
-- (id)initWithFrame:(CGRect)frame {
++ (id)webViewWithFrame:(CGRect)frame {
     if (NSClassFromString(@"WKWebView")) {
-        self = (YJWebView *)[[YJWKWebView alloc] initWithFrame:frame];
+        return [[YJWKWebView alloc] initWithFrame:frame];
     } else {
-        self = (YJWebView *)[[YJUIWebView alloc] initWithFrame:frame];
+        return [[YJUIWebView alloc] initWithFrame:frame];
     }
-    
-    return self;
-}
-
-- (void)stop {
-    
-}
-
-- (void)reload {
-    
-}
-
-- (void)goBack {
-    
-}
-
-- (void)goForward {
-    
-}
-
-- (void)insertCSS:(NSString *)css {
-    
-}
-
-- (void)evaluateJavaScript:(NSString *)js completionHandler:(void (^)())handler {
-    
 }
 
 @end

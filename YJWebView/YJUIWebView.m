@@ -27,4 +27,17 @@
     return self;
 }
 
+- (void)loadURL:(NSURL *)url {
+    [self loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (void)insertCSS:(NSString *)css {
+    
+}
+
+- (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
+    [self stringByEvaluatingJavaScriptFromString:js];
+    completionHandler(nil, nil);
+}
+
 @end

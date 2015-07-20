@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "YJWebView.h"
 
 @interface ViewController ()
 
@@ -19,6 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    YJWebView *webView = [YJWebView webViewWithFrame:self.view.bounds];
+    webView.delegate = self;
+    [self.view addSubview:webView];
+    
+    [webView loadURL:[NSURL URLWithString:@"http://www.baidu.com"]];
 }
 
 - (void)didReceiveMemoryWarning {

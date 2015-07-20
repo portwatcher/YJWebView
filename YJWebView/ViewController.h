@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YJWebView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <YJWebViewDelegate>
 
 
 @end

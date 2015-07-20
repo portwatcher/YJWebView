@@ -10,4 +10,16 @@
 
 @implementation YJWKWebView
 
+- (void)loadURL:(NSURL *)url {
+    [self loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (void)insertCSS:(NSString *)css {
+    
+}
+
+- (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
+    [self evaluateJavaScript:js completionHandler:completionHandler];
+}
+
 @end
