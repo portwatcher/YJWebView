@@ -7,7 +7,6 @@
 //
 
 #import "MessageHub.h"
-#import "YJWebView.h"
 
 @interface MessageHub ()
 
@@ -39,8 +38,11 @@
     
 }
 
-- (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguments {
+- (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements {
+    NSString *argsContent = [[arguements valueForKey:@"description"] componentsJoinedByString:@","];
+    NSString *js = [NSString stringWithFormat:@"window.webkit.callbackHandlers.invoke(%@, [%@]);", callbackId, argsContent];
     
+    [self.webView executeJavaScript:js completionHandler:nil];
 }
 
 @end
