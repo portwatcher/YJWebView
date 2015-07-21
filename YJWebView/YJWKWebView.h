@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YJWebViewDelegate.h"
 #import "YJWebViewProvider.h"
 @import WebKit;
 
