@@ -21,9 +21,13 @@
     return self;
 }
 
+# pragma getters
+
 - (BOOL)loaded {
     return !self.loading;
 }
+
+# pragma methods
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
@@ -36,6 +40,12 @@
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
     [self evaluateJavaScript:js completionHandler:completionHandler];
+}
+
+# pragma delegates
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+    
 }
 
 @end

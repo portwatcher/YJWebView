@@ -13,7 +13,7 @@
 
 @interface YJWKWebView : WKWebView <YJWebViewProvider, WKNavigationDelegate, WKUIDelegate>
 
-@property (nonatomic, assign) id <YJWebViewDelegate> yjwebViewDelegate;
+@property (nonatomic, assign) id <YJWebViewDelegate> webViewDelegate;
 
 @property (nonatomic) BOOL loaded;
 

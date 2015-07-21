@@ -14,7 +14,7 @@
 
 @interface YJUIWebView : UIWebView <YJWebViewProvider, UIWebViewDelegate, TSWebViewDelegate>
 
-@property (nonatomic, assign) id <YJWebViewDelegate> yjwebViewDelegate;
+@property (nonatomic, assign) id <YJWebViewDelegate> webViewDelegate;
 
 @property (nonatomic, strong, readonly) NSURL *URL;
 @property (nonatomic, strong, readonly) NSString *title;

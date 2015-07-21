@@ -12,6 +12,7 @@
 @interface YJUIWebView ()
 
 @property (nonatomic, strong) JSContext *jsContext;
+- (NSString *)documentReadyState;
 
 @end
 
@@ -77,11 +78,23 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
+    if ([self isDocumentReady]) {
+        
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
+}
+
+# pragma private
+
+- (NSString *)documentReadyState {
+    return [self stringByEvaluatingJavaScriptFromString:@"document.readyState"];
+}
+
+- (BOOL)isDocumentReady {
+    return ([self.documentReadyState isEqualToString:@"interactive"] || [self.documentReadyState isEqualToString:@"complete"]);
 }
 
 @end

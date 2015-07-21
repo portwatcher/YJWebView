@@ -37,7 +37,7 @@ and `#import 'YJWebViewFactory.h'`, we are ready to go.
 
 ```
 YJWebView *webView = [YJWebViewFactory webViewWithFrame:self.view.bounds];
-webView.yjwebViewDelegate = self;
+webView.webViewDelegate = self;
 [self.view addSubview:webView];
     
 [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];

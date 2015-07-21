@@ -35,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C3333E041B5D1A8700241DAA /* YJWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
 		C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +62,6 @@
 		C3EB94841B5CF14A00F0144B /* YJUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
 		C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewFactory.h; sourceTree = "<group>"; };
 		C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebViewFactory.m; sourceTree = "<group>"; };
-		C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +166,6 @@
 		C3EB94751B5CF0F800F0144B /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				C3EB948A1B5D0B0C00F0144B /* YJWebViewProvider.h */,
-				C3333E041B5D1A8700241DAA /* YJWebViewDelegate.h */,
 				C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */,
 				C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */,
 				C3EB94781B5CF11700F0144B /* HybridBridge */,

@@ -19,10 +19,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     YJWebView *webView = [YJWebViewFactory webViewWithFrame:self.view.bounds];
-    webView.yjwebViewDelegate = self;
+    webView.webViewDelegate = self;
     [self.view addSubview:webView];
     
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yunji.one"]]];
 }
 
 - (void)didReceiveMemoryWarning {
