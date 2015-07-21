@@ -8,6 +8,7 @@
 
 #import "YJWKWebView.h"
 #import "YJWebView.h"
+#import "MessageHub.h"
 
 @interface YJWKWebView ()
 
@@ -100,7 +101,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
-    
+
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {

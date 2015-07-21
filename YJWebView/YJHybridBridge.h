@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YJWebView.h"
 @import JavaScriptCore;
+@import WebKit;
 
 @interface YJHybridBridge : NSObject
+
++ (YJHybridBridge *)sharedBridge;
+- (void)registerWithJavaScriptContext:(JSContext *)context webView:(YJWebView *)webView;
+- (void)registerWithUserContentController:(WKUserContentController *)controller webView:(YJWebView *)webView;
 
 @end

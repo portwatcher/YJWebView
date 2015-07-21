@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MessageHubProtocol.h"
+@import WebKit;
+@class YJWebView;
 
-@interface MessageHub : NSObject
+@interface MessageHub : NSObject <MessageHubExport, WKScriptMessageHandler>
+
+- (id)initWithWebView:(YJWebView *)webView;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "YJUIWebView.h"
 #import "YJWebView.h"
+#import "MessageHub.h"
 
 @interface YJUIWebView ()
 
