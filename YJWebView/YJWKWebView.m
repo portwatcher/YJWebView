@@ -9,7 +9,15 @@
 #import "YJWKWebView.h"
 #import "YJWebView.h"
 
+@interface YJWKWebView ()
+
+@property (strong, nonatomic) NSTimer *_timer;
+@property (assign, nonatomic) BOOL domreadyTriggered;
+
+@end
+
 @implementation YJWKWebView
+@synthesize _timer;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -18,6 +26,8 @@
         self.UIDelegate = self;
         self.configuration.allowsInlineMediaPlayback = YES;
         self.configuration.mediaPlaybackRequiresUserAction = NO;
+        
+        self.domreadyTriggered = NO;
     }
     return self;
 }
@@ -45,8 +55,91 @@
 
 # pragma delegates
 
-- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
+        //    don't trigger when we've started a new request
+        self.domreadyTriggered = YES;
+        
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    }
     
+    if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
+        //    don't trigger when we've started a new request
+        self.domreadyTriggered = YES;
+        
+        decisionHandler(WKNavigationActionPolicyAllow);
+    } else {
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+    self.domreadyTriggered = NO;
+    [self startInterceptDomReady];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+        return;
+    }
+    
+    [self.webViewDelegate webViewDidFinishLoad:self];
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailwithError:)]) {
+        return;
+    }
+    
+    [self.webViewDelegate webView:self didFailwithError:error];
+}
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
+    
+}
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
+}
+
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
+    
+}
+
+# pragma private
+
+- (void)startInterceptDomReady {
+    if (![self.webViewDelegate respondsToSelector:@selector(webViewMainDocumentDidLoad:)]) {
+        return;
+    }
+    
+    _timer = [NSTimer timerWithTimeInterval:0.01f target:self selector:@selector(interceptDomReady) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)interceptDomReady {
+    [self evaluateJavaScript:@"document.readyState" completionHandler:^(id result, NSError *error) {
+        NSString *readyState = (NSString *)result;
+
+        if ([readyState isEqualToString:@"interactive"] || [readyState isEqualToString:@"complete"]) {
+            [_timer invalidate];
+            _timer = nil;
+            
+            if (!self.domreadyTriggered) {
+                self.domreadyTriggered = YES;
+                [self.webViewDelegate webViewMainDocumentDidLoad:self];
+            }
+        }
+    }];
 }
 
 @end

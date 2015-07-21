@@ -65,8 +65,13 @@
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
-    [self stringByEvaluatingJavaScriptFromString:js];
-    completionHandler(nil, nil);
+    if (completionHandler) {
+        NSString *result = [self stringByEvaluatingJavaScriptFromString:js];
+        completionHandler(result, nil);
+    } else {
+        [self.jsContext evaluateScript:js];
+        completionHandler(nil, nil);
+    }
 }
 
 # pragma delegates
