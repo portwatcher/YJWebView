@@ -38,6 +38,7 @@
         self.allowsInlineMediaPlayback = YES;
         self.keyboardDisplayRequiresUserAction = NO;
         
+        self.loaded = NO;
         self.didStartInterceptNewRequest = NO;
     }
     return self;
@@ -97,11 +98,13 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
-        return;
-    }
-    
     if ([self.documentReadyState isEqualToString:@"complete"]) {
+        self.loaded = YES;
+        
+        if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+            return;
+        }
+        
         [self.webViewDelegate webViewDidFinishLoad:self];
     }
 }
