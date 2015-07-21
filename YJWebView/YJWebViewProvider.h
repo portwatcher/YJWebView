@@ -12,13 +12,9 @@
 
 @protocol YJWebViewProvider <NSObject>
 
-@property (nonatomic, weak) id <YJWebViewDelegate> webViewDelegate;
+// native support by both uiwebview and wkwebview
 @property (nonatomic, strong) UIScrollView *scrollView;
-
-@property (nonatomic, strong, readonly) NSURL *URL;
-@property (nonatomic, strong, readonly) NSString *title;
-@property (nonatomic) BOOL loaded;
-
+@property (nonatomic) BOOL loading;
 @property BOOL canGoBack;
 @property BOOL canGoForward;
 
@@ -28,8 +24,15 @@
 - (void)goForward;
 - (void)loadRequest:(NSURLRequest *)request;
 
+// support by polyfill or us
+@property (nonatomic, weak) id <YJWebViewDelegate> webViewDelegate;
+
+@property (nonatomic, strong, readonly) NSURL *URL;
+@property (nonatomic, strong, readonly) NSString *title;
+@property (nonatomic) BOOL loaded; // main frame done loading
+
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
 - (void)removeCSSWithIdentifier:(NSString *)identifier;
-- (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *)) completionHandler;
+- (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler;
 
 @end
