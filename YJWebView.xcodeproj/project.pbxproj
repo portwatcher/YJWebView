@@ -39,6 +39,7 @@
 		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
 		C3C8B7491B5E13B90022D5CC /* YJWebViewProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 		C3C8B74A1B5E154D0022D5CC /* YJWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
+		C3C8B74B1B5E1A8C0022D5CC /* YJWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94471B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94481B5CF00400F0144B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			children = (
 				C3C8B74A1B5E154D0022D5CC /* YJWebView.h */,
 				C3C8B7491B5E13B90022D5CC /* YJWebViewProvider.h */,
+				C3C8B74B1B5E1A8C0022D5CC /* YJWebViewDelegate.h */,
 				C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */,
 				C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */,
 				C3EB94781B5CF11700F0144B /* HybridBridge */,
@@ -454,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YJWebView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -464,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YJWebView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

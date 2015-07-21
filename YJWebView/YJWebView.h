@@ -8,3 +8,4 @@
 
 #import "YJWebViewFactory.h"
 #import "YJWebViewProvider.h"
+#import "YJWebViewDelegate.h"

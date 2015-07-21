@@ -12,19 +12,6 @@
 
 typedef UIView<YJWebViewProvider> YJWebView;
 
-@protocol YJWebViewDelegate <NSObject>
-
-@optional
-
-- (void)didFinishLoad:(YJWebView *)webView;
-- (void)didFailLoad;
-- (void)didStartLoading;
-- (void)didStopLoading;
-- (void)didGetRedirectRequest;
-- (void)mainDocumentDidLoad;
-
-@end
-
 @interface YJWebViewFactory : NSObject
 
 + (YJWebView *)webViewWithFrame:(CGRect)frame;

@@ -7,16 +7,20 @@
 //
 
 #import "YJUIWebView.h"
-#import <objc/runtime.h>
+#import "YJWebView.h"
 
 @interface YJUIWebView ()
 
 @property (nonatomic, strong) JSContext *jsContext;
+@property (assign, nonatomic) BOOL didStartInterceptNewRequest;
+@property (strong, nonatomic) NSTimer *_timer;
+
 - (NSString *)documentReadyState;
 
 @end
 
 @implementation YJUIWebView
+@synthesize _timer;
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -33,6 +37,8 @@
         self.scalesPageToFit = YES;
         self.allowsInlineMediaPlayback = YES;
         self.keyboardDisplayRequiresUserAction = NO;
+        
+        self.didStartInterceptNewRequest = NO;
     }
     return self;
 }
@@ -70,21 +76,37 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    return YES;
+    
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
+        return YES;
+    }
+    
+    return [self.webViewDelegate webView:self shouldStartLoadWithRequest:request];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    
+    if (!self.didStartInterceptNewRequest) {
+        self.didStartInterceptNewRequest = YES;
+        [self startInterceptNewPageLoading];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if ([self isDocumentReady]) {
-        
+    if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+        return;
+    }
+    
+    if ([self.documentReadyState isEqualToString:@"complete"]) {
+        [self.webViewDelegate webViewDidFinishLoad:self];
     }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailwithError:)]) {
+        return;
+    }
     
+    [self.webViewDelegate webView:self didFailwithError:error];
 }
 
 # pragma private
@@ -95,6 +117,44 @@
 
 - (BOOL)isDocumentReady {
     return ([self.documentReadyState isEqualToString:@"interactive"] || [self.documentReadyState isEqualToString:@"complete"]);
+}
+
+- (void)startInterceptNewPageLoading {
+    _timer = [NSTimer timerWithTimeInterval:0.05f target:self selector:@selector(interceptNewPageLoading:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)interceptNewPageLoading:(NSTimer *)timer {
+    NSString *readyState = [self stringByEvaluatingJavaScriptFromString:@"document.readyState;"];
+    
+    if ([readyState isEqualToString:@"loading"]) {
+        [timer invalidate];
+        timer = nil;
+        
+        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+            [self.webViewDelegate webViewDidStartLoading:self];
+        }
+        
+        [self startInterceptDomReady];
+    }
+}
+
+- (void)startInterceptDomReady {
+    if (![self.webViewDelegate respondsToSelector:@selector(webViewMainDocumentDidLoad:)]) {
+        return;
+    }
+    
+    _timer = [NSTimer timerWithTimeInterval:0.01f target:self selector:@selector(interceptDomReady:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)interceptDomReady:(NSTimer *)timer {
+    if ([self isDocumentReady]) {
+        [timer invalidate];
+        timer = nil;
+        
+        [self.webViewDelegate webViewMainDocumentDidLoad:self];
+    }
 }
 
 @end

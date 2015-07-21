@@ -7,6 +7,7 @@
 //
 
 #import "YJWKWebView.h"
+#import "YJWebView.h"
 
 @implementation YJWKWebView
 

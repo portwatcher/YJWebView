@@ -30,4 +30,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma delegates
+
+- (BOOL)webView:(YJWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request {
+    NSLog(@"should start load with request");
+    return YES;
+}
+
+- (void)webViewDidStartLoading:(YJWebView *)webView {
+    NSLog(@"did start loading");
+}
+
+- (void)webViewDidFinishLoad:(YJWebView *)webView {
+    NSLog(@"did finish load");
+}
+
+- (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
+    NSLog(@"dom ready");
+}
+
 @end
