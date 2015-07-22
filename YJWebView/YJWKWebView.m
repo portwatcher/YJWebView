@@ -8,7 +8,7 @@
 
 #import "YJWKWebView.h"
 #import "YJWebView.h"
-#import "MessageHub.h"
+#import "YJHybridBridge.h"
 
 @interface YJWKWebView ()
 
@@ -27,7 +27,9 @@
         self.UIDelegate = self;
         self.configuration.allowsInlineMediaPlayback = YES;
         self.configuration.mediaPlaybackRequiresUserAction = NO;
+        self.allowsBackForwardNavigationGestures = YES;
         
+        [[YJHybridBridge sharedBridge] registerWithUserContentController:self.configuration.userContentController webView:self];
         self.domreadyTriggered = NO;
     }
     return self;

@@ -8,7 +8,7 @@
 
 #import "YJUIWebView.h"
 #import "YJWebView.h"
-#import "MessageHub.h"
+#import "YJHybridBridge.h"
 
 @interface YJUIWebView ()
 
@@ -72,7 +72,6 @@
         completionHandler(result, nil);
     } else {
         [self.jsContext evaluateScript:js];
-        completionHandler(nil, nil);
     }
 }
 
@@ -80,6 +79,7 @@
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx {
     self.jsContext = ctx;
+    [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

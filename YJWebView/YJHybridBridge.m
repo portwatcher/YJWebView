@@ -24,6 +24,8 @@
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
+        _sharedBridge = [[YJHybridBridge alloc] init];
+        
         NSString *hubPath = [[NSBundle mainBundle] pathForResource:@"message_hub" ofType:@"js"];
         _sharedBridge.messageHubJS = [NSString stringWithContentsOfFile:hubPath encoding:NSUTF8StringEncoding error:nil];
         
