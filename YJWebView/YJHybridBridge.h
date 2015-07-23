@@ -13,7 +13,7 @@
 
 @protocol YJBridgeNative <NSObject>
 
-@property (strong, nonatomic) NSString *receiverName;
+@property (strong, nonatomic, readonly) NSString *receiverName;
 
 @end
 

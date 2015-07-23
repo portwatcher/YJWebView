@@ -11,8 +11,9 @@
 
 @interface BridgeNativeEcho : NSObject <YJBridgeNative>
 
-@property (strong, nonatomic) NSString *receiverName;
+@property (strong, nonatomic, readonly) NSString *receiverName;
 
-- (void)say:(NSString *)callbackId :(NSString *)string;
+- (void)say:(NSString *)string;
+- (void)say:(NSString *)string :(NSString *)callbackId;
 
 @end

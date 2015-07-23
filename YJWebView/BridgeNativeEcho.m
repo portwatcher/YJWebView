@@ -10,8 +10,11 @@
 
 @implementation BridgeNativeEcho
 
-- (void)say:(NSString *)callbackId :(NSString *)string {
+- (void)say:(NSString *)string {
     NSLog(@"Hi, I'm walking through YJHybridBridge: %@", string);
+}
+
+- (void)say:(NSString *)string :(NSString *)callbackId {
     NSLog(@"callbackId: %@", callbackId);
 }
 

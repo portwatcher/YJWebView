@@ -1,6 +1,6 @@
 var echo = {
   say: function ( word ) {
-    window.webkit.messageHandlers.hub.talk( null, "Echo", "say", word );
+    window.webkit.messageHandlers.hub.talk( null, "Echo", "say", [ word ] );
   }
 };
 

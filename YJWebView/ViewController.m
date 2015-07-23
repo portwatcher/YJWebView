@@ -23,7 +23,7 @@
     webView.webViewDelegate = self;
     [self.view addSubview:webView];
     
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yunji.one"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,15 +44,15 @@
 
 - (void)webViewDidFinishLoad:(YJWebView *)webView {
     NSLog(@"did finish load");
-}
-
-- (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
-    NSLog(@"dom ready");
     
     NSString *echoPath = [[NSBundle mainBundle] pathForResource:@"echo" ofType:@"js"];
     NSString *echoJS = [NSString stringWithContentsOfFile:echoPath encoding:NSUTF8StringEncoding error:nil];
     
     [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init] withJavaScript:echoJS];
+}
+
+- (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
+    NSLog(@"dom ready");
 }
 
 @end

@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         self.webView = webView;
-        self.nativeObjects = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+        self.nativeObjects = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableStrongMemory];
     }
     return self;
 }
@@ -40,19 +40,27 @@
 }
 
 - (void)dispatch:(NSDictionary *)command {
-    NSLog(@"receive command from web: %@", command);
+//    TODO: translate js value to objc value, may through JavaScriptCore.framework
+//    NSLog(@"MessageHub: did receive command from web: %@", command);
     
     NSString *callbackId = command[@"callbackId"];
     NSString *receiver = command[@"receiver"];
     NSString *action = command[@"action"];
-    NSArray *arguments = command[@"args"];
+    NSArray *arguments = command[@"arguments"];
     
+//    lets make a brief translation
+    if (callbackId == (id)[NSNull null]) {
+        callbackId = nil;
+    }
+
     NSObject<YJBridgeNative> *obj = [self.nativeObjects objectForKey:receiver];
-    
-    NSLog(@"receriver: %@", obj);
     
     if (!obj) {
         return;
+    }
+    
+    if (callbackId) {
+        action = [action stringByAppendingString:@":"];
     }
     
     NSUInteger count = [arguments count];
@@ -61,16 +69,20 @@
     }
     
     SEL selector = NSSelectorFromString(action);
-    
+
     if ([obj respondsToSelector:NSSelectorFromString(action)]) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[obj methodSignatureForSelector:selector]];
         [invocation setSelector:selector];
         [invocation setTarget:obj];
         
-        [invocation setArgument:(__bridge void *)(callbackId) atIndex:2];
+        NSUInteger numberOfPreorder = 2;
+        for (NSUInteger i = numberOfPreorder; i < arguments.count + numberOfPreorder; i++) {
+            id argument = [arguments objectAtIndex:i - numberOfPreorder];
+            [invocation setArgument:&(argument) atIndex:i];
+        }
         
-        for (NSUInteger i = 3; i < arguments.count + 3; i++) {
-            [invocation setArgument:(__bridge void *)([arguments objectAtIndex:i - 2]) atIndex:i];
+        if (callbackId) {
+            [invocation setArgument:&(callbackId) atIndex:arguments.count + numberOfPreorder - 1];
         }
         
         [invocation invoke];

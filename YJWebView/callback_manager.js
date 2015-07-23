@@ -1,10 +1,3 @@
-if ( !window.webkit ) {
-  window.webkit = {
-    messageHandlers: {},
-    callbackHandlers: {}
-  };
-}
-
 window.webkit.callbackHandlers = {
   callbacks: [],
   register: function ( fn, caller ) {
