@@ -1,4 +1,10 @@
-window.webkit.callbackHandlers = {
+if ( !window.cloudbox ) {
+  window.cloudbox = {
+    callbackHandlers: {}
+  };
+}
+
+window.cloudbox.callbackHandlers = {
   callbacks: [],
   register: function ( fn, caller ) {
     var index = this.callbacks.push( {
@@ -16,14 +22,14 @@ window.webkit.callbackHandlers = {
   }
 };
 
-window.webkit.messageHandlers.hub.talk = function ( callback, receiver, action, args ) {
+window.cloudbox.talk = function ( callback, receiver, action, args ) {
   if ( callback === undefined || receiver === undefined || action === undefined || args === undefined ) {
     throw new Error( 'arguments invalid, need 4 arguments, received ' + arguments.length );
   }
 
   var callbackId = null;
   if ( callback ) {
-    callbackId = window.webkit.callbackHandlers.register( callback, arguments.callee.caller );
+    callbackId = window.cloudbox.callbackHandlers.register( callback, arguments.callee.caller );
   }
 
   window.webkit.messageHandlers.hub.postMessage( {

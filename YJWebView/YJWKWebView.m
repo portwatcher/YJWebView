@@ -21,12 +21,17 @@
 @synthesize _timer;
 
 - (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.allowsInlineMediaPlayback = YES;
+    configuration.mediaPlaybackRequiresUserAction = NO;
+    
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    configuration.userContentController = controller;
+    
+    self = [super initWithFrame:frame configuration:configuration];
     if (self) {
         self.navigationDelegate = self;
         self.UIDelegate = self;
-        self.configuration.allowsInlineMediaPlayback = YES;
-        self.configuration.mediaPlaybackRequiresUserAction = NO;
         self.allowsBackForwardNavigationGestures = YES;
         
         [[YJHybridBridge sharedBridge] registerWithUserContentController:self.configuration.userContentController webView:self];
