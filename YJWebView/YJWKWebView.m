@@ -56,6 +56,11 @@
     [self evaluateJavaScript:js completionHandler:completionHandler];
 }
 
+- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js {
+    [self evaluateJavaScript:js completionHandler:nil];
+    [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
+}
+
 # pragma delegates
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {

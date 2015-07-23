@@ -34,5 +34,6 @@
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
 - (void)removeCSSWithIdentifier:(NSString *)identifier;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler;
+- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js;
 
 @end

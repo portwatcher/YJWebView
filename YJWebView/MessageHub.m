@@ -7,10 +7,12 @@
 //
 
 #import "MessageHub.h"
+#import "YJHybridBridge.h"
 
 @interface MessageHub ()
 
-@property (strong, nonatomic) YJWebView *webView;
+@property (weak, nonatomic) YJWebView *webView;
+@property (strong, nonatomic) NSMapTable *nativeObjects;
 
 @end
 
@@ -20,13 +22,16 @@
     self = [super init];
     if (self) {
         self.webView = webView;
+        self.nativeObjects = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
     }
     return self;
 }
 
 - (void)postMessage:(id)message {
-    NSDictionary *msg = (NSDictionary *)message;
-    [self dispatch:msg];
+    if ([message isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *msg = (NSDictionary *)message;
+        [self dispatch:msg];
+    }
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -35,7 +40,49 @@
 }
 
 - (void)dispatch:(NSDictionary *)command {
+    NSLog(@"receive command from web: %@", command);
     
+    NSString *callbackId = command[@"callbackId"];
+    NSString *receiver = command[@"receiver"];
+    NSString *action = command[@"action"];
+    NSArray *arguments = command[@"args"];
+    
+    NSObject<YJBridgeNative> *obj = [self.nativeObjects objectForKey:receiver];
+    
+    NSLog(@"receriver: %@", obj);
+    
+    if (!obj) {
+        return;
+    }
+    
+    NSUInteger count = [arguments count];
+    while (count--) {
+        action = [action stringByAppendingString:@":"];
+    }
+    
+    SEL selector = NSSelectorFromString(action);
+    
+    if ([obj respondsToSelector:NSSelectorFromString(action)]) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[obj methodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:obj];
+        
+        [invocation setArgument:(__bridge void *)(callbackId) atIndex:2];
+        
+        for (NSUInteger i = 3; i < arguments.count + 3; i++) {
+            [invocation setArgument:(__bridge void *)([arguments objectAtIndex:i - 2]) atIndex:i];
+        }
+        
+        [invocation invoke];
+    }
+}
+
+- (void)inviteNativeObjectJoin:(NSObject<YJBridgeNative> *)nativeObject {
+    if (!nativeObject) {
+        return;
+    }
+    
+    [self.nativeObjects setObject:nativeObject forKey:nativeObject.receiverName];
 }
 
 - (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements {

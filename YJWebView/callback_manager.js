@@ -6,9 +6,9 @@ if ( !window.webkit ) {
 }
 
 window.webkit.callbackHandlers = {
-  callbacks: []
+  callbacks: [],
   register: function ( fn, caller ) {
-    var index = callbacks.push( {
+    var index = this.callbacks.push( {
       fn: fn,
       caller: caller
     } );
@@ -16,9 +16,27 @@ window.webkit.callbackHandlers = {
     return index;
   },
   invoke: function ( callbackId, args ) {
-    var callback = callbacks[ callbackId ];
+    var callback = this.callbacks[ callbackId ];
     callback.fn.apply( callback.caller, args );
 
-    callbacks.shift();
+    this.callbacks.splice( callbackId, 1 );
   }
 };
+
+window.webkit.messageHandlers.hub.talk = function ( callback, receiver, action, args ) {
+  if ( callback === undefined || receiver === undefined || action === undefined || args === undefined ) {
+    throw new Error( 'arguments invalid, need 4 arguments, received ' + arguments.length );
+  }
+
+  var callbackId = null;
+  if ( callback ) {
+    callbackId = window.webkit.callbackHandlers.register( callback, arguments.callee.caller );
+  }
+
+  window.webkit.messageHandlers.hub.postMessage( {
+    callbackId: callbackId,
+    receiver: receiver,
+    action: action,
+    arguments: args
+  } );
+}

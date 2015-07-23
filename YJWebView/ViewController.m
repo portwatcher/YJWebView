@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BridgeNativeEcho.h"
 
 @interface ViewController ()
 
@@ -47,6 +48,11 @@
 
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
     NSLog(@"dom ready");
+    
+    NSString *echoPath = [[NSBundle mainBundle] pathForResource:@"echo" ofType:@"js"];
+    NSString *echoJS = [NSString stringWithContentsOfFile:echoPath encoding:NSUTF8StringEncoding error:nil];
+    
+    [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init] withJavaScript:echoJS];
 }
 
 @end

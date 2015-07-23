@@ -75,6 +75,11 @@
     }
 }
 
+- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js {
+    [self.jsContext evaluateScript:js];
+    [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
+}
+
 # pragma delegates
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx {

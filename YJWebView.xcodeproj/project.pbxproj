@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C3333E071B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */; };
-		C3C8B74D1B5E3FE40022D5CC /* message_hub.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C8B74C1B5E3FE40022D5CC /* message_hub.js */; };
+		C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */; };
+		C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D2691B6115BB004B6F77 /* echo.js */; };
+		C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D26B1B6120D0004B6F77 /* message_hub.js */; };
 		C3C8B7501B5E758A0022D5CC /* callback_manager.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C8B74F1B5E758A0022D5CC /* callback_manager.js */; };
 		C3EB94491B5CF00400F0144B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94481B5CF00400F0144B /* main.m */; };
 		C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944B1B5CF00400F0144B /* AppDelegate.m */; };
@@ -39,10 +41,13 @@
 /* Begin PBXFileReference section */
 		C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
+		C3C3D2661B611283004B6F77 /* BridgeNativeEcho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeEcho.h; sourceTree = "<group>"; };
+		C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeEcho.m; sourceTree = "<group>"; };
+		C3C3D2691B6115BB004B6F77 /* echo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echo.js; sourceTree = "<group>"; };
+		C3C3D26B1B6120D0004B6F77 /* message_hub.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = message_hub.js; sourceTree = "<group>"; };
 		C3C8B7491B5E13B90022D5CC /* YJWebViewProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 		C3C8B74A1B5E154D0022D5CC /* YJWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
 		C3C8B74B1B5E1A8C0022D5CC /* YJWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
-		C3C8B74C1B5E3FE40022D5CC /* message_hub.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = message_hub.js; sourceTree = "<group>"; };
 		C3C8B74E1B5E44560022D5CC /* MessageHubProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHubProtocol.h; sourceTree = "<group>"; };
 		C3C8B74F1B5E758A0022D5CC /* callback_manager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = callback_manager.js; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +104,16 @@
 				C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */,
 			);
 			name = "UIWebView+JSContext";
+			sourceTree = "<group>";
+		};
+		C3C3D2651B610A51004B6F77 /* InternalNativeObjects */ = {
+			isa = PBXGroup;
+			children = (
+				C3C3D2661B611283004B6F77 /* BridgeNativeEcho.h */,
+				C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */,
+				C3C3D2691B6115BB004B6F77 /* echo.js */,
+			);
+			name = InternalNativeObjects;
 			sourceTree = "<group>";
 		};
 		C3EB943A1B5CF00400F0144B = {
@@ -208,6 +223,7 @@
 		C3EB94781B5CF11700F0144B /* YJHybridBridge */ = {
 			isa = PBXGroup;
 			children = (
+				C3C3D2651B610A51004B6F77 /* InternalNativeObjects */,
 				C3EB947C1B5CF12C00F0144B /* MessageHub */,
 				C3EB94791B5CF12700F0144B /* YJHybridBridge.h */,
 				C3EB947A1B5CF12700F0144B /* YJHybridBridge.m */,
@@ -221,7 +237,7 @@
 				C3C8B74E1B5E44560022D5CC /* MessageHubProtocol.h */,
 				C3EB947D1B5CF13800F0144B /* MessageHub.h */,
 				C3EB947E1B5CF13800F0144B /* MessageHub.m */,
-				C3C8B74C1B5E3FE40022D5CC /* message_hub.js */,
+				C3C3D26B1B6120D0004B6F77 /* message_hub.js */,
 				C3C8B74F1B5E758A0022D5CC /* callback_manager.js */,
 			);
 			name = MessageHub;
@@ -307,9 +323,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3C8B74D1B5E3FE40022D5CC /* message_hub.js in Resources */,
+				C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */,
 				C3C8B7501B5E758A0022D5CC /* callback_manager.js in Resources */,
 				C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */,
+				C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */,
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
 				C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */,
 			);
@@ -335,6 +352,7 @@
 				C3EB94881B5CF16400F0144B /* YJWebViewFactory.m in Sources */,
 				C3EB947B1B5CF12700F0144B /* YJHybridBridge.m in Sources */,
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
+				C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
 				C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */,
 				C3EB94491B5CF00400F0144B /* main.m in Sources */,

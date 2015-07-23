@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol YJWebViewProvider;
+@protocol YJWebViewProvider, MessageHubDelegate;
 
 typedef UIView<YJWebViewProvider> YJWebView;
 

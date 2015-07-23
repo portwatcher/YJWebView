@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString *messageHubJS;
 @property (strong, nonatomic) NSString *callbackManagerJS;
+@property (strong, nonatomic) NSMapTable *hubs;
 
 @end
 
@@ -31,6 +32,8 @@
         
         NSString *callbackManagerPath = [[NSBundle mainBundle] pathForResource:@"callback_manager" ofType:@"js"];
         _sharedBridge.callbackManagerJS = [NSString stringWithContentsOfFile:callbackManagerPath encoding:NSUTF8StringEncoding error:nil];
+
+        _sharedBridge.hubs = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableStrongMemory];
     });
     
     return _sharedBridge;
@@ -38,15 +41,34 @@
 
 - (void)registerWithJavaScriptContext:(JSContext *)context webView:(YJWebView *)webView {
     [webView executeJavaScript:self.messageHubJS completionHandler:nil];
+    
+    MessageHub *hub = [[MessageHub alloc] initWithWebView:webView];
+    
+    context[@"window"][@"webkit"][@"messageHandlers"][@"hub"] = hub;
     [webView executeJavaScript:self.callbackManagerJS completionHandler:nil];
     
-    context[@"window"][@"webkit"][@"messageHandlers"][@"hub"] = [[MessageHub alloc] initWithWebView:webView];
+//    use the memory address as the key
+    [self.hubs setObject:hub forKey:[NSString stringWithFormat:@"%p", webView]];
 }
 
 - (void)registerWithUserContentController:(WKUserContentController *)controller webView:(YJWebView *)webView {
+    MessageHub *hub = [[MessageHub alloc] initWithWebView:webView];
+    
+    [controller addScriptMessageHandler:hub name:@"hub"];
     [webView executeJavaScript:self.callbackManagerJS completionHandler:nil];
     
-    [controller addScriptMessageHandler:[[MessageHub alloc] initWithWebView:webView] name:@"hub"];
+//    use the memory address as the key
+    [self.hubs setObject:hub forKey:[NSString stringWithFormat:@"%p", webView]];
+}
+
+- (void)bindNative:(NSObject<YJBridgeNative> *)obj toWebView:(YJWebView *)webView {
+    MessageHub *hub = [self.hubs objectForKey:[NSString stringWithFormat:@"%p", webView]];
+    
+    if (!hub) {
+        return;
+    }
+    
+    [hub inviteNativeObjectJoin:obj];
 }
 
 @end
