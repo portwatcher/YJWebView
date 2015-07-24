@@ -132,10 +132,12 @@ Create echo.js in your app's main bundle
 ```
 var echo = {
   say: function ( word ) {
+    // callback function, receiverName in the native, method name, arguments
     window.cloudbox.talk( null, "Echo", "say", [ word ] );
   }
 };
 
+// just for fun
 echo.say.toString = function () {
   return '[not native code]'
 };
