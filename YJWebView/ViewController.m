@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "BridgeNativeEcho.h"
+#import "BridgeNativeVibrate.h"
 
 @interface ViewController ()
 
@@ -45,10 +46,8 @@
 - (void)webViewDidFinishLoad:(YJWebView *)webView {
     NSLog(@"did finish load");
     
-    NSString *echoPath = [[NSBundle mainBundle] pathForResource:@"echo" ofType:@"js"];
-    NSString *echoJS = [NSString stringWithContentsOfFile:echoPath encoding:NSUTF8StringEncoding error:nil];
-    
-    [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init] withJavaScript:echoJS];
+    [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
+    [webView bindNativeReceiver:[[BridgeNativeVibrate alloc] init]];
 }
 
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView {

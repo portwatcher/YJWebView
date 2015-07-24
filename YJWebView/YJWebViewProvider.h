@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol YJWebViewDelegate;
+@protocol YJWebViewDelegate, YJBridgeNative;
 
 @protocol YJWebViewProvider <NSObject>
 
@@ -34,6 +34,6 @@
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
 - (void)removeCSSWithIdentifier:(NSString *)identifier;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler;
-- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js;
+- (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj;
 
 @end

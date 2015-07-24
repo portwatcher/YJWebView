@@ -26,6 +26,8 @@
 		C3EB94821B5CF14200F0144B /* YJWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94811B5CF14200F0144B /* YJWKWebView.m */; };
 		C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94841B5CF14A00F0144B /* YJUIWebView.m */; };
 		C3EB94881B5CF16400F0144B /* YJWebViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */; };
+		C3FC28601B61EB0600C7E3EB /* BridgeNativeVibrate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FC285F1B61EB0600C7E3EB /* BridgeNativeVibrate.m */; };
+		C3FC28621B61F31B00C7E3EB /* vibration.js in Resources */ = {isa = PBXBuildFile; fileRef = C3FC28611B61F31B00C7E3EB /* vibration.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		C3EB94841B5CF14A00F0144B /* YJUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
 		C3EB94861B5CF16400F0144B /* YJWebViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebViewFactory.h; sourceTree = "<group>"; };
 		C3EB94871B5CF16400F0144B /* YJWebViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebViewFactory.m; sourceTree = "<group>"; };
+		C3FC285E1B61EB0600C7E3EB /* BridgeNativeVibrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeVibrate.h; sourceTree = "<group>"; };
+		C3FC285F1B61EB0600C7E3EB /* BridgeNativeVibrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeVibrate.m; sourceTree = "<group>"; };
+		C3FC28611B61F31B00C7E3EB /* vibration.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = vibration.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +114,8 @@
 		C3C3D2651B610A51004B6F77 /* InternalNativeObjects */ = {
 			isa = PBXGroup;
 			children = (
-				C3C3D2661B611283004B6F77 /* BridgeNativeEcho.h */,
-				C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */,
-				C3C3D2691B6115BB004B6F77 /* echo.js */,
+				C3FC285C1B61E93900C7E3EB /* Vibrate */,
+				C3FC285D1B61E94A00C7E3EB /* Echo */,
 			);
 			name = InternalNativeObjects;
 			sourceTree = "<group>";
@@ -243,6 +247,26 @@
 			name = MessageHub;
 			sourceTree = "<group>";
 		};
+		C3FC285C1B61E93900C7E3EB /* Vibrate */ = {
+			isa = PBXGroup;
+			children = (
+				C3FC285E1B61EB0600C7E3EB /* BridgeNativeVibrate.h */,
+				C3FC285F1B61EB0600C7E3EB /* BridgeNativeVibrate.m */,
+				C3FC28611B61F31B00C7E3EB /* vibration.js */,
+			);
+			name = Vibrate;
+			sourceTree = "<group>";
+		};
+		C3FC285D1B61E94A00C7E3EB /* Echo */ = {
+			isa = PBXGroup;
+			children = (
+				C3C3D2661B611283004B6F77 /* BridgeNativeEcho.h */,
+				C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */,
+				C3C3D2691B6115BB004B6F77 /* echo.js */,
+			);
+			name = Echo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -328,6 +352,7 @@
 				C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */,
 				C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */,
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
+				C3FC28621B61F31B00C7E3EB /* vibration.js in Resources */,
 				C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +379,7 @@
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
+				C3FC28601B61EB0600C7E3EB /* BridgeNativeVibrate.m in Sources */,
 				C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */,
 				C3EB94491B5CF00400F0144B /* main.m in Sources */,
 			);

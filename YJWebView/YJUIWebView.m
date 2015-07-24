@@ -75,8 +75,8 @@
     }
 }
 
-- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js {
-    [self.jsContext evaluateScript:js];
+- (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj {
+    [self.jsContext evaluateScript:obj.javaScriptCode];
     [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
 }
 

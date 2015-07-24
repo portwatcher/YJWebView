@@ -61,8 +61,8 @@
     [self evaluateJavaScript:js completionHandler:completionHandler];
 }
 
-- (void)bindNativeReceiver:(id)obj withJavaScript:(NSString *)js {
-    [self evaluateJavaScript:js completionHandler:nil];
+- (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj {
+    [self evaluateJavaScript:obj.javaScriptCode completionHandler:nil];
     [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
 }
 

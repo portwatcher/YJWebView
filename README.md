@@ -1,25 +1,10 @@
-# Goal
+# Features
+YJWebView provide non-invasive API for developers with flexible hybrid framework.
 
-* Support as many W3C standards as possible.
-* provide non-invasive interfaces for developers.
-* No compromise for peformance.
-
-# How it works
-
-### iOS 7
-
-In iOS 7 we access the UIWebView's JavaScript context through JavaScriptCore framework and bind native object to the context. 
-
-### iOS 8
-
-In iOS 8 we choose WKWebView for performance consideration, and use documented `postMessage` for bridge communication.
-
-### Consistent API
-
-The YJWebView will detect the iOS version automatically, we will use backed WKWebView first and fall back to UIWebView in iOS 7.
-
-Most important, YJWebView expose consistent API for developers, you don't have to worry about the iOS version.
-
+* Dom ready delegate.
+* provide unified API with UIWebView backed on iOS 7, WKWebView backed on iOS 8 and above.
+* simple native & JS communication.
+* simple customization for your own hybrid needs.
 
 # Getting started.
 
@@ -31,7 +16,7 @@ In your `Podfile`
 pod 'YJWebView'
 ```
 
-and `#import 'YJWebViewFactory.h'`, we are ready to go.
+and `#import 'YJWebView.h'`, we are ready to go.
 
 ## Demo
 
@@ -39,7 +24,7 @@ and `#import 'YJWebViewFactory.h'`, we are ready to go.
 YJWebView *webView = [YJWebViewFactory webViewWithFrame:self.view.bounds];
 webView.webViewDelegate = self;
 [self.view addSubview:webView];
-    
+
 [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
 ```
 
@@ -47,10 +32,13 @@ webView.webViewDelegate = self;
 
 ## Delegates
 
-# Standard we support
+# Standards
 
 ## Browser API
 * navigator.vibrate
 * notification
 * service worker
 * ES6 promise
+
+# Who use
+* (CloudBox)[http://yunji.one]

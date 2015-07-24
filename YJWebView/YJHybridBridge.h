@@ -13,7 +13,9 @@
 
 @protocol YJBridgeNative <NSObject>
 
+@required
 @property (strong, nonatomic, readonly) NSString *receiverName;
+@property (strong, nonatomic) NSString *javaScriptCode;
 
 @end
 

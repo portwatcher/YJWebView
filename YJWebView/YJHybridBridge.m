@@ -8,6 +8,7 @@
 
 #import "YJHybridBridge.h"
 #import "MessageHub.h"
+#import "BridgeNativeVibrate.h"
 
 @interface YJHybridBridge ()
 
@@ -49,6 +50,8 @@
     
 //    use the memory address as the key
     [self.hubs setObject:hub forKey:[NSString stringWithFormat:@"%p", webView]];
+    
+//    [self initInternalNativeObjectsToWebView:webView];
 }
 
 - (void)registerWithUserContentController:(WKUserContentController *)controller webView:(YJWebView *)webView {
@@ -59,6 +62,8 @@
     
 //    use the memory address as the key
     [self.hubs setObject:hub forKey:[NSString stringWithFormat:@"%p", webView]];
+    
+//    [self initInternalNativeObjectsToWebView:webView];
 }
 
 - (void)bindNative:(NSObject<YJBridgeNative> *)obj toWebView:(YJWebView *)webView {
@@ -70,5 +75,10 @@
     
     [hub inviteNativeObjectJoin:obj];
 }
+
+//- (void)initInternalNativeObjectsToWebView:(YJWebView *)webView {
+//    BridgeNativeVibrate *vibration = [[BridgeNativeVibrate alloc] init];
+//    [self bindNative:vibration toWebView:webView];
+//}
 
 @end

@@ -81,6 +81,7 @@
             [invocation setArgument:&(argument) atIndex:i];
         }
         
+//        约定：最后一个参数为 callbackId，如果 Web 传过来的东西，有 callback 的话。
         if (callbackId) {
             [invocation setArgument:&(callbackId) atIndex:arguments.count + numberOfPreorder - 1];
         }
