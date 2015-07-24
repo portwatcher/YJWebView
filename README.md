@@ -6,7 +6,7 @@ YJWebView provide non-invasive API for developers with flexible hybrid framework
 * simple native & JS communication.
 * simple customization for your own hybrid needs.
 
-# Getting started.
+# Getting started
 
 ## Installation
 
