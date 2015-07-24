@@ -151,9 +151,8 @@ In your viewController or subclassed WebView:
 
 More info, please visit [docs]
 
-# Standards
+# Web Standards
 
-## Browser API
 * navigator.vibrate
 * Notification
 * Service Worker
