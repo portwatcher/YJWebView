@@ -81,9 +81,11 @@ In your BridgeNativeEcho.h
 
 @interface BridgeNativeEcho : NSObject <YJBridgeNative>
 
+// these two properties must be implemented according to YJBridgeNative
 @property (strong, nonatomic, readonly) NSString *receiverName;
 @property (strong, nonatomic) NSString *javaScriptCode;
 
+// we assume that the last argument is the callbackId if there should be a callback
 - (void)say:(NSString *)string;
 - (void)say:(NSString *)string :(NSString *)callbackId;
 
@@ -139,6 +141,16 @@ echo.say.toString = function () {
 };
 ```
 
+### Finally
+
+In your viewController or subclassed WebView:
+
+```
+[webView bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
+```
+
+More info, please visit [docs]
+
 # Standards
 
 ## Browser API
@@ -148,4 +160,4 @@ echo.say.toString = function () {
 * ES6 Promise
 
 # Who use
-* (CloudBox)[http://yunji.one]
+* [CloudBox](http://yunji.one)
