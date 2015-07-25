@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *javaScriptCode;
 
 - (void)vibrate;
+- (void)vibrate:(NSNumber *)duration;
 
 @end

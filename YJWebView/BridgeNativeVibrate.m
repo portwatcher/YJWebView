@@ -26,8 +26,13 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
+- (void)vibrate:(NSNumber *)duration {
+//    currently no documented API for vibration for a specific duration
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
 - (NSString *)receiverName {
-    return @"Viration";
+    return @"Vibration";
 }
 
 @end
