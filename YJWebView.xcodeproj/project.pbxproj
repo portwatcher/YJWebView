@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C3333E071B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */; };
+		C3B1B1AE1B6514EE00705A11 /* BridgeNativeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */; };
+		C3B1B1B01B6514FB00705A11 /* notification.js in Resources */ = {isa = PBXBuildFile; fileRef = C3B1B1AF1B6514FB00705A11 /* notification.js */; };
 		C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */; };
 		C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D2691B6115BB004B6F77 /* echo.js */; };
 		C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D26B1B6120D0004B6F77 /* message_hub.js */; };
@@ -43,6 +45,9 @@
 /* Begin PBXFileReference section */
 		C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
+		C3B1B1AC1B6514EE00705A11 /* BridgeNativeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeNotification.h; sourceTree = "<group>"; };
+		C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeNotification.m; sourceTree = "<group>"; };
+		C3B1B1AF1B6514FB00705A11 /* notification.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = notification.js; sourceTree = "<group>"; };
 		C3C3D2661B611283004B6F77 /* BridgeNativeEcho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeEcho.h; sourceTree = "<group>"; };
 		C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeEcho.m; sourceTree = "<group>"; };
 		C3C3D2691B6115BB004B6F77 /* echo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echo.js; sourceTree = "<group>"; };
@@ -111,9 +116,20 @@
 			name = "UIWebView+JSContext";
 			sourceTree = "<group>";
 		};
+		C3B1B1AB1B6514DA00705A11 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C3B1B1AC1B6514EE00705A11 /* BridgeNativeNotification.h */,
+				C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */,
+				C3B1B1AF1B6514FB00705A11 /* notification.js */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 		C3C3D2651B610A51004B6F77 /* InternalNativeObjects */ = {
 			isa = PBXGroup;
 			children = (
+				C3B1B1AB1B6514DA00705A11 /* Notification */,
 				C3FC285C1B61E93900C7E3EB /* Vibrate */,
 				C3FC285D1B61E94A00C7E3EB /* Echo */,
 			);
@@ -348,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */,
+				C3B1B1B01B6514FB00705A11 /* notification.js in Resources */,
 				C3C8B7501B5E758A0022D5CC /* callback_manager.js in Resources */,
 				C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */,
 				C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */,
@@ -379,6 +396,7 @@
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
+				C3B1B1AE1B6514EE00705A11 /* BridgeNativeNotification.m in Sources */,
 				C3FC28601B61EB0600C7E3EB /* BridgeNativeVibrate.m in Sources */,
 				C3EB94851B5CF14A00F0144B /* YJUIWebView.m in Sources */,
 				C3EB94491B5CF00400F0144B /* main.m in Sources */,

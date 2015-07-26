@@ -95,6 +95,10 @@
         return;
     }
     
+    if ([nativeObject respondsToSelector:@selector(delegate)]) {
+        nativeObject.delegate = self;
+    }
+    
     [self.nativeObjects setObject:nativeObject forKey:nativeObject.receiverName];
 }
 

@@ -10,9 +10,9 @@
 #import "MessageHubProtocol.h"
 #import "YJWebView.h"
 @import WebKit;
-@protocol YJBridgeNative;
+@protocol YJBridgeNative, YJBridgeNativeDelegate;
 
-@interface MessageHub : NSObject <MessageHubExport, WKScriptMessageHandler>
+@interface MessageHub : NSObject <MessageHubExport, WKScriptMessageHandler, YJBridgeNativeDelegate>
 
 @property (weak, nonatomic) id<MessageHubDelegate> delegate;
 

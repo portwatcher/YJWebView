@@ -1,6 +1,6 @@
 var echo = {
   say: function ( word ) {
-    window.cloudbox.talk( null, "Echo", "say", [ word ] );
+    window.cloudbox.talk( null, 'Echo', 'say', [ word ] );
   }
 };
 
