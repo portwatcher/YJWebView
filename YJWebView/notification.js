@@ -6,7 +6,7 @@ var Notification = function ( title, options ) {
   this.permission = 'default';
   if ( options ) {
     this.tag = options.tag;
-    if ( options.icon.substring( 0, 4 ) !== 'http' ) {
+    if ( options.icon && options.icon.substring( 0, 4 ) !== 'http' ) {
       var link = document.createElement( 'a' );
       link.href = options.icon;
       options.icon = link.protocol + '//' + link.host + link.pathname + link.search + link.hash;

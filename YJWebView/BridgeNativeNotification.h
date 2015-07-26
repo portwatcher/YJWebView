@@ -16,7 +16,7 @@
 @property (weak, nonatomic) id<YJBridgeNativeDelegate> delegate;
 
 - (void)close;
-- (void)show;
+- (void)show:(NSString *)title :(NSString *)body :(NSString *)iconURLString;
 - (void)requestPermission:(NSString *)callbackId;
 
 @end

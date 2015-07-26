@@ -9,6 +9,12 @@
 #import "BridgeNativeNotification.h"
 #import "MessageHub.h"
 
+@interface BridgeNativeNotification ()
+
+@property (strong, nonatomic) UILocalNotification *notification;
+
+@end
+
 @implementation BridgeNativeNotification
 
 - (id)init {
@@ -26,12 +32,24 @@
     return @"Notification";
 }
 
-- (void)show {
+- (void)show:(NSString *)title :(NSString *)body :(NSString *)iconURLString {
+    if ([UIApplication instancesRespondToSelector:NSSelectorFromString(@"registerUserNotificationSettings:")]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
+    }
     
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertTitle = title;
+    notification.alertBody = body;
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    
+    self.notification = notification;
 }
 
 - (void)close {
-    
+    [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
+    self.notification = nil;
 }
 
 - (void)requestPermission:(NSString *)callbackId {
