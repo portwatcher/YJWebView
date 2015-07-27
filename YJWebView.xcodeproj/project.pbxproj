@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C3333E071B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */; };
+		C366E9FD1B65E74F00EE6D3B /* AGPushNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C366E9FB1B65E74F00EE6D3B /* AGPushNoteView.m */; };
+		C366E9FE1B65E74F00EE6D3B /* AGPushNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366E9FC1B65E74F00EE6D3B /* AGPushNoteView.xib */; };
 		C3B1B1AE1B6514EE00705A11 /* BridgeNativeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */; };
 		C3B1B1B01B6514FB00705A11 /* notification.js in Resources */ = {isa = PBXBuildFile; fileRef = C3B1B1AF1B6514FB00705A11 /* notification.js */; };
 		C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3D2671B611283004B6F77 /* BridgeNativeEcho.m */; };
@@ -45,6 +47,10 @@
 /* Begin PBXFileReference section */
 		C3333E051B5D279400241DAA /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		C3333E061B5D279400241DAA /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
+		C366E9FA1B65E74F00EE6D3B /* AGPushNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPushNoteView.h; sourceTree = "<group>"; };
+		C366E9FB1B65E74F00EE6D3B /* AGPushNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPushNoteView.m; sourceTree = "<group>"; };
+		C366E9FC1B65E74F00EE6D3B /* AGPushNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGPushNoteView.xib; sourceTree = "<group>"; };
+		C366EA001B65E84E00EE6D3B /* YJBridgeNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJBridgeNative.h; sourceTree = "<group>"; };
 		C3B1B1AC1B6514EE00705A11 /* BridgeNativeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeNotification.h; sourceTree = "<group>"; };
 		C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeNotification.m; sourceTree = "<group>"; };
 		C3B1B1AF1B6514FB00705A11 /* notification.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = notification.js; sourceTree = "<group>"; };
@@ -116,9 +122,20 @@
 			name = "UIWebView+JSContext";
 			sourceTree = "<group>";
 		};
+		C366E9FF1B65E75400EE6D3B /* AGPushNote */ = {
+			isa = PBXGroup;
+			children = (
+				C366E9FA1B65E74F00EE6D3B /* AGPushNoteView.h */,
+				C366E9FB1B65E74F00EE6D3B /* AGPushNoteView.m */,
+				C366E9FC1B65E74F00EE6D3B /* AGPushNoteView.xib */,
+			);
+			name = AGPushNote;
+			sourceTree = "<group>";
+		};
 		C3B1B1AB1B6514DA00705A11 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				C366E9FF1B65E75400EE6D3B /* AGPushNote */,
 				C3B1B1AC1B6514EE00705A11 /* BridgeNativeNotification.h */,
 				C3B1B1AD1B6514EE00705A11 /* BridgeNativeNotification.m */,
 				C3B1B1AF1B6514FB00705A11 /* notification.js */,
@@ -247,6 +264,7 @@
 				C3EB947C1B5CF12C00F0144B /* MessageHub */,
 				C3EB94791B5CF12700F0144B /* YJHybridBridge.h */,
 				C3EB947A1B5CF12700F0144B /* YJHybridBridge.m */,
+				C366EA001B65E84E00EE6D3B /* YJBridgeNative.h */,
 			);
 			name = YJHybridBridge;
 			sourceTree = "<group>";
@@ -363,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C366E9FE1B65E74F00EE6D3B /* AGPushNoteView.xib in Resources */,
 				C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */,
 				C3B1B1B01B6514FB00705A11 /* notification.js in Resources */,
 				C3C8B7501B5E758A0022D5CC /* callback_manager.js in Resources */,
@@ -393,6 +412,7 @@
 				C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */,
 				C3EB94881B5CF16400F0144B /* YJWebViewFactory.m in Sources */,
 				C3EB947B1B5CF12700F0144B /* YJHybridBridge.m in Sources */,
+				C366E9FD1B65E74F00EE6D3B /* AGPushNoteView.m in Sources */,
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,

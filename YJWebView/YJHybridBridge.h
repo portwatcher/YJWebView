@@ -8,25 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "YJWebView.h"
+#import "YJBridgeNative.h"
 @import JavaScriptCore;
 @import WebKit;
-
-@protocol YJBridgeNativeDelegate <NSObject>
-
-- (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements;
-
-@end
-
-@protocol YJBridgeNative <NSObject>
-
-@required
-@property (strong, nonatomic, readonly) NSString *receiverName;
-@property (strong, nonatomic) NSString *javaScriptCode;
-
-@optional
-@property (weak, nonatomic) id<YJBridgeNativeDelegate> delegate;
-
-@end
 
 @interface YJHybridBridge : NSObject
 

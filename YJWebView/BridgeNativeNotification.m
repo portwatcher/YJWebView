@@ -8,6 +8,7 @@
 
 #import "BridgeNativeNotification.h"
 #import "MessageHub.h"
+#import "AGPushNoteView.h"
 
 @interface BridgeNativeNotification ()
 
@@ -41,8 +42,13 @@
     notification.alertTitle = title;
     notification.alertBody = body;
     notification.soundName = UILocalNotificationDefaultSoundName;
+    notification.fireDate = [NSDate date];
     
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"%@: %@", title, body]];
+    } else {
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
     
     self.notification = notification;
 }

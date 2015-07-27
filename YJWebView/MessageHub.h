@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MessageHubProtocol.h"
 #import "YJWebView.h"
+#import "YJBridgeNative.h"
 @import WebKit;
-@protocol YJBridgeNative, YJBridgeNativeDelegate;
 
 @interface MessageHub : NSObject <MessageHubExport, WKScriptMessageHandler, YJBridgeNativeDelegate>
 
