@@ -10,6 +10,7 @@
 #import "BridgeNativeEcho.h"
 #import "BridgeNativeVibrate.h"
 #import "BridgeNativeNotification.h"
+#import "BridgeNativeScreenOrientation.h"
 
 @interface ViewController ()
 
@@ -50,6 +51,7 @@
     [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
     [webView bindNativeReceiver:[[BridgeNativeVibrate alloc] init]];
     [webView bindNativeReceiver:[[BridgeNativeNotification alloc] init]];
+    [webView bindNativeReceiver:[[BridgeNativeScreenOrientation alloc] init]];
 }
 
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView {

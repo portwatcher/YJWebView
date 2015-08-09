@@ -41,7 +41,7 @@
 
 - (void)dispatch:(NSDictionary *)command {
 //    TODO: translate js value to objc value, may through JavaScriptCore.framework
-//    NSLog(@"MessageHub: did receive command from web: %@", command);
+    NSLog(@"MessageHub: did receive command from web: %@", command);
     
     NSString *callbackId = command[@"callbackId"];
     NSString *receiver = command[@"receiver"];
@@ -81,7 +81,7 @@
             [invocation setArgument:&(argument) atIndex:i];
         }
         
-//        约定：最后一个参数为 callbackId，如果 Web 传过来的东西，有 callback 的话。
+//        约定：最后一个参数为 callbackId，如果 Web 传过来的东西有 callback 的话。
         if (callbackId) {
             [invocation setArgument:&(callbackId) atIndex:arguments.count + numberOfPreorder - 1];
         }

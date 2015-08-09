@@ -16,6 +16,8 @@
 		C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D2691B6115BB004B6F77 /* echo.js */; };
 		C3C3D26C1B6120D0004B6F77 /* message_hub.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C3D26B1B6120D0004B6F77 /* message_hub.js */; };
 		C3C8B7501B5E758A0022D5CC /* callback_manager.js in Resources */ = {isa = PBXBuildFile; fileRef = C3C8B74F1B5E758A0022D5CC /* callback_manager.js */; };
+		C3E8981E1B7737DB00644BB1 /* screenorientation.js in Resources */ = {isa = PBXBuildFile; fileRef = C3E8981D1B7737DB00644BB1 /* screenorientation.js */; };
+		C3E898211B77387900644BB1 /* BridgeNativeScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E898201B77387900644BB1 /* BridgeNativeScreenOrientation.m */; };
 		C3EB94491B5CF00400F0144B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94481B5CF00400F0144B /* main.m */; };
 		C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944B1B5CF00400F0144B /* AppDelegate.m */; };
 		C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944E1B5CF00400F0144B /* ViewController.m */; };
@@ -63,6 +65,9 @@
 		C3C8B74B1B5E1A8C0022D5CC /* YJWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJWebViewDelegate.h; sourceTree = "<group>"; };
 		C3C8B74E1B5E44560022D5CC /* MessageHubProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHubProtocol.h; sourceTree = "<group>"; };
 		C3C8B74F1B5E758A0022D5CC /* callback_manager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = callback_manager.js; sourceTree = "<group>"; };
+		C3E8981D1B7737DB00644BB1 /* screenorientation.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = screenorientation.js; sourceTree = "<group>"; };
+		C3E8981F1B77387900644BB1 /* BridgeNativeScreenOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeScreenOrientation.h; sourceTree = "<group>"; };
+		C3E898201B77387900644BB1 /* BridgeNativeScreenOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeScreenOrientation.m; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94471B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94481B5CF00400F0144B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,11 +151,22 @@
 		C3C3D2651B610A51004B6F77 /* InternalNativeObjects */ = {
 			isa = PBXGroup;
 			children = (
+				C3E8981C1B77341500644BB1 /* ScreenOrientation */,
 				C3B1B1AB1B6514DA00705A11 /* Notification */,
 				C3FC285C1B61E93900C7E3EB /* Vibrate */,
 				C3FC285D1B61E94A00C7E3EB /* Echo */,
 			);
 			name = InternalNativeObjects;
+			sourceTree = "<group>";
+		};
+		C3E8981C1B77341500644BB1 /* ScreenOrientation */ = {
+			isa = PBXGroup;
+			children = (
+				C3E8981F1B77387900644BB1 /* BridgeNativeScreenOrientation.h */,
+				C3E898201B77387900644BB1 /* BridgeNativeScreenOrientation.m */,
+				C3E8981D1B7737DB00644BB1 /* screenorientation.js */,
+			);
+			name = ScreenOrientation;
 			sourceTree = "<group>";
 		};
 		C3EB943A1B5CF00400F0144B = {
@@ -388,6 +404,7 @@
 				C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */,
 				C3C3D26A1B6115BB004B6F77 /* echo.js in Resources */,
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
+				C3E8981E1B7737DB00644BB1 /* screenorientation.js in Resources */,
 				C3FC28621B61F31B00C7E3EB /* vibration.js in Resources */,
 				C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */,
 			);
@@ -415,6 +432,7 @@
 				C366E9FD1B65E74F00EE6D3B /* AGPushNoteView.m in Sources */,
 				C3EB947F1B5CF13800F0144B /* MessageHub.m in Sources */,
 				C3C3D2681B611283004B6F77 /* BridgeNativeEcho.m in Sources */,
+				C3E898211B77387900644BB1 /* BridgeNativeScreenOrientation.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,
 				C3B1B1AE1B6514EE00705A11 /* BridgeNativeNotification.m in Sources */,
 				C3FC28601B61EB0600C7E3EB /* BridgeNativeVibrate.m in Sources */,
