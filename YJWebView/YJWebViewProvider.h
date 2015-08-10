@@ -24,7 +24,7 @@
 - (void)goForward;
 - (void)loadRequest:(NSURLRequest *)request;
 
-// support by polyfill or us
+// support by polyfill or Tinydust
 @property (nonatomic, weak) id <YJWebViewDelegate> webViewDelegate;
 
 @property (nonatomic, strong, readonly) NSURL *URL;
