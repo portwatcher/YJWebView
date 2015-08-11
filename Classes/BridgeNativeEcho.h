@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic, readonly) NSString *receiverName;
 @property (strong, nonatomic) NSString *javaScriptCode;
+@property (weak, nonatomic) id<YJBridgeNativeDelegate> delegate;
 
 - (void)say:(NSString *)string;
 - (void)say:(NSString *)string :(NSString *)callbackId;

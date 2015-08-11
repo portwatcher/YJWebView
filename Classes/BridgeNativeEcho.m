@@ -26,7 +26,8 @@
 }
 
 - (void)say:(NSString *)string :(NSString *)callbackId {
-    NSLog(@"callbackId: %@", callbackId);
+    NSLog(@"Hi, I'm walking through YJHybridBridge: %@", string);
+    [self.delegate callback:callbackId callWithArguments:@[]];
 }
 
 - (NSString *)receiverName {
