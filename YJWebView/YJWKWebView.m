@@ -50,15 +50,6 @@
 
 # pragma methods
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    struct objc_super superInfo = {
-        self,
-        [self superclass]
-    };
-    
-    ((id (*)(id, SEL, id))objc_msgSendSuper)((__bridge id)(&superInfo), @selector(scrollViewDidScroll:), scrollView);
-}
-
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self evaluateJavaScript:stringToEval completionHandler:nil];

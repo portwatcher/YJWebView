@@ -57,10 +57,6 @@
 
 # pragma methods
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [super scrollViewDidScroll:scrollView];
-}
-
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self stringByEvaluatingJavaScriptFromString:stringToEval];

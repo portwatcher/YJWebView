@@ -19,7 +19,6 @@
 @property (nonatomic, strong, readonly) NSString *title;
 @property (nonatomic) BOOL loaded;
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
 - (void)removeCSSWithIdentifier:(NSString *)identifier;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *)) completionHandler;
