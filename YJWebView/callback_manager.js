@@ -12,7 +12,7 @@ window.cloudbox.callbackHandlers = {
       caller: caller
     } );
 
-    return index;
+    return index - 1;
   },
   invoke: function ( callbackId, args ) {
     var callback = this.callbacks[ callbackId ];

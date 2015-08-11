@@ -82,6 +82,7 @@
         }
         
 //        约定：最后一个参数为 callbackId，如果 Web 传过来的东西有 callback 的话。
+        NSLog(@"MessageHub: callbackId: %@", callbackId);
         if (callbackId) {
             [invocation setArgument:&(callbackId) atIndex:arguments.count + numberOfPreorder - 1];
         }
@@ -104,7 +105,7 @@
 
 - (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements {
     NSString *argsContent = [[arguements valueForKey:@"description"] componentsJoinedByString:@","];
-    NSString *js = [NSString stringWithFormat:@"window.webkit.callbackHandlers.invoke(%@, [%@]);", callbackId, argsContent];
+    NSString *js = [NSString stringWithFormat:@"window.cloudbox.callbackHandlers.invoke(%@, [%@]);", callbackId, argsContent];
     
     [self.webView executeJavaScript:js completionHandler:nil];
 }

@@ -68,7 +68,7 @@ webView.webViewDelegate = self;
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView;
 ```
 
-## Native-binding demo
+## Hybrid demo
 
 ### Native side
 
