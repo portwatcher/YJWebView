@@ -1,6 +1,10 @@
 var echo = {
-  say: function ( word ) {
-    window.cloudbox.talk(null, 'Echo', 'say', [word]);
+  say: function ( word, callback ) {
+    if ( callback ) {
+      window.cloudbox.talk( callback, 'Echo', 'say', [ word ] );
+    } else {
+      window.cloudbox.talk( null, 'Echo', 'say', [ word ] );
+    }
   }
 };
 
