@@ -106,8 +106,16 @@
 }
 
 - (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements {
-    NSString *argsContent = [[arguements valueForKey:@"description"] componentsJoinedByString:@","];
-    NSString *js = [NSString stringWithFormat:@"window.cloudbox.callbackHandlers.invoke(%@, [%@]);", callbackId, argsContent];
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arguements options:NSJSONWritingPrettyPrinted error:&error];
+    
+    if (error) {
+        NSLog(@"MessageHub interrupt with error: %@", error.localizedDescription);
+        return;
+    }
+    
+    NSString *argsContent = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *js = [NSString stringWithFormat:@"window.cloudbox.callbackHandlers.invoke(%@, %@);", callbackId, argsContent];
     
     [self.webView executeJavaScript:js completionHandler:nil];
 }
