@@ -16,7 +16,10 @@ window.cloudbox.callbackHandlers = {
   },
   invoke: function ( callbackId, args ) {
     var callback = this.callbacks[ callbackId ];
-    callback.fn.apply( callback.caller, args );
+
+    if ( callback && callback.fn ) {
+      callback.fn.apply( callback.caller, args );
+    }
 
     this.callbacks.splice( callbackId, 1 );
   }
