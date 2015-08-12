@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3412E041B7B285400A05E45 /* es6promise.js in Resources */ = {isa = PBXBuildFile; fileRef = C3412E031B7B285400A05E45 /* es6promise.js */; };
 		C39830E71B7B1A42001AF64B /* YJHybridBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830E61B7B1A42001AF64B /* YJHybridBridge.m */; };
 		C39830EB1B7B1A60001AF64B /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830E91B7B1A60001AF64B /* MessageHub.m */; };
 		C39830F01B7B1AB9001AF64B /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830EE1B7B1AB9001AF64B /* UIWebView+TS_JavaScriptContext.m */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3412E031B7B285400A05E45 /* es6promise.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = es6promise.js; path = Resources/es6promise.js; sourceTree = SOURCE_ROOT; };
 		C39830E51B7B1A42001AF64B /* YJHybridBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YJHybridBridge.h; path = Classes/YJHybridBridge.h; sourceTree = SOURCE_ROOT; };
 		C39830E61B7B1A42001AF64B /* YJHybridBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YJHybridBridge.m; path = Classes/YJHybridBridge.m; sourceTree = SOURCE_ROOT; };
 		C39830E81B7B1A60001AF64B /* MessageHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHub.h; path = Classes/MessageHub.h; sourceTree = SOURCE_ROOT; };
@@ -257,6 +259,7 @@
 		C3EB94761B5CF10000F0144B /* UIWebView */ = {
 			isa = PBXGroup;
 			children = (
+				C3412E031B7B285400A05E45 /* es6promise.js */,
 				C39830F41B7B1AF3001AF64B /* YJUIWebView.h */,
 				C39830F51B7B1AF3001AF64B /* YJUIWebView.m */,
 				C3333E081B5D279900241DAA /* UIWebView+JSContext */,
@@ -405,6 +408,7 @@
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
 				C39831151B7B1C60001AF64B /* echo.js in Resources */,
 				C398310F1B7B1C43001AF64B /* notification.js in Resources */,
+				C3412E041B7B285400A05E45 /* es6promise.js in Resources */,
 				C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */,
 				C39831181B7B1C6C001AF64B /* callback_manager.js in Resources */,
 			);

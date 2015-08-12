@@ -70,7 +70,7 @@ webView.webViewDelegate = self;
 
 ## Hybrid demo
 
-### Native side
+### Native file
 
 Create BridgeNativeEcho.h and BridgeNativeEcho.m.  
 
@@ -81,13 +81,12 @@ In your BridgeNativeEcho.h
 
 @interface BridgeNativeEcho : NSObject <YJBridgeNative>
 
-// these two properties must be implemented according to YJBridgeNative
+// these two properties must be implemented properly
 @property (strong, nonatomic, readonly) NSString *receiverName;
 @property (strong, nonatomic) NSString *javaScriptCode;
 
-// we assume that the last argument is the callbackId if there should be a callback
+// native implementation
 - (void)say:(NSString *)string;
-- (void)say:(NSString *)string :(NSString *)callbackId;
 
 @end
 
@@ -114,10 +113,6 @@ In your BridgeNativeEcho.m
     NSLog(@"Hi, I'm walking through YJHybridBridge: %@", string);
 }
 
-- (void)say:(NSString *)string :(NSString *)callbackId {
-    NSLog(@"callbackId: %@", callbackId);
-}
-
 - (NSString *)receiverName {
     return @"Echo";
 }
@@ -133,13 +128,13 @@ Create echo.js in your app's main bundle
 var echo = {
   say: function ( word ) {
     // callback function, receiverName in the native, method name, arguments
-    window.cloudbox.talk( null, "Echo", "say", [ word ] );
+    window.cloudbox.talk( null, 'Echo', 'say', [ word ] );
   }
 };
 
 // just for fun
 echo.say.toString = function () {
-  return '[not native code]'
+  return 'function () { [not native code] }';
 };
 ```
 
@@ -151,7 +146,13 @@ In your viewController or subclassed WebView:
 [webView bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
 ```
 
-More info, please visit [docs]
+Now web developers can use your JS API
+
+```
+echo.say('hello world');
+```
+
+For more info including callback mechanism, please visit [docs]
 
 # Web Standards
 
