@@ -145,6 +145,8 @@
         [timer invalidate];
         timer = nil;
         
+        [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
+        
         if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
         }
@@ -168,7 +170,7 @@
         timer = nil;
         
         [self.webViewDelegate webViewMainDocumentDidLoad:self];
-        
+
         NSString *promisePath = [[NSBundle mainBundle] pathForResource:@"es6promise" ofType:@"js"];
         NSString *promiseJS = [NSString stringWithContentsOfFile:promisePath encoding:NSUTF8StringEncoding error:nil];
         

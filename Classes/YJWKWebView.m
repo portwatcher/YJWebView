@@ -37,6 +37,7 @@
         self.allowsBackForwardNavigationGestures = YES;
         
         [[YJHybridBridge sharedBridge] registerWithUserContentController:self.configuration.userContentController webView:self];
+
         self.domreadyTriggered = NO;
     }
     return self;
@@ -159,6 +160,7 @@
             
             if (!self.domreadyTriggered) {
                 self.domreadyTriggered = YES;
+                
                 [self.webViewDelegate webViewMainDocumentDidLoad:self];
             }
         }

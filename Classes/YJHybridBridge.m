@@ -56,7 +56,7 @@
     MessageHub *hub = [[MessageHub alloc] initWithWebView:webView];
     
     [controller addScriptMessageHandler:hub name:@"hub"];
-    [webView executeJavaScript:self.callbackManagerJS completionHandler:nil];
+    [controller addUserScript:[[WKUserScript alloc] initWithSource:self.callbackManagerJS injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO]];
     
 //    use the memory address as the key
     [self.hubs setObject:hub forKey:[NSString stringWithFormat:@"%p", webView]];
@@ -71,10 +71,5 @@
     
     [hub inviteNativeObjectJoin:obj];
 }
-
-//- (void)initInternalNativeObjectsToWebView:(YJWebView *)webView {
-//    BridgeNativeVibrate *vibration = [[BridgeNativeVibrate alloc] init];
-//    [self bindNative:vibration toWebView:webView];
-//}
 
 @end
