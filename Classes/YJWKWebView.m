@@ -48,7 +48,7 @@
 # pragma getters
 
 - (BOOL)loaded {
-    return !self.loading;
+    return !self.isLoading;
 }
 
 # pragma methods
