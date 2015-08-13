@@ -9,8 +9,10 @@
 #import "YJWKWebView.h"
 #import "YJWebView.h"
 #import "YJHybridBridge.h"
-#import <objc/runtime.h>
-#import <objc/message.h>
+#import "BridgeNativeEcho.h"
+#import "BridgeNativeVibrate.h"
+#import "BridgeNativeNotification.h"
+#import "BridgeNativeScreenOrientation.h"
 
 @interface YJWKWebView ()
 
@@ -142,6 +144,8 @@
 # pragma private
 
 - (void)startInterceptDomReady {
+    [self performNativeBinding];
+    
     if (![self.webViewDelegate respondsToSelector:@selector(webViewMainDocumentDidLoad:)]) {
         return;
     }
@@ -165,6 +169,13 @@
             }
         }
     }];
+}
+
+- (void)performNativeBinding {
+//    [self bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeVibrate alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeNotification alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeScreenOrientation alloc] init]];
 }
 
 @end

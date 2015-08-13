@@ -9,6 +9,10 @@
 #import "YJUIWebView.h"
 #import "YJWebView.h"
 #import "YJHybridBridge.h"
+#import "BridgeNativeEcho.h"
+#import "BridgeNativeVibrate.h"
+#import "BridgeNativeNotification.h"
+#import "BridgeNativeScreenOrientation.h"
 
 @interface YJUIWebView ()
 
@@ -146,6 +150,7 @@
         timer = nil;
         
         [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
+        [self performNativeBinding];
         
         if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
@@ -176,6 +181,13 @@
         
         [self stringByEvaluatingJavaScriptFromString:promiseJS];
     }
+}
+
+- (void)performNativeBinding {
+//    [self bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeVibrate alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeNotification alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeScreenOrientation alloc] init]];
 }
 
 @end

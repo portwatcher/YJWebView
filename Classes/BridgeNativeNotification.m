@@ -25,6 +25,7 @@
         NSString *notificationJS = [NSString stringWithContentsOfFile:notificationPath encoding:NSUTF8StringEncoding error:nil];
         
         self.javaScriptCode = notificationJS;
+        self.permissionRequired = NO;
     }
     return self;
 }
@@ -38,29 +39,79 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
     }
     
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertTitle = title;
-    notification.alertBody = body;
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    notification.fireDate = [NSDate date];
-    
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"%@: %@", title, body]];
+    if (self.permissionRequired) {
+        if ([self.notificationDelegate respondsToSelector:@selector(requestPermissionWithCallback:)]) {
+            [self.notificationDelegate requestPermissionWithCallback:^(BOOL granted) {
+                if (granted) {
+                    UILocalNotification *notification = [[UILocalNotification alloc] init];
+                    notification.alertTitle = title;
+                    notification.alertBody = body;
+                    notification.soundName = UILocalNotificationDefaultSoundName;
+                    notification.fireDate = [NSDate date];
+                    
+                    if ([self.notificationDelegate respondsToSelector:@selector(arrangeAppearanceOfNotificationWithTitle:body:iconURL:)]) {
+                        [self.notificationDelegate arrangeAppearanceOfNotificationWithTitle:title body:body iconURL:[NSURL URLWithString:iconURLString]];
+                    } else {
+                        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                            if (!body || [body isKindOfClass:[NSNull class]]) {
+                                [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"  %@", title]];
+                            } else {
+                                [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"%@: %@", title, body]];
+                            }
+                        } else {
+                            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                        }
+                    }
+                    
+                    self.notification = notification;
+                }
+            }];
+        }
     } else {
-        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.alertTitle = title;
+        notification.alertBody = body;
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.fireDate = [NSDate date];
+        
+        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            if (!body || [body isKindOfClass:[NSNull class]]) {
+                [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"  %@", title]];
+            } else {
+                [AGPushNoteView showWithNotificationMessage:[NSString stringWithFormat:@"%@: %@", title, body]];
+            }
+        } else {
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+        
+        self.notification = notification;
     }
-    
-    self.notification = notification;
 }
 
 - (void)close {
+    if ([self.notificationDelegate respondsToSelector:@selector(arrangeDisappearanceOfNotification)]) {
+        [self.notificationDelegate arrangeDisappearanceOfNotification];
+    }
+    
     [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
     self.notification = nil;
 }
 
 - (void)requestPermission:(NSString *)callbackId {
-    if ([self.delegate respondsToSelector:@selector(callback:callWithArguments:)]) {
-        [self.delegate callback:callbackId callWithArguments:@[@"granted"]];
+    if (![self.delegate respondsToSelector:@selector(callback:callWithArguments:)]) {
+        return;
+    }
+    
+    if (self.permissionRequired) {
+        if ([self.notificationDelegate respondsToSelector:@selector(requestPermissionWithCallback:)]) {
+            [self.notificationDelegate requestPermissionWithCallback:^(BOOL granted) {
+                if (granted) {
+                    [self.delegate callback:callbackId callWithArguments:@[@"granted"]];
+                } else {
+                    [self.delegate callback:callbackId callWithArguments:@[@"denied"]];
+                }
+            }];
+        }
     }
 }
 
