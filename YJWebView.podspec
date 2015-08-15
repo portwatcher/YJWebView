@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YJWebView"
-  s.version      = "0.0.4.3"
+  s.version      = "0.0.5"
   s.summary      = "The WebView you'll need on iOS."
 
   s.description  = <<-DESC
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://code.tinydust.cn/Tinydust/YJWebView.git", :tag => "0.0.4.3" }
+  s.source       = { :git => "https://code.tinydust.cn/Tinydust/YJWebView.git", :tag => "0.0.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
