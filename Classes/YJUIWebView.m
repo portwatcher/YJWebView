@@ -109,6 +109,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     if ([self.documentReadyState isEqualToString:@"complete"]) {
+        [self performNativeBinding];
+        
         self.loaded = YES;
         
         if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
@@ -184,7 +186,7 @@
 }
 
 - (void)performNativeBinding {
-//    [self bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeEcho alloc] init]];
     [self bindNativeReceiver:[[BridgeNativeVibrate alloc] init]];
     [self bindNativeReceiver:[[BridgeNativeNotification alloc] init]];
     [self bindNativeReceiver:[[BridgeNativeScreenOrientation alloc] init]];
