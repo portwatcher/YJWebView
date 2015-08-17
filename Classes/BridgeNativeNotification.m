@@ -35,8 +35,20 @@
 }
 
 - (void)show:(NSString *)title :(NSString *)body :(NSString *)iconURLString {
+    if (!title || [title isKindOfClass:[NSNull class]]) {
+        return;
+    }
+    
     if ([UIApplication instancesRespondToSelector:NSSelectorFromString(@"registerUserNotificationSettings:")]) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+    if (!body || [body isKindOfClass:[NSNull class]]) {
+        body = nil;
+    }
+    
+    if (!iconURLString || [iconURLString isKindOfClass:[NSNull class]]) {
+        iconURLString = nil;
     }
     
     if (self.permissionRequired) {
