@@ -58,8 +58,21 @@
     [self evaluateJavaScript:stringToEval completionHandler:nil];
 }
 
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
+    NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
+    [self evaluateJavaScript:stringToEval completionHandler:^(id result, NSError *error) {
+        complectionBlock();
+    }];
+}
+
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
-    [self evaluateJavaScript:[NSString stringWithFormat:@"var _element = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier] completionHandler:nil];
+    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier] completionHandler:nil];
+}
+
+- (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
+    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier] completionHandler:^(id result, NSError *error) {
+        complectionBlock();
+    }];
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {

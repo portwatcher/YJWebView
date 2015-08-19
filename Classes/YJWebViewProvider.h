@@ -32,7 +32,9 @@
 @property (nonatomic) BOOL loaded; // main frame done loading
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock;
 - (void)removeCSSWithIdentifier:(NSString *)identifier;
+- (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler;
 - (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj;
 

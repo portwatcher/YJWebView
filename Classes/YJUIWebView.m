@@ -63,11 +63,22 @@
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
+    [self.jsContext evaluateScript:stringToEval];
+}
+
+- (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
+    NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self stringByEvaluatingJavaScriptFromString:stringToEval];
+    complectionBlock();
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _element = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
+    [self.jsContext evaluateScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
+}
+
+- (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
+    complectionBlock();
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
