@@ -73,11 +73,11 @@
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
-    [self.jsContext evaluateScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
+    [self.jsContext evaluateScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_element.parentNode.removeChild(_elementInCloudBox);}", identifier]];
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_element){_element.parentNode.removeChild(_element);}", identifier]];
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_element.parentNode.removeChild(_elementInCloudBox);}", identifier]];
     complectionBlock();
 }
 
