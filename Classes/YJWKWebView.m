@@ -66,11 +66,11 @@
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
-    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_element.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:nil];
+    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:nil];
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
-    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_element.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:^(id result, NSError *error) {
+    [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:^(id result, NSError *error) {
         complectionBlock();
     }];
 }
