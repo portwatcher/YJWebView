@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C3412E041B7B285400A05E45 /* es6promise.js in Resources */ = {isa = PBXBuildFile; fileRef = C3412E031B7B285400A05E45 /* es6promise.js */; };
+		C3726FB01B85AC00007F267A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3726FB21B85AC00007F267A /* Localizable.strings */; };
+		C3726FB91B85AF47007F267A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3726FB71B85AF47007F267A /* Main.storyboard */; };
 		C39830E71B7B1A42001AF64B /* YJHybridBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830E61B7B1A42001AF64B /* YJHybridBridge.m */; };
 		C39830EB1B7B1A60001AF64B /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830E91B7B1A60001AF64B /* MessageHub.m */; };
 		C39830F01B7B1AB9001AF64B /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C39830EE1B7B1AB9001AF64B /* UIWebView+TS_JavaScriptContext.m */; };
@@ -29,7 +31,6 @@
 		C3EB94491B5CF00400F0144B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94481B5CF00400F0144B /* main.m */; };
 		C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944B1B5CF00400F0144B /* AppDelegate.m */; };
 		C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944E1B5CF00400F0144B /* ViewController.m */; };
-		C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3EB94501B5CF00400F0144B /* Main.storyboard */; };
 		C3EB94541B5CF00400F0144B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3EB94531B5CF00400F0144B /* Images.xcassets */; };
 		C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3EB94551B5CF00400F0144B /* LaunchScreen.xib */; };
 		C3EB94631B5CF00400F0144B /* YJWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94621B5CF00400F0144B /* YJWebViewTests.m */; };
@@ -49,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		C3412E031B7B285400A05E45 /* es6promise.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = es6promise.js; path = Resources/es6promise.js; sourceTree = SOURCE_ROOT; };
+		C3726FB11B85AC00007F267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C3726FB81B85AF47007F267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C39830E51B7B1A42001AF64B /* YJHybridBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YJHybridBridge.h; path = Classes/YJHybridBridge.h; sourceTree = SOURCE_ROOT; };
 		C39830E61B7B1A42001AF64B /* YJHybridBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YJHybridBridge.m; path = Classes/YJHybridBridge.m; sourceTree = SOURCE_ROOT; };
 		C39830E81B7B1A60001AF64B /* MessageHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHub.h; path = Classes/MessageHub.h; sourceTree = SOURCE_ROOT; };
@@ -83,6 +86,9 @@
 		C39831141B7B1C60001AF64B /* echo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = echo.js; path = Resources/echo.js; sourceTree = SOURCE_ROOT; };
 		C39831161B7B1C6C001AF64B /* callback_manager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = callback_manager.js; path = Resources/callback_manager.js; sourceTree = SOURCE_ROOT; };
 		C39831171B7B1C6C001AF64B /* message_hub.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = message_hub.js; path = Resources/message_hub.js; sourceTree = SOURCE_ROOT; };
+		C3BDA4081B85B00500C30305 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C3BDA4091B85B00600C30305 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C3BDA40A1B85B00700C30305 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94471B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94481B5CF00400F0144B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,7 +96,6 @@
 		C3EB944B1B5CF00400F0144B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C3EB944D1B5CF00400F0144B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C3EB944E1B5CF00400F0144B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C3EB94511B5CF00400F0144B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3EB94531B5CF00400F0144B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3EB94561B5CF00400F0144B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C3EB945C1B5CF00400F0144B /* YJWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YJWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,8 +202,8 @@
 				C3EB944B1B5CF00400F0144B /* AppDelegate.m */,
 				C3EB944D1B5CF00400F0144B /* ViewController.h */,
 				C3EB944E1B5CF00400F0144B /* ViewController.m */,
-				C3EB94501B5CF00400F0144B /* Main.storyboard */,
 				C3EB94531B5CF00400F0144B /* Images.xcassets */,
+				C3726FB71B85AF47007F267A /* Main.storyboard */,
 				C3EB94551B5CF00400F0144B /* LaunchScreen.xib */,
 				C3EB94721B5CF06A00F0144B /* Vendors */,
 				C3EB94461B5CF00400F0144B /* Supporting Files */,
@@ -211,6 +216,7 @@
 			children = (
 				C3EB94471B5CF00400F0144B /* Info.plist */,
 				C3EB94481B5CF00400F0144B /* main.m */,
+				C3726FB21B85AC00007F267A /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -383,6 +389,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				ja,
+				"zh-Hant",
 			);
 			mainGroup = C3EB943A1B5CF00400F0144B;
 			productRefGroup = C3EB94441B5CF00400F0144B /* Products */;
@@ -401,10 +410,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C39831191B7B1C6C001AF64B /* message_hub.js in Resources */,
+				C3726FB01B85AC00007F267A /* Localizable.strings in Resources */,
 				C398310D1B7B1C3B001AF64B /* screenorientation.js in Resources */,
+				C3726FB91B85AF47007F267A /* Main.storyboard in Resources */,
 				C39831111B7B1C4E001AF64B /* AGPushNoteView.xib in Resources */,
 				C39831131B7B1C58001AF64B /* vibration.js in Resources */,
-				C3EB94521B5CF00400F0144B /* Main.storyboard in Resources */,
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
 				C39831151B7B1C60001AF64B /* echo.js in Resources */,
 				C398310F1B7B1C43001AF64B /* notification.js in Resources */,
@@ -464,10 +474,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C3EB94501B5CF00400F0144B /* Main.storyboard */ = {
+		C3726FB21B85AC00007F267A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C3EB94511B5CF00400F0144B /* Base */,
+				C3726FB11B85AC00007F267A /* Base */,
+				C3BDA4081B85B00500C30305 /* zh-Hans */,
+				C3BDA4091B85B00600C30305 /* ja */,
+				C3BDA40A1B85B00700C30305 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		C3726FB71B85AF47007F267A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3726FB81B85AF47007F267A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
