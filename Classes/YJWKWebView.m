@@ -95,6 +95,35 @@
         return;
     }
     
+    UIApplication *app = [UIApplication sharedApplication];
+    NSURL *url = navigationAction.request.URL;
+    
+    if (!navigationAction.targetFrame) {
+        if ([app canOpenURL:url]) {
+            if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
+                [app openURL:url];
+            }
+            
+            //    don't trigger when we've started a new request
+            self.domreadyTriggered = YES;
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
+    
+    if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"] && ![url.absoluteString isEqualToString:@"about:blank"]) {
+        if ([app canOpenURL:url]) {
+            if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
+                [app openURL:url];
+            }
+            
+            //    don't trigger when we've started a new request
+            self.domreadyTriggered = YES;
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
+    
     if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
         //    don't trigger when we've started a new request
         self.domreadyTriggered = YES;

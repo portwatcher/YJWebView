@@ -33,7 +33,7 @@
 # pragma delegates
 
 - (BOOL)webView:(YJWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request {
-    NSLog(@"should start load with request");
+    NSLog(@"should start load with request: %@", request.URL);
     return YES;
 }
 

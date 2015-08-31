@@ -42,6 +42,7 @@
         self.scalesPageToFit = YES;
         self.allowsInlineMediaPlayback = YES;
         self.keyboardDisplayRequiresUserAction = NO;
+        self.dataDetectorTypes = UIDataDetectorTypeAll;
         
         self.loaded = NO;
         self.didStartInterceptNewRequest = NO;
