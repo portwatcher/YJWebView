@@ -83,7 +83,7 @@
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
-    if (completionHandler) {
+    if (completionHandler || !self.jsContext) {
         NSString *result = [self stringByEvaluatingJavaScriptFromString:js];
         completionHandler(result, nil);
     } else {
