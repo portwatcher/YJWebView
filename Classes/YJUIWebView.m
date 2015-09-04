@@ -71,7 +71,10 @@
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self stringByEvaluatingJavaScriptFromString:stringToEval];
-    complectionBlock();
+    
+    if (complectionBlock) {   
+        complectionBlock();
+    }
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
