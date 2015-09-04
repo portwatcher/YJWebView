@@ -71,7 +71,9 @@
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
     [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:^(id result, NSError *error) {
-        complectionBlock();
+        if (complectionBlock) {
+            complectionBlock();
+        }
     }];
 }
 
@@ -97,19 +99,6 @@
     
     UIApplication *app = [UIApplication sharedApplication];
     NSURL *url = navigationAction.request.URL;
-    
-    if (!navigationAction.targetFrame) {
-        if ([app canOpenURL:url]) {
-            if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
-                [app openURL:url];
-            }
-            
-            //    don't trigger when we've started a new request
-            self.domreadyTriggered = YES;
-            decisionHandler(WKNavigationActionPolicyCancel);
-            return;
-        }
-    }
     
     if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"] && ![url.absoluteString isEqualToString:@"about:blank"]) {
         if ([app canOpenURL:url]) {
