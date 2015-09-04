@@ -1,7 +1,7 @@
 # Features
 YJWebView provide non-invasive API for developers with flexible hybrid framework.
 
-* Dom ready delegate.
+* Dom ready and hash change delegate.
 * provide unified API with UIWebView backed on iOS 7, WKWebView backed on iOS 8 and above.
 * simple native & JS communication.
 * simple customization for your own hybrid needs.
@@ -66,6 +66,7 @@ webView.webViewDelegate = self;
 - (void)webViewDidStopLoading:(YJWebView *)webView;
 - (void)webViewDidGetRedirectRequest:(YJWebView *)webView;
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView;
+- (void)webView:(YJWebView *)webView didHashChange:(NSString *)hash;
 ```
 
 ## Hybrid demo

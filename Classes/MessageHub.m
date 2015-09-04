@@ -120,16 +120,14 @@
     [self.webView executeJavaScript:js completionHandler:nil];
 }
 
-- (id)performSelectorOfWebView:(SEL)aSelector withObject:(id)object {
+- (void)performSelectorOfWebView:(SEL)aSelector withObject:(id)object {
+    
     if ([self.webView respondsToSelector:aSelector]) {
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-           id result = [self.webView performSelector:aSelector withObject:object];
+           [self.webView performSelector:aSelector withObject:object];
         #pragma clang diagnostic pop
-        return result;
     }
-    
-    return nil;
 }
 
 @end

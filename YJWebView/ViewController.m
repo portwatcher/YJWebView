@@ -41,12 +41,16 @@
     NSLog(@"did start loading");
 }
 
+- (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
+    NSLog(@"dom ready");
+}
+
 - (void)webViewDidFinishLoad:(YJWebView *)webView {
     NSLog(@"did finish load");
 }
 
-- (void)webViewMainDocumentDidLoad:(YJWebView *)webView {
-    NSLog(@"dom ready");
+- (void)webView:(YJWebView *)webView didHashChange:(NSString *)hash {
+    NSLog(@"did hash change to: %@", hash);
 }
 
 @end

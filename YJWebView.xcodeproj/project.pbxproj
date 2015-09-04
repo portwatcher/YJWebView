@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C33C5D391B998B580046FFE2 /* detector.js in Resources */ = {isa = PBXBuildFile; fileRef = C33C5D381B998B580046FFE2 /* detector.js */; };
+		C33C5D3C1B998B750046FFE2 /* BridgeNativeDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C33C5D3B1B998B750046FFE2 /* BridgeNativeDetector.m */; };
 		C3412E041B7B285400A05E45 /* es6promise.js in Resources */ = {isa = PBXBuildFile; fileRef = C3412E031B7B285400A05E45 /* es6promise.js */; };
 		C3726FB01B85AC00007F267A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3726FB21B85AC00007F267A /* Localizable.strings */; };
 		C3726FB91B85AF47007F267A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3726FB71B85AF47007F267A /* Main.storyboard */; };
@@ -49,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C33C5D381B998B580046FFE2 /* detector.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = detector.js; path = Resources/detector.js; sourceTree = SOURCE_ROOT; };
+		C33C5D3A1B998B750046FFE2 /* BridgeNativeDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BridgeNativeDetector.h; path = Classes/BridgeNativeDetector.h; sourceTree = SOURCE_ROOT; };
+		C33C5D3B1B998B750046FFE2 /* BridgeNativeDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BridgeNativeDetector.m; path = Classes/BridgeNativeDetector.m; sourceTree = SOURCE_ROOT; };
 		C3412E031B7B285400A05E45 /* es6promise.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = es6promise.js; path = Resources/es6promise.js; sourceTree = SOURCE_ROOT; };
 		C3726FB11B85AC00007F267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C3726FB81B85AF47007F267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,6 +139,16 @@
 			name = "UIWebView+JSContext";
 			sourceTree = "<group>";
 		};
+		C33C5D321B9988EB0046FFE2 /* Detector */ = {
+			isa = PBXGroup;
+			children = (
+				C33C5D3A1B998B750046FFE2 /* BridgeNativeDetector.h */,
+				C33C5D3B1B998B750046FFE2 /* BridgeNativeDetector.m */,
+				C33C5D381B998B580046FFE2 /* detector.js */,
+			);
+			name = Detector;
+			sourceTree = "<group>";
+		};
 		C366E9FF1B65E75400EE6D3B /* AGPushNote */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +173,7 @@
 		C3C3D2651B610A51004B6F77 /* InternalNativeObjects */ = {
 			isa = PBXGroup;
 			children = (
+				C33C5D321B9988EB0046FFE2 /* Detector */,
 				C3E8981C1B77341500644BB1 /* ScreenOrientation */,
 				C3B1B1AB1B6514DA00705A11 /* Notification */,
 				C3FC285C1B61E93900C7E3EB /* Vibrate */,
@@ -414,6 +430,7 @@
 				C398310D1B7B1C3B001AF64B /* screenorientation.js in Resources */,
 				C3726FB91B85AF47007F267A /* Main.storyboard in Resources */,
 				C39831111B7B1C4E001AF64B /* AGPushNoteView.xib in Resources */,
+				C33C5D391B998B580046FFE2 /* detector.js in Resources */,
 				C39831131B7B1C58001AF64B /* vibration.js in Resources */,
 				C3EB94571B5CF00400F0144B /* LaunchScreen.xib in Resources */,
 				C39831151B7B1C60001AF64B /* echo.js in Resources */,
@@ -452,6 +469,7 @@
 				C39830F31B7B1ADB001AF64B /* YJWKWebView.m in Sources */,
 				C39830F61B7B1AF3001AF64B /* YJUIWebView.m in Sources */,
 				C3EB94491B5CF00400F0144B /* main.m in Sources */,
+				C33C5D3C1B998B750046FFE2 /* BridgeNativeDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

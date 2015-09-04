@@ -20,5 +20,6 @@
 - (void)webViewDidStopLoading:(YJWebView *)webView;
 - (void)webViewDidGetRedirectRequest:(YJWebView *)webView;
 - (void)webViewMainDocumentDidLoad:(YJWebView *)webView;
+- (void)webView:(YJWebView *)webView didHashChange:(NSString *)hash;
 
 @end
