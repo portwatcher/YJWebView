@@ -11,6 +11,7 @@
 @protocol YJBridgeNativeDelegate <NSObject>
 
 - (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements;
+- (id)performSelectorOfWebView:(SEL)aSelector withObject:(id)object;
 
 @end
 
