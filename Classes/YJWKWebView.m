@@ -28,7 +28,7 @@
 - (id)initWithFrame:(CGRect)frame {
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     configuration.allowsInlineMediaPlayback = YES;
-    configuration.mediaPlaybackRequiresUserAction = NO;
+    configuration.mediaPlaybackRequiresUserAction = YES; // in some cases, mutiple videos play together
     
     WKUserContentController *controller = [[WKUserContentController alloc] init];
     configuration.userContentController = controller;

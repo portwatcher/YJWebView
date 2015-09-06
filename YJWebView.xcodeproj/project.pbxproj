@@ -38,6 +38,7 @@
 		C3EB94631B5CF00400F0144B /* YJWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94621B5CF00400F0144B /* YJWebViewTests.m */; };
 		C3EB94731B5CF09700F0144B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB94701B5CF05D00F0144B /* WebKit.framework */; };
 		C3EB94741B5CF09C00F0144B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */; };
+		C3EE4D011B9C41280061B233 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EE4CFF1B9C411B0061B233 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		C3EB94621B5CF00400F0144B /* YJWebViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJWebViewTests.m; sourceTree = "<group>"; };
 		C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		C3EB94701B5CF05D00F0144B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C3EE4CFF1B9C411B0061B233 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EE4D011B9C41280061B233 /* AudioToolbox.framework in Frameworks */,
 				C3EB94741B5CF09C00F0144B /* JavaScriptCore.framework in Frameworks */,
 				C3EB94731B5CF09700F0144B /* WebKit.framework in Frameworks */,
 			);
@@ -257,6 +260,7 @@
 		C3EB94721B5CF06A00F0144B /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C3EE4CFF1B9C411B0061B233 /* AudioToolbox.framework */,
 				C3EB94701B5CF05D00F0144B /* WebKit.framework */,
 				C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */,
 			);
