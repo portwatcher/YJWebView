@@ -154,16 +154,44 @@
     [self.webViewDelegate webView:self didFailwithError:error];
 }
 
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
+    NSString *hostName = webView.URL.host;
     
-}
-
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    
-}
-
-- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
-    
+    NSString *authenticationMethod = [[challenge protectionSpace] authenticationMethod];
+    if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodDefault]
+        || [authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic]
+        || [authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPDigest]) {
+        
+        NSString *title = @"Authentication Challenge";
+        NSString *message = [NSString stringWithFormat:@"%@ requires user name and password", hostName];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = @"User";
+        }];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = @"Password";
+            textField.secureTextEntry = YES;
+        }];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            NSString *userName = ((UITextField *)alertController.textFields[0]).text;
+            NSString *password = ((UITextField *)alertController.textFields[1]).text;
+            
+            NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:userName password:password persistence:NSURLCredentialPersistenceNone];
+            
+            completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+        }]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
+        });
+        
+    } else {
+        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+    }
 }
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
