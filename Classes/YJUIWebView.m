@@ -120,7 +120,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-
+    
     if (!self.didStartInterceptNewRequest) {
         self.didStartInterceptNewRequest = YES;
         [self startInterceptNewPageLoading];

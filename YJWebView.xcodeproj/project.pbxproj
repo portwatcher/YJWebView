@@ -30,6 +30,7 @@
 		C39831151B7B1C60001AF64B /* echo.js in Resources */ = {isa = PBXBuildFile; fileRef = C39831141B7B1C60001AF64B /* echo.js */; };
 		C39831181B7B1C6C001AF64B /* callback_manager.js in Resources */ = {isa = PBXBuildFile; fileRef = C39831161B7B1C6C001AF64B /* callback_manager.js */; };
 		C39831191B7B1C6C001AF64B /* message_hub.js in Resources */ = {isa = PBXBuildFile; fileRef = C39831171B7B1C6C001AF64B /* message_hub.js */; };
+		C3D212AB1BA02E0E007CB79E /* YJProcessPool.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D212AA1BA02E0E007CB79E /* YJProcessPool.m */; };
 		C3EB94491B5CF00400F0144B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94481B5CF00400F0144B /* main.m */; };
 		C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944B1B5CF00400F0144B /* AppDelegate.m */; };
 		C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB944E1B5CF00400F0144B /* ViewController.m */; };
@@ -95,6 +96,8 @@
 		C3BDA4081B85B00500C30305 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C3BDA4091B85B00600C30305 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C3BDA40A1B85B00700C30305 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C3D212A91BA02E0E007CB79E /* YJProcessPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YJProcessPool.h; path = ../Classes/YJProcessPool.h; sourceTree = "<group>"; };
+		C3D212AA1BA02E0E007CB79E /* YJProcessPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YJProcessPool.m; path = ../Classes/YJProcessPool.m; sourceTree = "<group>"; };
 		C3EB94431B5CF00400F0144B /* YJWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EB94471B5CF00400F0144B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EB94481B5CF00400F0144B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 		C3EB94771B5CF10A00F0144B /* WKWebView */ = {
 			isa = PBXGroup;
 			children = (
+				C3D212A91BA02E0E007CB79E /* YJProcessPool.h */,
+				C3D212AA1BA02E0E007CB79E /* YJProcessPool.m */,
 				C39830F11B7B1ADB001AF64B /* YJWKWebView.h */,
 				C39830F21B7B1ADB001AF64B /* YJWKWebView.m */,
 			);
@@ -465,6 +470,7 @@
 				C3EB944F1B5CF00400F0144B /* ViewController.m in Sources */,
 				C39830FC1B7B1B1B001AF64B /* YJWebViewFactory.m in Sources */,
 				C39831021B7B1BC3001AF64B /* BridgeNativeNotification.m in Sources */,
+				C3D212AB1BA02E0E007CB79E /* YJProcessPool.m in Sources */,
 				C39831051B7B1BD4001AF64B /* AGPushNoteView.m in Sources */,
 				C39830EB1B7B1A60001AF64B /* MessageHub.m in Sources */,
 				C3EB944C1B5CF00400F0144B /* AppDelegate.m in Sources */,

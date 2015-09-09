@@ -14,6 +14,7 @@
 #import "BridgeNativeNotification.h"
 #import "BridgeNativeScreenOrientation.h"
 #import "BridgeNativeDetector.h"
+#import "YJProcessPool.h"
 
 @interface YJWKWebView ()
 
@@ -29,6 +30,7 @@
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     configuration.allowsInlineMediaPlayback = YES;
     configuration.mediaPlaybackRequiresUserAction = YES; // in some cases, mutiple videos play together
+    configuration.processPool = [YJProcessPool processPool];
     
     WKUserContentController *controller = [[WKUserContentController alloc] init];
     configuration.userContentController = controller;
