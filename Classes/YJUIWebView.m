@@ -120,6 +120,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+
     if (!self.didStartInterceptNewRequest) {
         self.didStartInterceptNewRequest = YES;
         [self startInterceptNewPageLoading];
@@ -127,7 +128,8 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if ([self.documentReadyState isEqualToString:@"complete"]) {
+
+    if ([self isDocumentReady]) {
         [self performNativeBinding];
         
         self.loaded = YES;
@@ -159,13 +161,25 @@
 }
 
 - (void)startInterceptNewPageLoading {
-    _timer = [NSTimer timerWithTimeInterval:0.05f target:self selector:@selector(interceptNewPageLoading:) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+
+    if ([self isDocumentReady]) {
+        _timer = [NSTimer timerWithTimeInterval:0.05f target:self selector:@selector(interceptNewPageLoading:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    } else {
+        [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
+        [self performNativeBinding];
+        
+        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+            [self.webViewDelegate webViewDidStartLoading:self];
+        }
+        
+        [self startInterceptDomReady];
+    }
 }
 
 - (void)interceptNewPageLoading:(NSTimer *)timer {
     NSString *readyState = [self stringByEvaluatingJavaScriptFromString:@"document.readyState;"];
-    
+
     if ([readyState isEqualToString:@"loading"]) {
         [timer invalidate];
         timer = nil;
