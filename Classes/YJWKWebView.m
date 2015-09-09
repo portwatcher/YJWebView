@@ -147,11 +147,11 @@
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailwithError:)]) {
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
         return;
     }
     
-    [self.webViewDelegate webView:self didFailwithError:error];
+    [self.webViewDelegate webView:self didFailWithError:error];
 }
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {

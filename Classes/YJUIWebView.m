@@ -14,6 +14,7 @@
 #import "BridgeNativeNotification.h"
 #import "BridgeNativeScreenOrientation.h"
 #import "BridgeNativeDetector.h"
+#import "UIWebView+AFNetworking.h"
 
 @interface YJUIWebView ()
 
@@ -62,6 +63,29 @@
 }
 
 # pragma methods
+
+- (void)loadRequest:(NSURLRequest *)request {
+    self.estimatedProgress = 0.0;
+    [self loadRequest:request
+             progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+//                 NSLog(@"totalBytesWritten: %zd", totalBytesWritten);
+//                 NSLog(@"totalBytesExpectedToWrite: %zd", totalBytesExpectedToWrite);
+                 
+                 if (totalBytesExpectedToWrite > 0) {
+                    self.estimatedProgress = totalBytesWritten / totalBytesExpectedToWrite;
+                 }
+             }
+              success:^NSString *(NSHTTPURLResponse *response, NSString *HTML) {
+                  self.estimatedProgress = 1.0f;
+                  return HTML;
+              }
+              failure:^(NSError *error) {
+                  self.estimatedProgress = 1.0f;
+                  if ([self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
+                      [self.webViewDelegate webView:self didFailWithError:error];
+                  }
+              }];
+}
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
@@ -143,11 +167,11 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailwithError:)]) {
+    if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
         return;
     }
     
-    [self.webViewDelegate webView:self didFailwithError:error];
+    [self.webViewDelegate webView:self didFailWithError:error];
 }
 
 # pragma private

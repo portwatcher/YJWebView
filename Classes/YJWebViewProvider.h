@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL loading;
 @property (nonatomic, readonly)BOOL canGoBack;
 @property (nonatomic, readonly)BOOL canGoForward;
+@property double estimatedProgress;
 
 - (void)stopLoading;
 - (void)reload;

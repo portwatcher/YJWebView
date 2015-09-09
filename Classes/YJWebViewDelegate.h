@@ -14,7 +14,7 @@
 @optional
 
 - (void)webViewDidFinishLoad:(YJWebView *)webView;
-- (void)webView:(YJWebView *)webView didFailwithError:(NSError *)error;
+- (void)webView:(YJWebView *)webView didFailWithError:(NSError *)error;
 - (BOOL)webView:(YJWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request;
 - (void)webViewDidStartLoading:(YJWebView *)webView;
 - (void)webViewDidStopLoading:(YJWebView *)webView;

@@ -22,7 +22,7 @@
     webView.webViewDelegate = self;
     [self.view addSubview:webView];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com/"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://principletemplates.com/"]]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -38,6 +38,7 @@ webView.webViewDelegate = self;
 @property (nonatomic, strong, readonly) NSURL *URL;
 @property (nonatomic, strong, readonly) NSString *title;
 @property (nonatomic) BOOL loaded; // main frame done loading
+@property double estimatedProgress;  // polyfilled by AFNetworking category on iOS 7
 
 @property (nonatomic, weak) id <YJWebViewDelegate> webViewDelegate;
 ```
@@ -60,7 +61,7 @@ webView.webViewDelegate = self;
 
 ```
 - (void)webViewDidFinishLoad:(YJWebView *)webView;
-- (void)webView:(YJWebView *)webView didFailwithError:(NSError *)error;
+- (void)webView:(YJWebView *)webView didFailWithError:(NSError *)error;
 - (BOOL)webView:(YJWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request;
 - (void)webViewDidStartLoading:(YJWebView *)webView;
 - (void)webViewDidStopLoading:(YJWebView *)webView;
