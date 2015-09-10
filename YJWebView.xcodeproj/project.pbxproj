@@ -39,7 +39,7 @@
 		C3EB94631B5CF00400F0144B /* YJWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB94621B5CF00400F0144B /* YJWebViewTests.m */; };
 		C3EB94731B5CF09700F0144B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB94701B5CF05D00F0144B /* WebKit.framework */; };
 		C3EB94741B5CF09C00F0144B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */; };
-		C3ED39911BA13C6500B47569 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED39801BA13C6500B47569 /* UIWebView+AFNetworking.m */; };
+		C3ED39911BA13C6500B47569 /* UIWebView+AFFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED39801BA13C6500B47569 /* UIWebView+AFFNetworking.m */; };
 		C3ED39A61BA13E9300B47569 /* AFFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED39941BA13E9300B47569 /* AFFHTTPRequestOperation.m */; };
 		C3ED39A71BA13E9300B47569 /* AFFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED39961BA13E9300B47569 /* AFFHTTPRequestOperationManager.m */; };
 		C3ED39A81BA13E9300B47569 /* AFFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED39981BA13E9300B47569 /* AFFHTTPSessionManager.m */; };
@@ -122,8 +122,8 @@
 		C3EB94621B5CF00400F0144B /* YJWebViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJWebViewTests.m; sourceTree = "<group>"; };
 		C3EB946E1B5CF05600F0144B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		C3EB94701B5CF05D00F0144B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		C3ED397F1BA13C6500B47569 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
-		C3ED39801BA13C6500B47569 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		C3ED397F1BA13C6500B47569 /* UIWebView+AFFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFFNetworking.h"; sourceTree = "<group>"; };
+		C3ED39801BA13C6500B47569 /* UIWebView+AFFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFFNetworking.m"; sourceTree = "<group>"; };
 		C3ED39931BA13E9300B47569 /* AFFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		C3ED39941BA13E9300B47569 /* AFFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		C3ED39951BA13E9300B47569 /* AFFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 		C3ED396F1BA13C6500B47569 /* UIKit+AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				C3ED397F1BA13C6500B47569 /* UIWebView+AFNetworking.h */,
-				C3ED39801BA13C6500B47569 /* UIWebView+AFNetworking.m */,
+				C3ED397F1BA13C6500B47569 /* UIWebView+AFFNetworking.h */,
+				C3ED39801BA13C6500B47569 /* UIWebView+AFFNetworking.m */,
 			);
 			name = "UIKit+AFNetworking";
 			path = "Classes/UIKit+AFNetworking";
@@ -536,7 +536,7 @@
 			files = (
 				C3ED39AE1BA13E9300B47569 /* AFFURLSessionManager.m in Sources */,
 				C39830F01B7B1AB9001AF64B /* UIWebView+TS_JavaScriptContext.m in Sources */,
-				C3ED39911BA13C6500B47569 /* UIWebView+AFNetworking.m in Sources */,
+				C3ED39911BA13C6500B47569 /* UIWebView+AFFNetworking.m in Sources */,
 				C39831081B7B1BEA001AF64B /* BridgeNativeVibrate.m in Sources */,
 				C3ED39AD1BA13E9300B47569 /* AFFURLResponseSerialization.m in Sources */,
 				C39830E71B7B1A42001AF64B /* YJHybridBridge.m in Sources */,
