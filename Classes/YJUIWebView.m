@@ -14,7 +14,7 @@
 #import "BridgeNativeNotification.h"
 #import "BridgeNativeScreenOrientation.h"
 #import "BridgeNativeDetector.h"
-#import "UIWebView+AFNetworking.h"
+#import "UIWebView+AFFNetworking.h"
 
 @interface YJUIWebView ()
 
