@@ -11,7 +11,7 @@
 #import "UIWebView+TS_JavaScriptContext.h"
 @import JavaScriptCore;
 
-@interface YJUIWebView : UIWebView <YJWebViewProvider, UIWebViewDelegate, TSWebViewDelegate>
+@interface YJUIWebView : UIWebView <YJWebViewProvider, UIWebViewDelegate, TSWebViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, assign) id <YJWebViewDelegate> webViewDelegate;
 

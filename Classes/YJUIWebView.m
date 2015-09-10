@@ -14,20 +14,21 @@
 #import "BridgeNativeNotification.h"
 #import "BridgeNativeScreenOrientation.h"
 #import "BridgeNativeDetector.h"
-#import "UIWebView+AFFNetworking.h"
 
 @interface YJUIWebView ()
 
 @property (nonatomic, strong) JSContext *jsContext;
 @property (assign, nonatomic) BOOL didStartInterceptNewRequest;
 @property (strong, nonatomic) NSTimer *_timer;
+@property (strong, nonatomic) NSString *selectedImageURL;
+@property (strong, nonatomic) NSString *selectedHref;
 
 - (NSString *)documentReadyState;
 
 @end
 
 @implementation YJUIWebView
-@synthesize _timer;
+@synthesize _timer, selectedHref, selectedImageURL;
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -48,6 +49,9 @@
         
         self.loaded = NO;
         self.didStartInterceptNewRequest = NO;
+        
+        UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        [self addGestureRecognizer:recognizer];
     }
     return self;
 }
@@ -129,7 +133,8 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-
+    [self disableDefaultContextualMenu];
+    
     if ([self isDocumentReady]) {
         [self performNativeBinding];
         
@@ -164,13 +169,16 @@
 - (void)startInterceptNewPageLoading {
 
     if ([self isDocumentReady]) {
+        
         _timer = [NSTimer timerWithTimeInterval:0.05f target:self selector:@selector(interceptNewPageLoading:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     } else {
+        
         [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
         [self performNativeBinding];
         
-        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+        self.didStartInterceptNewRequest = NO;
+        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
         }
         
@@ -188,7 +196,8 @@
         [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
         [self performNativeBinding];
         
-        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+        self.didStartInterceptNewRequest = NO;
+        if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
         }
         
@@ -197,6 +206,7 @@
 }
 
 - (void)startInterceptDomReady {
+    
     if (![self.webViewDelegate respondsToSelector:@selector(webViewMainDocumentDidLoad:)]) {
         return;
     }
@@ -209,6 +219,8 @@
     if ([self isDocumentReady]) {
         [timer invalidate];
         timer = nil;
+        
+        [self disableDefaultContextualMenu];
         
         [self.webViewDelegate webViewMainDocumentDidLoad:self];
 
@@ -231,6 +243,99 @@
     if ([self.webViewDelegate respondsToSelector:@selector(webView:didHashChange:)]) {
         [self.webViewDelegate webView:self didHashChange:hash];
     }
+}
+
+- (void)disableDefaultContextualMenu {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"js"];
+    NSString *js = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    [self.jsContext evaluateScript:js];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    CGPoint coords = [recognizer locationInView:self];
+    
+    // get the Tags at the touch location
+    NSString *tags = [self stringByEvaluatingJavaScriptFromString:
+                      [NSString stringWithFormat:@"window.cloudbox.getHTMLElementsAtPoint(%li,%li);", (long)coords.x, (long)coords.y]];
+    
+    NSString *tagsHref = [self stringByEvaluatingJavaScriptFromString:
+                          [NSString stringWithFormat:@"window.cloudbox.getLinkHrefAtPoint(%li,%li);", (long)coords.x, (long)coords.y]];
+    NSString *tagsSrc = [self stringByEvaluatingJavaScriptFromString:
+                         [NSString stringWithFormat:@"window.cloudbox.getLinkSrcAtPoint(%li,%li);", (long)coords.x, (long)coords.y]];
+    //    if (![tagsSrc hasPrefix:@"http"] && tagsSrc) {
+    //        return;
+    //    }
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    selectedImageURL = @"";
+    selectedHref = @"";
+    
+    // If a link was touched, add link-related buttons
+    if ([tags rangeOfString:@",A," options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        selectedHref = tagsHref;
+        
+        actionSheet.title = tagsHref;
+        [actionSheet addButtonWithTitle:@"复制"];
+        [actionSheet addButtonWithTitle:@"打开"];
+    }
+    
+    // If an image was touched, add image-related buttons.
+    if ([tags rangeOfString:@",IMG," options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        selectedImageURL = tagsSrc;
+        
+        [actionSheet addButtonWithTitle:@"保存图片"];
+        [actionSheet addButtonWithTitle:@"复制图片网址"];
+    }
+    
+    if (actionSheet.numberOfButtons > 0) {
+        [actionSheet addButtonWithTitle:@"取消"];
+        actionSheet.cancelButtonIndex = (actionSheet.numberOfButtons - 1);
+        [actionSheet showInView:self];
+    }
+}
+
+# pragma mark actionsheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"复制图片网址"]){
+        [[UIPasteboard generalPasteboard] setString:selectedImageURL];
+    } else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"保存图片"]){
+        NSOperationQueue *queue = [NSOperationQueue new];
+        NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(saveImageToAlbum:) object:selectedImageURL];
+        [queue addOperation:operation];
+    } else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"复制"]) {
+        if (selectedHref) {
+            [[UIPasteboard generalPasteboard] setString:selectedHref];
+        }
+    } else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"打开"]) {
+        [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:actionSheet.title]]];
+    }
+}
+
+#pragma mark save image
+
+- (void)saveImageToAlbum:(NSString *)url {
+    [self downloadImageToAlbumFromUrl:url withCallback:^(BOOL succeeded, UIImage *image) {
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }];
+}
+
+- (void)downloadImageToAlbumFromUrl:(NSString *)url withCallback:(void (^)(BOOL succeeded, UIImage *image))completionBlock {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            completionBlock(YES, image);
+        } else {
+            completionBlock(NO, nil);
+        }
+    }];
 }
 
 @end

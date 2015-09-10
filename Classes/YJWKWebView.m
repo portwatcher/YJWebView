@@ -77,7 +77,8 @@
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
     [self evaluateJavaScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier] completionHandler:^(id result, NSError *error) {
-        if (complectionBlock) {
+        
+        if (!error && complectionBlock) {
             complectionBlock();
         }
     }];
