@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YJWebView"
-  s.version      = "0.1.8"
+  s.version      = "0.1.9"
   s.summary      = "The WebView you'll need on iOS."
 
   s.description  = <<-DESC
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://code.tinydust.cn/Tinydust/YJWebView.git", :tag => "0.1.8" }
+  s.source       = { :git => "https://code.tinydust.cn/Tinydust/YJWebView.git", :tag => "0.1.9" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -127,6 +127,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "AFNetworking", "~> 2.0"
+  # s.dependency "AFNetworking", "~> 2.0"
 
 end

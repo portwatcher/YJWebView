@@ -25,21 +25,21 @@
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 
-#import "AFHTTPRequestOperation.h"
-#import "AFURLResponseSerialization.h"
-#import "AFURLRequestSerialization.h"
+#import "AFFHTTPRequestOperation.h"
+#import "AFFURLResponseSerialization.h"
+#import "AFFURLRequestSerialization.h"
 
 @interface UIWebView (_AFNetworking)
-@property (readwrite, nonatomic, strong, setter = af_setHTTPRequestOperation:) AFHTTPRequestOperation *af_HTTPRequestOperation;
+@property (readwrite, nonatomic, strong, setter = af_setHTTPRequestOperation:) AFFHTTPRequestOperation *af_HTTPRequestOperation;
 @end
 
 @implementation UIWebView (_AFNetworking)
 
-- (AFHTTPRequestOperation *)af_HTTPRequestOperation {
-    return (AFHTTPRequestOperation *)objc_getAssociatedObject(self, @selector(af_HTTPRequestOperation));
+- (AFFHTTPRequestOperation *)af_HTTPRequestOperation {
+    return (AFFHTTPRequestOperation *)objc_getAssociatedObject(self, @selector(af_HTTPRequestOperation));
 }
 
-- (void)af_setHTTPRequestOperation:(AFHTTPRequestOperation *)operation {
+- (void)af_setHTTPRequestOperation:(AFFHTTPRequestOperation *)operation {
     objc_setAssociatedObject(self, @selector(af_HTTPRequestOperation), operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -49,11 +49,11 @@
 
 @implementation UIWebView (AFNetworking)
 
-- (AFHTTPRequestSerializer <AFURLRequestSerialization> *)requestSerializer {
-    static AFHTTPRequestSerializer <AFURLRequestSerialization> *_af_defaultRequestSerializer = nil;
+- (AFFHTTPRequestSerializer <AFFURLRequestSerialization> *)requestSerializer {
+    static AFFHTTPRequestSerializer <AFFURLRequestSerialization> *_af_defaultRequestSerializer = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _af_defaultRequestSerializer = [AFHTTPRequestSerializer serializer];
+        _af_defaultRequestSerializer = [AFFHTTPRequestSerializer serializer];
     });
 
 #pragma clang diagnostic push
@@ -62,15 +62,15 @@
 #pragma clang diagnostic pop
 }
 
-- (void)setRequestSerializer:(AFHTTPRequestSerializer<AFURLRequestSerialization> *)requestSerializer {
+- (void)setRequestSerializer:(AFFHTTPRequestSerializer<AFFURLRequestSerialization> *)requestSerializer {
     objc_setAssociatedObject(self, @selector(requestSerializer), requestSerializer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
-    static AFHTTPResponseSerializer <AFURLResponseSerialization> *_af_defaultResponseSerializer = nil;
+- (AFFHTTPResponseSerializer <AFFURLResponseSerialization> *)responseSerializer {
+    static AFFHTTPResponseSerializer <AFFURLResponseSerialization> *_af_defaultResponseSerializer = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _af_defaultResponseSerializer = [AFHTTPResponseSerializer serializer];
+        _af_defaultResponseSerializer = [AFFHTTPResponseSerializer serializer];
     });
 
 #pragma clang diagnostic push
@@ -79,7 +79,7 @@
 #pragma clang diagnostic pop
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer<AFURLResponseSerialization> *)responseSerializer {
+- (void)setResponseSerializer:(AFFHTTPResponseSerializer<AFFURLResponseSerialization> *)responseSerializer {
     objc_setAssociatedObject(self, @selector(responseSerializer), responseSerializer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -123,12 +123,12 @@
 
     request = [self.requestSerializer requestBySerializingRequest:request withParameters:nil error:nil];
 
-    self.af_HTTPRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    self.af_HTTPRequestOperation = [[AFFHTTPRequestOperation alloc] initWithRequest:request];
     self.af_HTTPRequestOperation.responseSerializer = self.responseSerializer;
 
     __weak __typeof(self)weakSelf = self;
     [self.af_HTTPRequestOperation setDownloadProgressBlock:progress];
-    [self.af_HTTPRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id __unused responseObject) {
+    [self.af_HTTPRequestOperation setCompletionBlockWithSuccess:^(AFFHTTPRequestOperation *operation, id __unused responseObject) {
         NSData *data = success ? success(operation.response, operation.responseData) : operation.responseData;
 
 #pragma clang diagnostic push
@@ -141,7 +141,7 @@
         }
 
 #pragma clang diagnostic pop
-    } failure:^(AFHTTPRequestOperation * __unused operation, NSError *error) {
+    } failure:^(AFFHTTPRequestOperation * __unused operation, NSError *error) {
         if (failure) {
             failure(error);
         }

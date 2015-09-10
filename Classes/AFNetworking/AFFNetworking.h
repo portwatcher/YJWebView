@@ -1,6 +1,6 @@
-// AFNetworking.h
+// AFFNetworking.h
 //
-// Copyright (c) 2013 AFNetworking (http://afnetworking.com/)
+// Copyright (c) 2013 AFFNetworking (http://AFFnetworking.com/)
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,22 @@
 #import <Foundation/Foundation.h>
 #import <Availability.h>
 
-#ifndef _AFNETWORKING_
-    #define _AFNETWORKING_
+#ifndef _AFFNETWORKING_
+    #define _AFFNETWORKING_
 
-    #import "AFURLRequestSerialization.h"
-    #import "AFURLResponseSerialization.h"
-    #import "AFSecurityPolicy.h"
-    #import "AFNetworkReachabilityManager.h"
+    #import "AFFURLRequestSerialization.h"
+    #import "AFFURLResponseSerialization.h"
+    #import "AFFSecurityPolicy.h"
+    #import "AFFNetworkReachabilityManager.h"
 
-    #import "AFURLConnectionOperation.h"
-    #import "AFHTTPRequestOperation.h"
-    #import "AFHTTPRequestOperationManager.h"
+    #import "AFFURLConnectionOperation.h"
+    #import "AFFHTTPRequestOperation.h"
+    #import "AFFHTTPRequestOperationManager.h"
 
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
       ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
-    #import "AFURLSessionManager.h"
-    #import "AFHTTPSessionManager.h"
+    #import "AFFURLSessionManager.h"
+    #import "AFFHTTPSessionManager.h"
 #endif
 
-#endif /* _AFNETWORKING_ */
+#endif /* _AFFNETWORKING_ */

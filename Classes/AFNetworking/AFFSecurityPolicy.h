@@ -1,5 +1,6 @@
-// AFSecurityPolicy.h
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// AFFSecurityPolicy.h
+//
+// Copyright (c) 2013-2015 AFFNetworking (http://AFFnetworking.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,26 +23,26 @@
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
 
-typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
-    AFSSLPinningModeNone,
-    AFSSLPinningModePublicKey,
-    AFSSLPinningModeCertificate,
+typedef NS_ENUM(NSUInteger, AFFSSLPinningMode) {
+    AFFSSLPinningModeNone,
+    AFFSSLPinningModePublicKey,
+    AFFSSLPinningModeCertificate,
 };
 
 /**
- `AFSecurityPolicy` evaluates server trust against pinned X.509 certificates and public keys over secure connections.
+ `AFFSecurityPolicy` evaluates server trust against pinned X.509 certificates and public keys over secure connections.
 
  Adding pinned SSL certificates to your app helps prevent man-in-the-middle attacks and other vulnerabilities. Applications dealing with sensitive customer data or financial information are strongly encouraged to route all communication over an HTTPS connection with SSL pinning configured and enabled.
  */
-@interface AFSecurityPolicy : NSObject
+@interface AFFSecurityPolicy : NSObject
 
 /**
- The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to `AFSSLPinningModeNone`.
+ The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to `AFFSSLPinningModeNone`.
  */
-@property (readonly, nonatomic, assign) AFSSLPinningMode SSLPinningMode;
+@property (readonly, nonatomic, assign) AFFSSLPinningMode SSLPinningMode;
 
 /**
- Whether to evaluate an entire SSL certificate chain, or just the leaf certificate. Defaults to `YES`.
+ Whether to evaluate an entire SSL certificate chain, or just the leAFF certificate. Defaults to `YES`.
  */
 @property (nonatomic, assign) BOOL validatesCertificateChain;
 
@@ -82,7 +83,7 @@ typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
 
  @return A new security policy.
  */
-+ (instancetype)policyWithPinningMode:(AFSSLPinningMode)pinningMode;
++ (instancetype)policyWithPinningMode:(AFFSSLPinningMode)pinningMode;
 
 ///------------------------------
 /// @name Evaluating Server Trust
@@ -123,20 +124,20 @@ typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
 /**
  ## SSL Pinning Modes
 
- The following constants are provided by `AFSSLPinningMode` as possible SSL pinning modes.
+ The following constants are provided by `AFFSSLPinningMode` as possible SSL pinning modes.
 
  enum {
- AFSSLPinningModeNone,
- AFSSLPinningModePublicKey,
- AFSSLPinningModeCertificate,
+ AFFSSLPinningModeNone,
+ AFFSSLPinningModePublicKey,
+ AFFSSLPinningModeCertificate,
  }
 
- `AFSSLPinningModeNone`
+ `AFFSSLPinningModeNone`
  Do not used pinned certificates to validate servers.
 
- `AFSSLPinningModePublicKey`
+ `AFFSSLPinningModePublicKey`
  Validate host certificates against public keys of pinned certificates.
 
- `AFSSLPinningModeCertificate`
+ `AFFSSLPinningModeCertificate`
  Validate host certificates against pinned certificates.
 */

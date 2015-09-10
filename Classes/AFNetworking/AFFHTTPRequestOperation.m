@@ -1,5 +1,6 @@
-// AFHTTPRequestOperation.m
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// AFFHTTPRequestOperation.m
+//
+// Copyright (c) 2013-2015 AFFNetworking (http://AFFnetworking.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,43 +20,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFHTTPRequestOperation.h"
+#import "AFFHTTPRequestOperation.h"
 
 static dispatch_queue_t http_request_operation_processing_queue() {
-    static dispatch_queue_t af_http_request_operation_processing_queue;
+    static dispatch_queue_t AFF_http_request_operation_processing_queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        af_http_request_operation_processing_queue = dispatch_queue_create("com.alamofire.networking.http-request.processing", DISPATCH_QUEUE_CONCURRENT);
+        AFF_http_request_operation_processing_queue = dispatch_queue_create("com.alamofire.networking.http-request.processing", DISPATCH_QUEUE_CONCURRENT);
     });
 
-    return af_http_request_operation_processing_queue;
+    return AFF_http_request_operation_processing_queue;
 }
 
 static dispatch_group_t http_request_operation_completion_group() {
-    static dispatch_group_t af_http_request_operation_completion_group;
+    static dispatch_group_t AFF_http_request_operation_completion_group;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        af_http_request_operation_completion_group = dispatch_group_create();
+        AFF_http_request_operation_completion_group = dispatch_group_create();
     });
 
-    return af_http_request_operation_completion_group;
+    return AFF_http_request_operation_completion_group;
 }
 
 #pragma mark -
 
-@interface AFURLConnectionOperation ()
+@interface AFFURLConnectionOperation ()
 @property (readwrite, nonatomic, strong) NSURLRequest *request;
 @property (readwrite, nonatomic, strong) NSURLResponse *response;
 @end
 
-@interface AFHTTPRequestOperation ()
+@interface AFFHTTPRequestOperation ()
 @property (readwrite, nonatomic, strong) NSHTTPURLResponse *response;
 @property (readwrite, nonatomic, strong) id responseObject;
 @property (readwrite, nonatomic, strong) NSError *responseSerializationError;
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
 @end
 
-@implementation AFHTTPRequestOperation
+@implementation AFFHTTPRequestOperation
 @dynamic response;
 @dynamic lock;
 
@@ -64,13 +65,12 @@ static dispatch_group_t http_request_operation_completion_group() {
     if (!self) {
         return nil;
     }
-
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    self.responseSerializer = [AFFHTTPResponseSerializer serializer];
 
     return self;
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
+- (void)setResponseSerializer:(AFFHTTPResponseSerializer <AFFURLResponseSerialization> *)responseSerializer {
     NSParameterAssert(responseSerializer);
 
     [self.lock lock];
@@ -102,12 +102,12 @@ static dispatch_group_t http_request_operation_completion_group() {
     }
 }
 
-#pragma mark - AFHTTPRequestOperation
+#pragma mark - AFFHTTPRequestOperation
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)setCompletionBlockWithSuccess:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure
 {
-    // completionBlock is manually nilled out in AFURLConnectionOperation to break the retain cycle.
+    // completionBlock is manually nilled out in AFFURLConnectionOperation to break the retain cycle.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
 #pragma clang diagnostic ignored "-Wgnu"
@@ -148,7 +148,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 #pragma clang diagnostic pop
 }
 
-#pragma mark - AFURLRequestOperation
+#pragma mark - AFFURLRequestOperation
 
 - (void)pause {
     [super pause];
@@ -180,7 +180,7 @@ static dispatch_group_t http_request_operation_completion_group() {
         return nil;
     }
 
-    self.responseSerializer = [decoder decodeObjectOfClass:[AFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
+    self.responseSerializer = [decoder decodeObjectOfClass:[AFFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
 
     return self;
 }
@@ -194,7 +194,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFHTTPRequestOperation *operation = [super copyWithZone:zone];
+    AFFHTTPRequestOperation *operation = [super copyWithZone:zone];
 
     operation.responseSerializer = [self.responseSerializer copyWithZone:zone];
     operation.completionQueue = self.completionQueue;

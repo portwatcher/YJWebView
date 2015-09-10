@@ -1,5 +1,6 @@
-// AFHTTPRequestOperationManager.h
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// AFFHTTPRequestOperationManager.h
+//
+// Copyright (c) 2013-2015 AFFNetworking (http://AFFnetworking.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,11 +30,11 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-#import "AFHTTPRequestOperation.h"
-#import "AFURLResponseSerialization.h"
-#import "AFURLRequestSerialization.h"
-#import "AFSecurityPolicy.h"
-#import "AFNetworkReachabilityManager.h"
+#import "AFFHTTPRequestOperation.h"
+#import "AFFURLResponseSerialization.h"
+#import "AFFURLRequestSerialization.h"
+#import "AFFSecurityPolicy.h"
+#import "AFFNetworkReachabilityManager.h"
 
 #ifndef NS_DESIGNATED_INITIALIZER
 #if __has_attribute(objc_designated_initializer)
@@ -44,23 +45,23 @@
 #endif
 
 /**
- `AFHTTPRequestOperationManager` encapsulates the common patterns of communicating with a web application over HTTP, including request creation, response serialization, network reachability monitoring, and security, as well as request operation management.
+ `AFFHTTPRequestOperationManager` encapsulates the common patterns of communicating with a web application over HTTP, including request creation, response serialization, network reachability monitoring, and security, as well as request operation management.
 
  ## Subclassing Notes
 
- Developers targeting iOS 7 or Mac OS X 10.9 or later that deal extensively with a web service are encouraged to subclass `AFHTTPSessionManager`, providing a class method that returns a shared singleton object on which authentication and other configuration can be shared across the application.
+ Developers targeting iOS 7 or Mac OS X 10.9 or later that deal extensively with a web service are encouraged to subclass `AFFHTTPSessionManager`, providing a class method that returns a shared singleton object on which authentication and other configuration can be shared across the application.
 
- For developers targeting iOS 6 or Mac OS X 10.8 or earlier, `AFHTTPRequestOperationManager` may be used to similar effect.
+ For developers targeting iOS 6 or Mac OS X 10.8 or earlier, `AFFHTTPRequestOperationManager` may be used to similar effect.
 
  ## Methods to Override
 
- To change the behavior of all request operation construction for an `AFHTTPRequestOperationManager` subclass, override `HTTPRequestOperationWithRequest:success:failure`.
+ To change the behavior of all request operation construction for an `AFFHTTPRequestOperationManager` subclass, override `HTTPRequestOperationWithRequest:success:failure`.
 
  ## Serialization
 
- Requests created by an HTTP client will contain default headers and encode parameters according to the `requestSerializer` property, which is an object conforming to `<AFURLRequestSerialization>`.
+ Requests created by an HTTP client will contain default headers and encode parameters according to the `requestSerializer` property, which is an object conforming to `<AFFURLRequestSerialization>`.
 
- Responses received from the server are automatically validated and serialized by the `responseSerializers` property, which is an object conforming to `<AFURLResponseSerialization>`
+ Responses received from the server are automatically validated and serialized by the `responseSerializers` property, which is an object conforming to `<AFFURLResponseSerialization>`
 
  ## URL Construction Using Relative Paths
 
@@ -80,16 +81,16 @@
 
  ## Network Reachability Monitoring
 
- Network reachability status and change monitoring is available through the `reachabilityManager` property. Applications may choose to monitor network reachability conditions in order to prevent or suspend any outbound requests. See `AFNetworkReachabilityManager` for more details.
+ Network reachability status and change monitoring is available through the `reachabilityManager` property. Applications may choose to monitor network reachability conditions in order to prevent or suspend any outbound requests. See `AFFNetworkReachabilityManager` for more details.
 
  ## NSSecureCoding & NSCopying Caveats
 
- `AFHTTPRequestOperationManager` conforms to the `NSSecureCoding` and `NSCopying` protocols, allowing operations to be archived to disk, and copied in memory, respectively. There are a few minor caveats to keep in mind, however:
+ `AFFHTTPRequestOperationManager` conforms to the `NSSecureCoding` and `NSCopying` protocols, allowing operations to be archived to disk, and copied in memory, respectively. There are a few minor caveats to keep in mind, however:
 
  - Archives and copies of HTTP clients will be initialized with an empty operation queue.
  - NSSecureCoding cannot serialize / deserialize block properties, so an archive of an HTTP client will not include any reachability callback block that may be set.
  */
-@interface AFHTTPRequestOperationManager : NSObject <NSSecureCoding, NSCopying>
+@interface AFFHTTPRequestOperationManager : NSObject <NSSecureCoding, NSCopying>
 
 /**
  The URL used to monitor reachability, and construct requests from relative paths in methods like `requestWithMethod:URLString:parameters:`, and the `GET` / `POST` / et al. convenience methods.
@@ -97,18 +98,18 @@
 @property (readonly, nonatomic, strong) NSURL *baseURL;
 
 /**
- Requests created with `requestWithMethod:URLString:parameters:` & `multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:` are constructed with a set of default headers using a parameter serialization specified by this property. By default, this is set to an instance of `AFHTTPRequestSerializer`, which serializes query string parameters for `GET`, `HEAD`, and `DELETE` requests, or otherwise URL-form-encodes HTTP message bodies.
+ Requests created with `requestWithMethod:URLString:parameters:` & `multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:` are constructed with a set of default headers using a parameter serialization specified by this property. By default, this is set to an instance of `AFFHTTPRequestSerializer`, which serializes query string parameters for `GET`, `HEAD`, and `DELETE` requests, or otherwise URL-form-encodes HTTP message bodies.
 
  @warning `requestSerializer` must not be `nil`.
  */
-@property (nonatomic, strong) AFHTTPRequestSerializer <AFURLRequestSerialization> * requestSerializer;
+@property (nonatomic, strong) AFFHTTPRequestSerializer <AFFURLRequestSerialization> * requestSerializer;
 
 /**
  Responses sent from the server in data tasks created with `dataTaskWithRequest:success:failure:` and run using the `GET` / `POST` / et al. convenience methods are automatically validated and serialized by the response serializer. By default, this property is set to a JSON serializer, which serializes data from responses with a `application/json` MIME type, and falls back to the raw data object. The serializer validates the status code to be in the `2XX` range, denoting success. If the response serializer generates an error in `-responseObjectForResponse:data:error:`, the `failure` callback of the session task or request operation will be executed; otherwise, the `success` callback will be executed.
 
  @warning `responseSerializer` must not be `nil`.
  */
-@property (nonatomic, strong) AFHTTPResponseSerializer <AFURLResponseSerialization> * responseSerializer;
+@property (nonatomic, strong) AFFHTTPResponseSerializer <AFFURLResponseSerialization> * responseSerializer;
 
 /**
  The operation queue on which request operations are scheduled and run.
@@ -122,14 +123,14 @@
 /**
  Whether request operations should consult the credential storage for authenticating the connection. `YES` by default.
 
- @see AFURLConnectionOperation -shouldUseCredentialStorage
+ @see AFFURLConnectionOperation -shouldUseCredentialStorage
  */
 @property (nonatomic, assign) BOOL shouldUseCredentialStorage;
 
 /**
  The credential used by request operations for authentication challenges.
 
- @see AFURLConnectionOperation -credential
+ @see AFFURLConnectionOperation -credential
  */
 @property (nonatomic, strong) NSURLCredential *credential;
 
@@ -138,18 +139,18 @@
 ///-------------------------------
 
 /**
- The security policy used by created request operations to evaluate server trust for secure connections. `AFHTTPRequestOperationManager` uses the `defaultPolicy` unless otherwise specified.
+ The security policy used by created request operations to evaluate server trust for secure connections. `AFFHTTPRequestOperationManager` uses the `defaultPolicy` unless otherwise specified.
  */
-@property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
+@property (nonatomic, strong) AFFSecurityPolicy *securityPolicy;
 
 ///------------------------------------
 /// @name Managing Network Reachability
 ///------------------------------------
 
 /**
- The network reachability manager. `AFHTTPRequestOperationManager` uses the `sharedManager` by default.
+ The network reachability manager. `AFFHTTPRequestOperationManager` uses the `sharedManager` by default.
  */
-@property (readwrite, nonatomic, strong) AFNetworkReachabilityManager *reachabilityManager;
+@property (readwrite, nonatomic, strong) AFFNetworkReachabilityManager *reachabilityManager;
 
 ///-------------------------------
 /// @name Managing Callback Queues
@@ -178,12 +179,12 @@
 ///---------------------------------------------
 
 /**
- Creates and returns an `AFHTTPRequestOperationManager` object.
+ Creates and returns an `AFFHTTPRequestOperationManager` object.
  */
 + (instancetype)manager;
 
 /**
- Initializes an `AFHTTPRequestOperationManager` object with the specified base URL.
+ Initializes an `AFFHTTPRequestOperationManager` object with the specified base URL.
 
  This is the designated initializer.
 
@@ -198,22 +199,22 @@
 ///---------------------------------------
 
 /**
- Creates an `AFHTTPRequestOperation`, and sets the response serializers to that of the HTTP client.
+ Creates an `AFFHTTPRequestOperation`, and sets the response serializers to that of the HTTP client.
 
  @param request The request object to be loaded asynchronously during execution of the operation.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the object created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes two arguments:, the created request operation and the `NSError` object describing the network or parsing error that occurred.
  */
-- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)request
-                                                    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AFFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)request
+                                                    success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 ///---------------------------
 /// @name Making HTTP Requests
 ///---------------------------
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `GET` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `GET` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -222,13 +223,13 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)GET:(NSString *)URLString
+- (AFFHTTPRequestOperation *)GET:(NSString *)URLString
                      parameters:(id)parameters
-                        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                        success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                        failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `HEAD` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `HEAD` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -237,13 +238,13 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)HEAD:(NSString *)URLString
+- (AFFHTTPRequestOperation *)HEAD:(NSString *)URLString
                       parameters:(id)parameters
-                         success:(void (^)(AFHTTPRequestOperation *operation))success
-                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                         success:(void (^)(AFFHTTPRequestOperation *operation))success
+                         failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `POST` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `POST` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -252,30 +253,30 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)POST:(NSString *)URLString
+- (AFFHTTPRequestOperation *)POST:(NSString *)URLString
                       parameters:(id)parameters
-                         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                         success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                         failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a multipart `POST` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a multipart `POST` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
- @param block A block that takes a single argument and appends data to the HTTP body. The block argument is an object adopting the `AFMultipartFormData` protocol.
+ @param block A block that takes a single argument and appends data to the HTTP body. The block argument is an object adopting the `AFFMultipartFormData` protocol.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the request operation, and the response object created by the client response serializer.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the request operation and the error describing the network or parsing error that occurred.
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)POST:(NSString *)URLString
+- (AFFHTTPRequestOperation *)POST:(NSString *)URLString
                       parameters:(id)parameters
-       constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
-                         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+       constructingBodyWithBlock:(void (^)(id <AFFMultipartFormData> formData))block
+                         success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                         failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `PUT` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `PUT` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -284,13 +285,13 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)PUT:(NSString *)URLString
+- (AFFHTTPRequestOperation *)PUT:(NSString *)URLString
                      parameters:(id)parameters
-                        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                        success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                        failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `PATCH` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `PATCH` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -299,13 +300,13 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)PATCH:(NSString *)URLString
+- (AFFHTTPRequestOperation *)PATCH:(NSString *)URLString
                        parameters:(id)parameters
-                          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                          success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates and runs an `AFHTTPRequestOperation` with a `DELETE` request.
+ Creates and runs an `AFFHTTPRequestOperation` with a `DELETE` request.
 
  @param URLString The URL string used to create the request URL.
  @param parameters The parameters to be encoded according to the client request serializer.
@@ -314,10 +315,10 @@
 
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (AFHTTPRequestOperation *)DELETE:(NSString *)URLString
+- (AFFHTTPRequestOperation *)DELETE:(NSString *)URLString
                         parameters:(id)parameters
-                           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                           success:(void (^)(AFFHTTPRequestOperation *operation, id responseObject))success
+                           failure:(void (^)(AFFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end
 

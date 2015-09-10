@@ -1,5 +1,6 @@
-// AFURLConnectionOperation.h
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// AFFURLConnectionOperation.h
+//
+// Copyright (c) 2013-2015 AFFNetworking (http://AFFnetworking.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +23,9 @@
 #import <Foundation/Foundation.h>
 
 #import <Availability.h>
-#import "AFURLRequestSerialization.h"
-#import "AFURLResponseSerialization.h"
-#import "AFSecurityPolicy.h"
+#import "AFFURLRequestSerialization.h"
+#import "AFFURLResponseSerialization.h"
+#import "AFFSecurityPolicy.h"
 
 #ifndef NS_DESIGNATED_INITIALIZER
 #if __has_attribute(objc_designated_initializer)
@@ -35,17 +36,17 @@
 #endif
 
 /**
- `AFURLConnectionOperation` is a subclass of `NSOperation` that implements `NSURLConnection` delegate methods.
+ `AFFURLConnectionOperation` is a subclass of `NSOperation` that implements `NSURLConnection` delegate methods.
 
  ## Subclassing Notes
 
  This is the base class of all network request operations. You may wish to create your own subclass in order to implement additional `NSURLConnection` delegate methods (see "`NSURLConnection` Delegate Methods" below), or to provide additional properties and/or class constructors.
 
- If you are creating a subclass that communicates over the HTTP or HTTPS protocols, you may want to consider subclassing `AFHTTPRequestOperation` instead, as it supports specifying acceptable content types or status codes.
+ If you are creating a subclass that communicates over the HTTP or HTTPS protocols, you may want to consider subclassing `AFFHTTPRequestOperation` instead, as it supports specifying acceptable content types or status codes.
 
  ## NSURLConnection Delegate Methods
 
- `AFURLConnectionOperation` implements the following `NSURLConnection` delegate methods:
+ `AFFURLConnectionOperation` implements the following `NSURLConnection` delegate methods:
 
  - `connection:didReceiveResponse:`
  - `connection:didReceiveData:`
@@ -61,9 +62,9 @@
 
  ## Callbacks and Completion Blocks
 
- The built-in `completionBlock` provided by `NSOperation` allows for custom behavior to be executed after the request finishes. It is a common pattern for class constructors in subclasses to take callback block parameters, and execute them conditionally in the body of its `completionBlock`. Make sure to handle cancelled operations appropriately when setting a `completionBlock` (i.e. returning early before parsing response data). See the implementation of any of the `AFHTTPRequestOperation` subclasses for an example of this.
+ The built-in `completionBlock` provided by `NSOperation` allows for custom behavior to be executed AFFter the request finishes. It is a common pattern for class constructors in subclasses to take callback block parameters, and execute them conditionally in the body of its `completionBlock`. Make sure to handle cancelled operations appropriately when setting a `completionBlock` (i.e. returning early before parsing response data). See the implementation of any of the `AFFHTTPRequestOperation` subclasses for an example of this.
 
- Subclasses are strongly discouraged from overriding `setCompletionBlock:`, as `AFURLConnectionOperation`'s implementation includes a workaround to mitigate retain cycles, and what Apple rather ominously refers to as ["The Deallocation Problem"](http://developer.apple.com/library/ios/#technotes/tn2109/).
+ Subclasses are strongly discouraged from overriding `setCompletionBlock:`, as `AFFURLConnectionOperation`'s implementation includes a workaround to mitigate retain cycles, and what Apple rather ominously refers to as ["The Deallocation Problem"](http://developer.apple.com/library/ios/#technotes/tn2109/).
 
  ## SSL Pinning
 
@@ -75,11 +76,11 @@
 
  ## App Extensions
 
- When using AFNetworking in an App Extension, `#define AF_APP_EXTENSIONS` to avoid using unavailable APIs.
+ When using AFFNetworking in an App Extension, `#define AFF_APP_EXTENSIONS` to avoid using unavailable APIs.
 
  ## NSCoding & NSCopying Conformance
 
- `AFURLConnectionOperation` conforms to the `NSCoding` and `NSCopying` protocols, allowing operations to be archived to disk, and copied in memory, respectively. However, because of the intrinsic limitations of capturing the exact state of an operation at a particular moment, there are some important caveats to keep in mind:
+ `AFFURLConnectionOperation` conforms to the `NSCoding` and `NSCopying` protocols, allowing operations to be archived to disk, and copied in memory, respectively. However, because of the intrinsic limitations of capturing the exact state of an operation at a particular moment, there are some important caveats to keep in mind:
 
  ### NSCoding Caveats
 
@@ -93,7 +94,7 @@
  - Operation copies do not include `completionBlock`, as it often strongly captures a reference to `self`, which would otherwise have the unintuitive side-effect of pointing to the _original_ operation when copied.
  */
 
-@interface AFURLConnectionOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSSecureCoding, NSCopying>
+@interface AFFURLConnectionOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSSecureCoding, NSCopying>
 
 ///-------------------------------
 /// @name Accessing Run Loop Modes
@@ -169,7 +170,7 @@
 /**
  The security policy used to evaluate server trust for secure connections.
  */
-@property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
+@property (nonatomic, strong) AFFSecurityPolicy *securityPolicy;
 
 ///------------------------
 /// @name Accessing Streams
@@ -221,7 +222,7 @@
 @property (nonatomic, strong) NSDictionary *userInfo;
 
 ///------------------------------------------------------
-/// @name Initializing an AFURLConnectionOperation Object
+/// @name Initializing an AFFURLConnectionOperation Object
 ///------------------------------------------------------
 
 /**
@@ -254,7 +255,7 @@
 /**
  Resumes the execution of the paused request operation.
 
- Pause/Resume behavior varies depending on the underlying implementation for the operation class. In its base implementation, resuming a paused requests restarts the original request. However, since HTTP defines a specification for how to request a specific content range, `AFHTTPRequestOperation` will resume downloading the request from where it left off, instead of restarting the original request.
+ Pause/Resume behavior varies depending on the underlying implementation for the operation class. In its base implementation, resuming a paused requests restarts the original request. However, since HTTP defines a specification for how to request a specific content range, `AFFHTTPRequestOperation` will resume downloading the request from where it left off, instead of restarting the original request.
  */
 - (void)resume;
 
@@ -263,11 +264,11 @@
 ///----------------------------------------------
 
 /**
- Specifies that the operation should continue execution after the app has entered the background, and the expiration handler for that background task.
+ Specifies that the operation should continue execution AFFter the app has entered the background, and the expiration handler for that background task.
 
  @param handler A handler to be called shortly before the application’s remaining background time reaches 0. The handler is wrapped in a block that cancels the operation, and cleans up and marks the end of execution, unlike the `handler` parameter in `UIApplication -beginBackgroundTaskWithExpirationHandler:`, which expects this to be done in the handler itself. The handler is called synchronously on the main thread, thus blocking the application’s suspension momentarily while the application is notified.
   */
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AFF_APP_EXTENSIONS)
 - (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(void (^)(void))handler;
 #endif
 
@@ -335,9 +336,9 @@
 /**
  Posted when an operation begins executing.
  */
-extern NSString * const AFNetworkingOperationDidStartNotification;
+extern NSString * const AFFNetworkingOperationDidStartNotification;
 
 /**
  Posted when an operation finishes.
  */
-extern NSString * const AFNetworkingOperationDidFinishNotification;
+extern NSString * const AFFNetworkingOperationDidFinishNotification;
