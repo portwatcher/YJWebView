@@ -64,29 +64,6 @@
 
 # pragma methods
 
-- (void)loadRequest:(NSURLRequest *)request {
-    self.estimatedProgress = 0.0;
-    [self loadRequest:request
-             progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-//                 NSLog(@"totalBytesWritten: %zd", totalBytesWritten);
-//                 NSLog(@"totalBytesExpectedToWrite: %zd", totalBytesExpectedToWrite);
-                 
-                 if (totalBytesExpectedToWrite > 0) {
-                    self.estimatedProgress = totalBytesWritten / totalBytesExpectedToWrite;
-                 }
-             }
-              success:^NSString *(NSHTTPURLResponse *response, NSString *HTML) {
-                  self.estimatedProgress = 1.0f;
-                  return HTML;
-              }
-              failure:^(NSError *error) {
-                  self.estimatedProgress = 1.0f;
-                  if ([self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
-                      [self.webViewDelegate webView:self didFailWithError:error];
-                  }
-              }];
-}
-
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self.jsContext evaluateScript:stringToEval];

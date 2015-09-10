@@ -18,7 +18,6 @@
 @property (nonatomic, strong, readonly) NSURL *URL;
 @property (nonatomic, strong, readonly) NSString *title;
 @property (nonatomic) BOOL loaded;
-@property double estimatedProgress;
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier;
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock;
