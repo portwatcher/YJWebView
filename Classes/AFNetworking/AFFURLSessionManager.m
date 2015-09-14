@@ -286,7 +286,7 @@ static NSString * const AFFNSURLSessionTaskDidSuspendNotification = @"com.alamof
 
 + (void)initialize {
     if ([NSURLSessionTask class]) {
-        NSURLSessionDataTask *dataTask = [[NSURLSession sessionWithConfiguration:nil] dataTaskWithURL:nil];
+        NSURLSessionDataTask *dataTask = [[[NSURLSession alloc] init] dataTaskWithURL:nil];
         Class taskClass = [dataTask superclass];
 
         AFF_addMethod(taskClass, @selector(AFF_resume),  class_getInstanceMethod(self, @selector(AFF_resume)));

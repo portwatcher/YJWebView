@@ -108,16 +108,14 @@
     NSURL *url = navigationAction.request.URL;
     
     if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"] && ![url.absoluteString isEqualToString:@"about:blank"]) {
-        if ([app canOpenURL:url]) {
-            if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
-                [app openURL:url];
-            }
-            
-            //    don't trigger when we've started a new request
-            self.domreadyTriggered = YES;
-            decisionHandler(WKNavigationActionPolicyCancel);
-            return;
+        if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
+            [app openURL:url];
         }
+        
+        //    don't trigger when we've started a new request
+        self.domreadyTriggered = YES;
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
     }
     
     if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
@@ -203,7 +201,7 @@
     return nil;
 }
 
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)())completionHandler {
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^ _Nonnull __strong)(void))completionHandler {
     NSString *hostString = webView.URL.host;
     NSString *sender = [NSString stringWithFormat:@"%@", hostString];
     
