@@ -96,6 +96,7 @@
 # pragma delegates
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
     if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
         //    don't trigger when we've started a new request
         self.domreadyTriggered = YES;
@@ -129,15 +130,18 @@
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+    
     self.domreadyTriggered = NO;
     [self startInterceptDomReady];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
     if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
         return;
     }
@@ -146,6 +150,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
     if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
         return;
     }
@@ -154,6 +159,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
+    
     NSString *hostName = webView.URL.host;
     
     NSString *authenticationMethod = [[challenge protectionSpace] authenticationMethod];
@@ -164,13 +170,16 @@
         NSString *title = @"Authentication Challenge";
         NSString *message = [NSString stringWithFormat:@"%@ requires user name and password", hostName];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             textField.placeholder = @"User";
         }];
+        
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             textField.placeholder = @"Password";
             textField.secureTextEntry = YES;
         }];
+        
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             NSString *userName = ((UITextField *)alertController.textFields[0]).text;
@@ -181,15 +190,16 @@
             completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
             
         }]];
+        
         [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
         }]];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
         });
-        
     } else {
-        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }
 }
 
