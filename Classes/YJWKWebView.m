@@ -134,6 +134,12 @@
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
+        [self.webViewDelegate webViewDidStartLoading:self];
+    }
+}
+
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     
     self.domreadyTriggered = NO;
