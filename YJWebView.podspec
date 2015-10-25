@@ -16,14 +16,14 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YJWebView"
-  s.version      = "0.2.6"
+  s.version      = "0.2.6.1"
   s.summary      = "The WebView you'll need on iOS."
 
   s.description  = <<-DESC
                    YJWebView provide non-invasive API for developers with flexible hybrid framework.
                    DESC
 
-  s.homepage     = "https://code.tinydust.cn/Tinydust/YJWebView"
+  s.homepage     = "https://github.com/TinydustDevelopers/YJWebView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://code.tinydust.cn/Tinydust/YJWebView.git", :tag => "0.2.6" }
+  s.source       = { :git => "https://github.com/TinydustDevelopers/YJWebView.git", :tag => "0.2.6.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
