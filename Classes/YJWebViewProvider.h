@@ -14,7 +14,7 @@
 
 // native support by both uiwebview and wkwebview
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic) BOOL loading;
+@property (nonatomic, readonly) BOOL loading;
 @property (nonatomic, readonly)BOOL canGoBack;
 @property (nonatomic, readonly)BOOL canGoForward;
 
