@@ -46,10 +46,10 @@
         self.allowsInlineMediaPlayback = YES;
         self.keyboardDisplayRequiresUserAction = NO;
         self.dataDetectorTypes = UIDataDetectorTypeAll;
-        
+
         self.loaded = NO;
         self.didStartInterceptNewRequest = NO;
-        
+
         UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         [self addGestureRecognizer:recognizer];
     }
@@ -70,14 +70,14 @@
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
-    [self.jsContext evaluateScript:stringToEval];
+    [self stringByEvaluatingJavaScriptFromString:stringToEval];
 }
 
 - (void)insertCSS:(NSString *)css withIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
     NSString *stringToEval = [NSString stringWithFormat:@";(function(){if(document.querySelector('#%@')){return;}var styleElement = document.createElement('style');;styleElement.id='%@';styleElement.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleElement);})();", identifier, identifier,  [[css componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""]];
     [self stringByEvaluatingJavaScriptFromString:stringToEval];
-    
-    if (complectionBlock) {   
+
+    if (complectionBlock) {
         complectionBlock();
     }
 }
@@ -88,7 +88,7 @@
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
     [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier]];
-    
+
     if (complectionBlock) {
         complectionBlock();
     }
@@ -116,16 +116,16 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
+
     if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
         return YES;
     }
-    
+
     return [self.webViewDelegate webView:self shouldStartLoadWithRequest:request];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    
+
     if (!self.didStartInterceptNewRequest) {
         self.didStartInterceptNewRequest = YES;
         [self startInterceptNewPageLoading];
@@ -134,16 +134,16 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self disableDefaultContextualMenu];
-    
+
     if ([self isDocumentReady]) {
         [self performNativeBinding];
-        
+
         self.loaded = YES;
-        
+
         if (![self.webViewDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
             return;
         }
-        
+
         [self.webViewDelegate webViewDidFinishLoad:self];
     }
 }
@@ -152,7 +152,7 @@
     if (![self.webViewDelegate respondsToSelector:@selector(webView:didFailWithError:)]) {
         return;
     }
-    
+
     [self.webViewDelegate webView:self didFailWithError:error];
 }
 
@@ -169,19 +169,19 @@
 - (void)startInterceptNewPageLoading {
 
     if ([self isDocumentReady]) {
-        
+
         _timer = [NSTimer timerWithTimeInterval:0.05f target:self selector:@selector(interceptNewPageLoading:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     } else {
-        
+
         [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
         [self performNativeBinding];
-        
+
         self.didStartInterceptNewRequest = NO;
         if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
         }
-        
+
         [self startInterceptDomReady];
     }
 }
@@ -192,25 +192,25 @@
     if ([readyState isEqualToString:@"loading"]) {
         [timer invalidate];
         timer = nil;
-        
+
         [[YJHybridBridge sharedBridge] registerWithJavaScriptContext:self.jsContext webView:self];
         [self performNativeBinding];
-        
+
         self.didStartInterceptNewRequest = NO;
         if ([self.webViewDelegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
             [self.webViewDelegate webViewDidStartLoading:self];
         }
-        
+
         [self startInterceptDomReady];
     }
 }
 
 - (void)startInterceptDomReady {
-    
+
     if (![self.webViewDelegate respondsToSelector:@selector(webViewMainDocumentDidLoad:)]) {
         return;
     }
-    
+
     _timer = [NSTimer timerWithTimeInterval:0.01f target:self selector:@selector(interceptDomReady:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
 }
@@ -219,14 +219,14 @@
     if ([self isDocumentReady]) {
         [timer invalidate];
         timer = nil;
-        
+
         [self disableDefaultContextualMenu];
-        
+
         [self.webViewDelegate webViewMainDocumentDidLoad:self];
 
         NSString *promisePath = [[NSBundle mainBundle] pathForResource:@"es6promise" ofType:@"js"];
         NSString *promiseJS = [NSString stringWithContentsOfFile:promisePath encoding:NSUTF8StringEncoding error:nil];
-        
+
         [self stringByEvaluatingJavaScriptFromString:promiseJS];
     }
 }
@@ -248,7 +248,7 @@
 - (void)disableDefaultContextualMenu {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"reset" ofType:@"js"];
     NSString *js = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    
+
     [self.jsContext evaluateScript:js];
 }
 
@@ -256,13 +256,13 @@
     if (recognizer.state != UIGestureRecognizerStateBegan) {
         return;
     }
-    
+
     CGPoint coords = [recognizer locationInView:self];
-    
+
     // get the Tags at the touch location
     NSString *tags = [self stringByEvaluatingJavaScriptFromString:
                       [NSString stringWithFormat:@"window.cloudbox.getHTMLElementsAtPoint(%li,%li);", (long)coords.x, (long)coords.y]];
-    
+
     NSString *tagsHref = [self stringByEvaluatingJavaScriptFromString:
                           [NSString stringWithFormat:@"window.cloudbox.getLinkHrefAtPoint(%li,%li);", (long)coords.x, (long)coords.y]];
     NSString *tagsSrc = [self stringByEvaluatingJavaScriptFromString:
@@ -270,29 +270,29 @@
     //    if (![tagsSrc hasPrefix:@"http"] && tagsSrc) {
     //        return;
     //    }
-    
+
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    
+
     selectedImageURL = @"";
     selectedHref = @"";
-    
+
     // If a link was touched, add link-related buttons
     if ([tags rangeOfString:@",A," options:NSCaseInsensitiveSearch].location != NSNotFound) {
         selectedHref = tagsHref;
-        
+
         actionSheet.title = tagsHref;
         [actionSheet addButtonWithTitle:@"复制"];
         [actionSheet addButtonWithTitle:@"打开"];
     }
-    
+
     // If an image was touched, add image-related buttons.
     if ([tags rangeOfString:@",IMG," options:NSCaseInsensitiveSearch].location != NSNotFound) {
         selectedImageURL = tagsSrc;
-        
+
         [actionSheet addButtonWithTitle:@"保存图片"];
         [actionSheet addButtonWithTitle:@"复制图片网址"];
     }
-    
+
     if (actionSheet.numberOfButtons > 0) {
         [actionSheet addButtonWithTitle:@"取消"];
         actionSheet.cancelButtonIndex = (actionSheet.numberOfButtons - 1);
