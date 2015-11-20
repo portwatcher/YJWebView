@@ -83,7 +83,7 @@
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier {
-    [self.jsContext evaluateScript:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier]];
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var _elementInCloudBox = document.querySelector('#%@');if(_elementInCloudBox){_elementInCloudBox.parentNode.removeChild(_elementInCloudBox);}", identifier]];
 }
 
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock {
@@ -95,12 +95,8 @@
 }
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
-    if (completionHandler || !self.jsContext) {
-        NSString *result = [self stringByEvaluatingJavaScriptFromString:js];
-        completionHandler(result, nil);
-    } else {
-        [self.jsContext evaluateScript:js];
-    }
+    NSString *result = [self stringByEvaluatingJavaScriptFromString:js];
+    completionHandler(result, nil);
 }
 
 - (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj {
@@ -116,7 +112,6 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-
     if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
         return YES;
     }

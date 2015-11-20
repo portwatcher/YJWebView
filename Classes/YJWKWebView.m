@@ -98,31 +98,22 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
     if (![self.webViewDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:)]) {
-        //    don't trigger when we've started a new request
-        self.domreadyTriggered = YES;
-        
         decisionHandler(WKNavigationActionPolicyAllow);
         return;
     }
     
-    UIApplication *app = [UIApplication sharedApplication];
     NSURL *url = navigationAction.request.URL;
     
     if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"] && ![url.absoluteString isEqualToString:@"about:blank"]) {
         if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
-            [app openURL:url];
+            [[UIApplication sharedApplication] openURL:url];
         }
         
-        //    don't trigger when we've started a new request
-        self.domreadyTriggered = YES;
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
     
     if ([self.webViewDelegate webView:self shouldStartLoadWithRequest:navigationAction.request]) {
-        //    don't trigger when we've started a new request
-        self.domreadyTriggered = YES;
-        
         decisionHandler(WKNavigationActionPolicyAllow);
     } else {
         decisionHandler(WKNavigationActionPolicyCancel);

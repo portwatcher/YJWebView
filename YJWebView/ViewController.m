@@ -22,7 +22,7 @@
     webView.webViewDelegate = self;
     [self.view addSubview:webView];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.weibo.cn/"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yunji.one/"]]];
 }
 
 - (void)didReceiveMemoryWarning {
