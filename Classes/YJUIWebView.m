@@ -96,7 +96,10 @@
 
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler {
     NSString *result = [self stringByEvaluatingJavaScriptFromString:js];
-    completionHandler(result, nil);
+    
+    if (completionHandler) {
+        completionHandler(result, nil);
+    }
 }
 
 - (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj {
