@@ -22,7 +22,7 @@
     webView.webViewDelegate = self;
     [self.view addSubview:webView];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yunji.one/"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.ku6.com/show/YKrEhOxB6mXfzllHnYaQfw...html"]]];
 }
 
 - (void)didReceiveMemoryWarning {
