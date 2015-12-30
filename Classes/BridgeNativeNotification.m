@@ -56,8 +56,18 @@
             [self.notificationDelegate requestPermissionWithCallback:^(BOOL granted) {
                 if (granted) {
                     UILocalNotification *notification = [[UILocalNotification alloc] init];
-                    notification.alertTitle = title;
-                    notification.alertBody = body;
+                    
+                    if ([notification respondsToSelector:@selector(setAlertTitle:)]) {
+                        notification.alertTitle = title;
+                        notification.alertBody = body;
+                    } else {
+                        if (!body || [body isKindOfClass:[NSNull class]]) {
+                            notification.alertBody = [NSString stringWithFormat:@"  %@", title];
+                        } else {
+                            notification.alertBody = [NSString stringWithFormat:@"%@: %@", title, body];
+                        }
+                    }
+                    
                     notification.soundName = UILocalNotificationDefaultSoundName;
                     notification.fireDate = [NSDate date];
                     
