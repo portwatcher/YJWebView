@@ -18,5 +18,6 @@
 
 - (id)initWithWebView:(YJWebView *)webView;
 - (void)inviteNativeObjectJoin:(NSObject<YJBridgeNative> *)nativeObject;
+- (void)clearNativeObjects;
 
 @end

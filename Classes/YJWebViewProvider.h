@@ -37,5 +37,6 @@
 - (void)removeCSSWithIdentifier:(NSString *)identifier complectionBlock:(void (^)(void))complectionBlock;
 - (void)executeJavaScript:(NSString *)js completionHandler:(void (^)(id, NSError *))completionHandler;
 - (void)bindNativeReceiver:(NSObject<YJBridgeNative> *)obj;
+- (void)clearNativeReceivers;
 
 @end

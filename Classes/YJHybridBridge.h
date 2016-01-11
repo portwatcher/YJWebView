@@ -18,5 +18,6 @@
 - (void)registerWithJavaScriptContext:(JSContext *)context webView:(YJWebView *)webView;
 - (void)registerWithUserContentController:(WKUserContentController *)controller webView:(YJWebView *)webView;
 - (void)bindNative:(NSObject<YJBridgeNative> *)obj toWebView:(YJWebView *)webView;
+- (void)clearForWebView:(YJWebView *)webView;
 
 @end

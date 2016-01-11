@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YJWebView"
-  s.version      = "0.2.8"
+  s.version      = "0.2.9"
   s.summary      = "The WebView you'll need on iOS."
 
   s.description  = <<-DESC

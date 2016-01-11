@@ -105,6 +105,10 @@
     [self.nativeObjects setObject:nativeObject forKey:nativeObject.receiverName];
 }
 
+- (void)clearNativeObjects {
+    [self.nativeObjects removeAllObjects];
+}
+
 - (void)callback:(NSString *)callbackId callWithArguments:(NSArray *)arguements {
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arguements options:NSJSONWritingPrettyPrinted error:&error];

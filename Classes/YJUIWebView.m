@@ -107,6 +107,10 @@
     [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
 }
 
+- (void)clearNativeReceivers {
+    [[YJHybridBridge sharedBridge] clearForWebView:self];
+}
+
 # pragma delegates
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx {

@@ -93,6 +93,10 @@
     [[YJHybridBridge sharedBridge] bindNative:obj toWebView:self];
 }
 
+- (void)clearNativeReceivers {
+    [[YJHybridBridge sharedBridge] clearForWebView:self];
+}
+
 # pragma delegates
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {

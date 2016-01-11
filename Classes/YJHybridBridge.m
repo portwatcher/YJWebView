@@ -72,4 +72,15 @@
     [hub inviteNativeObjectJoin:obj];
 }
 
+- (void)clearForWebView:(YJWebView *)webView {
+    MessageHub *hub = [self.hubs objectForKey:[NSString stringWithFormat:@"%p", webView]];
+    
+    if (!hub) {
+        return;
+    }
+    
+    [hub clearNativeObjects];
+    [self.hubs removeObjectForKey:[NSString stringWithFormat:@"%p", webView]];
+}
+
 @end
