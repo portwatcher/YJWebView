@@ -11,16 +11,17 @@
 
 @implementation YJProcessPool
 
-+ (WKProcessPool *)processPool {
-    static WKProcessPool *_sharedPool = nil;
++ (YJProcessPool *)sharedInstance {
+    static YJProcessPool *_sharedInstance = nil;
     
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
-        _sharedPool = [[WKProcessPool alloc] init];
+        _sharedInstance = [[YJProcessPool alloc] init];
+        _sharedInstance.processPool = [[WKProcessPool alloc] init];
     });
     
-    return _sharedPool;
+    return _sharedInstance;
 }
 
 @end

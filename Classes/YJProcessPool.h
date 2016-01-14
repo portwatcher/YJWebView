@@ -11,6 +11,8 @@
 
 @interface YJProcessPool : NSObject
 
-+ (WKProcessPool *)processPool;
+@property (strong, nonatomic) WKProcessPool *processPool;
+
++ (YJProcessPool *)sharedInstance;
 
 @end

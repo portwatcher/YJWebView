@@ -30,7 +30,7 @@
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
     configuration.allowsInlineMediaPlayback = YES;
     configuration.mediaPlaybackRequiresUserAction = YES; // in some cases, mutiple videos play together
-    configuration.processPool = [YJProcessPool processPool];
+    configuration.processPool = [[YJProcessPool sharedInstance] processPool] ;
     
     WKUserContentController *controller = [[WKUserContentController alloc] init];
     configuration.userContentController = controller;
