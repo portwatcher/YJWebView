@@ -125,7 +125,10 @@
         [self.notificationDelegate arrangeDisappearanceOfNotification];
     }
     
-    [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
+    if (self.notification) {
+        [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
+    }
+    
     self.notification = nil;
 }
 
