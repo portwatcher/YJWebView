@@ -14,6 +14,7 @@
 #import "BridgeNativeNotification.h"
 #import "BridgeNativeScreenOrientation.h"
 #import "BridgeNativeDetector.h"
+#import "BridgeNativeWindow.h"
 #import "YJProcessPool.h"
 
 @interface YJWKWebView ()
@@ -295,11 +296,18 @@
     [self bindNativeReceiver:[[BridgeNativeNotification alloc] init]];
     [self bindNativeReceiver:[[BridgeNativeScreenOrientation alloc] init]];
     [self bindNativeReceiver:[[BridgeNativeDetector alloc] init]];
+    [self bindNativeReceiver:[[BridgeNativeWindow alloc] init]];
 }
 
 - (void)hashDidChange:(NSString *)hash {
     if ([self.webViewDelegate respondsToSelector:@selector(webView:didHashChange:)]) {
         [self.webViewDelegate webView:self didHashChange:hash];
+    }
+}
+
+- (void)windowDidClose {
+    if ([self.webViewDelegate respondsToSelector:@selector(webViewDidWindowClose:)]) {
+        [self.webViewDelegate webViewDidWindowClose:self];
     }
 }
 

@@ -1,0 +1,28 @@
+{
+  "name": "YJWebView",
+  "version": "0.3.1",
+  "summary": "The WebView you'll need on iOS.",
+  "description": "YJWebView provide non-invasive API for developers with flexible hybrid framework.",
+  "homepage": "https://github.com/TinydustDevelopers/YJWebView",
+  "license": "MIT (LICENSE)",
+  "authors": {
+    "PortWatcher": "jury@tinydust.cn"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "git@github.com:TinydustDevelopers/YJWebView.git",
+    "tag": "0.3.1"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ],
+  "resources": "Resources/*.{png,js,xib,strings}",
+  "frameworks": [
+    "WebKit",
+    "JavaScriptCore",
+    "AudioToolbox"
+  ]
+}

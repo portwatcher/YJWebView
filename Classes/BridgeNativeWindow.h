@@ -1,21 +1,21 @@
 //
-//  BridgeNativeDetector.h
-//  YJWebView
+//  BridgeNativeWindow.h
+//  Pods
 //
-//  Created by Jury on 15/9/4.
-//  Copyright (c) 2015年 Tinydust Technonogy Ltd. All rights reserved.
+//  Created by Jury on 16/2/29.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import "YJHybridBridge.h"
 
-@interface BridgeNativeDetector : NSObject <YJBridgeNative>
+@interface BridgeNativeWindow : NSObject <YJBridgeNative>
 
 @property (strong, nonatomic, readonly) NSString *receiverName;
 @property (strong, nonatomic) NSString *javaScriptCode;
 
 @property (weak, nonatomic) id <YJBridgeNativeDelegate> delegate;
 
-- (void)hashChange:(NSString *)hash;
+- (void)close;
 
 @end
