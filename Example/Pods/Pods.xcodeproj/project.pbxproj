@@ -7,16 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		166A1ECF57443527DB38119B8FB8D587 /* AFFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 60C5D6588D1EC2D43432FCE5AC79C4F5 /* AFFHTTPRequestOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C037AAF928C279DA4D483997BB36DF5 /* YJWebViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D72F86264EB42F4862145096BD559 /* YJWebViewFactory.m */; };
-		1C634293BC380BB604422D884CC3FBF4 /* AFFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5AEB6E48F9F927E46767242212C851 /* AFFURLSessionManager.m */; };
-		224C68980F7B816A6FBEBD04C685A257 /* AFFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 610F7F65229B677076AE3E321A1A121C /* AFFURLConnectionOperation.m */; };
-		24EAEA4DA9C07CA173EAA402E56AA946 /* AFFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E01AA1D89FD92788CE39BCDEABD2083 /* AFFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26C069CEFEF5EEA35F3E7FF3AD2537E2 /* AFFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C6873CEB5AA4D717EEAB21C467DE051A /* AFFHTTPRequestOperationManager.m */; };
 		294B4BA64F0E47954CD8B061CE681C3D /* MessageHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A73DB2D59F9FE441EE2627C211F0B99 /* MessageHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D1D9E645C533075343A900A3104014E /* AFFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 013C45C852CFCA7AB0054E2CD6A2D0A3 /* AFFURLRequestSerialization.m */; };
 		31D419852C70C1BD6E0A17DB072DA7BF /* YJBridgeNative.h in Headers */ = {isa = PBXBuildFile; fileRef = AFB61646637EBB269B511985297F4C1F /* YJBridgeNative.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3472823C9064E42E87142296A455FF9C /* AFFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 097F696F4739D7F66F7DFA6D341BF7FF /* AFFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		411721E6432B5EBD07D179A5B8E1401F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3BCBDCEC120C26674CD28A2CD55C60 /* AudioToolbox.framework */; };
 		49A991E9295BF037BC25C5BD7BD2D677 /* YJWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9442907F864278224EDA1FFD32C9017A /* YJWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49BB7458975FC44C2D4479CA45CA80C2 /* Pods-YJWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 802DB1CB9608583E854EE1D1BA47D718 /* Pods-YJWebView-dummy.m */; };
@@ -25,26 +18,17 @@
 		55E707222EBF8258499DFDFD74630DEF /* BridgeNativeVibrate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFB9FC95F8CADD181EEBC92F27A11BF /* BridgeNativeVibrate.m */; };
 		5E37A94883A630EB95DC35FC8D849EEE /* MessageHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1924FB2AF696843395EFCC8F7D2D4546 /* MessageHub.m */; };
 		61A9158B9888423BCDF160FE15238920 /* BridgeNativeEcho.h in Headers */ = {isa = PBXBuildFile; fileRef = C20C56E7D71472B36E9FAA6449F93B5C /* BridgeNativeEcho.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75F397E4253DDCBEB8380BEB95C9D17B /* AFFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F6A5F254E6D75FE98621032C9D06F /* AFFHTTPSessionManager.m */; };
-		76ADD577C9E8E5643C469C5D8736AAD4 /* AFFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD281330BB471CC9D9A226BFD84E1AC /* AFFSecurityPolicy.m */; };
 		7819AE14FFB58E9E3D520BD35D5A99A0 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C6C56AC90E0ED870BCA6915A1D607A /* UIWebView+TS_JavaScriptContext.m */; };
-		7A33F70575D701340E159B4379576E94 /* AFFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C73E7C28093F9A5B152FE85F20523E09 /* AFFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E5C46BF276755621493BBDC12FDC47A /* AFFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 48880B9CAFC09C46D62301CFC8495BE1 /* AFFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82AD7571CA213ECF2EEC6CD6F7D3B45E /* YJWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = B208D514D25DBC43C2DA0CA748137E9E /* YJWKWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		845CB8E5DE8501703B2B5E32C83F8BAA /* MessageHubProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B71CFC6CCBD91C3F1DD7FBE4646DA083 /* MessageHubProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D45B88EDBA77B6397739A1B392492FB /* BridgeNativeDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE93D7A1E6694D98D7ADA5860B06021 /* BridgeNativeDetector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FB67E8AF24B5720A58B653190222103 /* AFFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8767E40CB90BA9F61778743960B792F /* AFFNetworkReachabilityManager.m */; };
 		91A75B4AEE60CD844617ECDEECF87EAB /* BridgeNativeVibrate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A6CDCA0EE2694DADDA7DEBF7DF0B84D /* BridgeNativeVibrate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9944990AFA3C9E7CC11B47F6297AE68C /* YJProcessPool.h in Headers */ = {isa = PBXBuildFile; fileRef = F7439EC80C0ADD66352FE736D6F56BCF /* YJProcessPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9959FF583534481B2DCB1EE8F0173C68 /* YJProcessPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FCEF72CD7D5B0D2888F297B4A1AF6F83 /* YJProcessPool.m */; };
 		AA21F14E71321F50A16FD7EF008EE501 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4F3D6EB3BF7D464418B8C379CD9F72 /* JavaScriptCore.framework */; };
-		AB348CD8E37B7C267ABA0FF3100FB361 /* AFFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 7787084C0743845B357DAB541CC013ED /* AFFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACFAA2C2D3FD99BC6BE98ADED26A643D /* YJHybridBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CA4859854FDBA9539C654F7EF3DB5 /* YJHybridBridge.m */; };
-		ADF34F964DC5C332860BD1117550608F /* AFFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C94B7B38004CCF23B9A336C0EACB7B23 /* AFFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B214C84703E28AFE93BD2CEE8647E932 /* BridgeNativeScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 955044F7AF74B3575E756693AD7D0A79 /* BridgeNativeScreenOrientation.m */; };
-		B5C5E5589E9CF33FFB4B5C626BF344F7 /* AFFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B4333D0282879A45584CEF18165686 /* AFFURLResponseSerialization.m */; };
 		BBFD0E0B09219DD82E77EF13E2BA7313 /* BridgeNativeEcho.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D12C8A60E5E6C908087B84164A0C76 /* BridgeNativeEcho.m */; };
-		C19CD55966D69D924FA2DF457AF96B43 /* AFFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BCCC4C9644EDBBEBA96B90854CA2505 /* AFFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1D549B11F5EF7F283733F8FAAF7B8E4 /* YJHybridBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 93751CBBF61CB643F3F6EECB55B6904C /* YJHybridBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C211D75E148AF6FEAA6F189E3AC2C69A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4CEEA6CC68BCFC20A6F4D1CA90389C /* WebKit.framework */; };
 		C3475F111C83E76900B1A101 /* BridgeNativeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3475F101C83E76900B1A101 /* BridgeNativeWindow.m */; };
@@ -58,10 +42,7 @@
 		E5826E8F698B6FB23A9DFA94BF174379 /* YJWebViewProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = FD0C371D1F5748E36558DE9B14668E90 /* YJWebViewProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECD5E6026F8E49BE742D9A0083185AF9 /* AGPushNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = F92D18EA66CB1EDBEB9FD5874F00321D /* AGPushNoteView.m */; };
 		EE7ADA7073E78BD59EC0051B8301689C /* BridgeNativeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FCF2A222D3A1B0BC35208740EABE45 /* BridgeNativeNotification.m */; };
-		F172C9DE15407916C97EA89AC9CAD63D /* AFFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA47CF274E59D9C07CBB605619AD748C /* AFFHTTPRequestOperation.m */; };
-		F4FF010AB9D5BA234BC8D5BE746A82B3 /* AFFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D5128E4E217051458992B2C85F631D2 /* AFFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F570652E92B77545731F6267F0F07CEB /* AGPushNoteView.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF7A3ADCF56A72E2808A798A7ACB068 /* AGPushNoteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F6B1D183CE5D2446A48DF6C5D9E2B896 /* AFFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 874CB658902B45597A8FC4D86E6FFB2D /* AFFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC68593713329E9E0C9C5BF37843AA71 /* BridgeNativeNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB8EC0DED53C9FAFC1A4888304BFC11 /* BridgeNativeNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCD12EBF282C4D7509D9ACE880CBFBFA /* BridgeNativeScreenOrientation.h in Headers */ = {isa = PBXBuildFile; fileRef = D89C3B139D25A86E23F7E8F75EFB0093 /* BridgeNativeScreenOrientation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF1A87D31648E1C1913EEF8C2FB6EE6F /* YJWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9501E98DEC9AB1EAD44F5F39B4B26BE0 /* YJWebView-dummy.m */; };
@@ -79,13 +60,10 @@
 
 /* Begin PBXFileReference section */
 		011186CBF1DD30E82748326D295ECDD5 /* YJWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YJWebView-prefix.pch"; sourceTree = "<group>"; };
-		013C45C852CFCA7AB0054E2CD6A2D0A3 /* AFFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFURLRequestSerialization.m; sourceTree = "<group>"; };
 		03D12C8A60E5E6C908087B84164A0C76 /* BridgeNativeEcho.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeEcho.m; sourceTree = "<group>"; };
 		076C55E8901C023C5B986043D055DAB0 /* Pods-YJWebView-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YJWebView-frameworks.sh"; sourceTree = "<group>"; };
-		097F696F4739D7F66F7DFA6D341BF7FF /* AFFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFNetworking.h; sourceTree = "<group>"; };
 		0A73DB2D59F9FE441EE2627C211F0B99 /* MessageHub.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MessageHub.h; sourceTree = "<group>"; };
 		1924FB2AF696843395EFCC8F7D2D4546 /* MessageHub.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MessageHub.m; sourceTree = "<group>"; };
-		1A7F6A5F254E6D75FE98621032C9D06F /* AFFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFHTTPSessionManager.m; sourceTree = "<group>"; };
 		1EB8EC0DED53C9FAFC1A4888304BFC11 /* BridgeNativeNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BridgeNativeNotification.h; sourceTree = "<group>"; };
 		20B7910EB36F58DB2B2406C3013DBF7D /* screenorientation.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = screenorientation.js; sourceTree = "<group>"; };
 		237FC7A274AFE960186980DEE0D6136B /* Pods-YJWebView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YJWebView.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,25 +75,16 @@
 		31D54372A6EF8AD85093CC6E14597F08 /* AGPushNoteView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = AGPushNoteView.xib; sourceTree = "<group>"; };
 		31DCE1CD74C8929B9FE2D470F9AE3A76 /* Pods-YJWebView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YJWebView-resources.sh"; sourceTree = "<group>"; };
 		3AB4758B6244F5AD3A7716F1512E6E71 /* Pods-YJWebView-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YJWebView-acknowledgements.plist"; sourceTree = "<group>"; };
-		3D5128E4E217051458992B2C85F631D2 /* AFFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		41676EBA7272F672777EB7C80AC1768A /* Pods-YJWebView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YJWebView.debug.xcconfig"; sourceTree = "<group>"; };
-		48880B9CAFC09C46D62301CFC8495BE1 /* AFFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFSecurityPolicy.h; sourceTree = "<group>"; };
-		4CD281330BB471CC9D9A226BFD84E1AC /* AFFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFSecurityPolicy.m; sourceTree = "<group>"; };
 		4F555A315D0716EA93D44A8BC630DE38 /* callback_manager.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = callback_manager.js; sourceTree = "<group>"; };
 		5A6CDCA0EE2694DADDA7DEBF7DF0B84D /* BridgeNativeVibrate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BridgeNativeVibrate.h; sourceTree = "<group>"; };
-		5E01AA1D89FD92788CE39BCDEABD2083 /* AFFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFURLRequestSerialization.h; sourceTree = "<group>"; };
-		60C5D6588D1EC2D43432FCE5AC79C4F5 /* AFFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
-		610F7F65229B677076AE3E321A1A121C /* AFFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFURLConnectionOperation.m; sourceTree = "<group>"; };
 		6562DFD841435E58BDF9496F41295AAC /* echo.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = echo.js; sourceTree = "<group>"; };
 		6E857502F427D830706C397DD94AE960 /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
 		71CB6C833C235E6FEEC578EB7511E564 /* YJUIWebView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YJUIWebView.m; sourceTree = "<group>"; };
 		726D0E5197CD410161051A74EF8327FC /* YJUIWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJUIWebView.h; sourceTree = "<group>"; };
-		7787084C0743845B357DAB541CC013ED /* AFFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFURLResponseSerialization.h; sourceTree = "<group>"; };
 		78FCF2A222D3A1B0BC35208740EABE45 /* BridgeNativeNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeNotification.m; sourceTree = "<group>"; };
 		7B6C6026EEFD61F56B0EA9678C92CC03 /* YJWKWebView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YJWKWebView.m; sourceTree = "<group>"; };
-		7BCCC4C9644EDBBEBA96B90854CA2505 /* AFFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		802DB1CB9608583E854EE1D1BA47D718 /* Pods-YJWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YJWebView-dummy.m"; sourceTree = "<group>"; };
-		874CB658902B45597A8FC4D86E6FFB2D /* AFFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFHTTPSessionManager.h; sourceTree = "<group>"; };
 		906D72F86264EB42F4862145096BD559 /* YJWebViewFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YJWebViewFactory.m; sourceTree = "<group>"; };
 		93751CBBF61CB643F3F6EECB55B6904C /* YJHybridBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJHybridBridge.h; sourceTree = "<group>"; };
 		9442907F864278224EDA1FFD32C9017A /* YJWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJWebView.h; sourceTree = "<group>"; };
@@ -125,7 +94,6 @@
 		9DE61BFE0B0121E5C526E38514C95468 /* message_hub.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = message_hub.js; sourceTree = "<group>"; };
 		9FAA4801171579CD6B30ACD8E322B8B5 /* reset.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = reset.js; sourceTree = "<group>"; };
 		A527A38E5D3337AE81C61DCB668E7AA5 /* Pods-YJWebView-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YJWebView-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A8767E40CB90BA9F61778743960B792F /* AFFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		AFB61646637EBB269B511985297F4C1F /* YJBridgeNative.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJBridgeNative.h; sourceTree = "<group>"; };
 		B208D514D25DBC43C2DA0CA748137E9E /* YJWKWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJWKWebView.h; sourceTree = "<group>"; };
 		B71CFC6CCBD91C3F1DD7FBE4646DA083 /* MessageHubProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MessageHubProtocol.h; sourceTree = "<group>"; };
@@ -137,22 +105,16 @@
 		C20C56E7D71472B36E9FAA6449F93B5C /* BridgeNativeEcho.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BridgeNativeEcho.h; sourceTree = "<group>"; };
 		C3475F0F1C83E76900B1A101 /* BridgeNativeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeNativeWindow.h; sourceTree = "<group>"; };
 		C3475F101C83E76900B1A101 /* BridgeNativeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeWindow.m; sourceTree = "<group>"; };
-		C6873CEB5AA4D717EEAB21C467DE051A /* AFFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
 		C7163F5E07E36239DA386E78E66443C3 /* es6promise.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = es6promise.js; sourceTree = "<group>"; };
-		C73E7C28093F9A5B152FE85F20523E09 /* AFFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFURLSessionManager.h; sourceTree = "<group>"; };
-		C94B7B38004CCF23B9A336C0EACB7B23 /* AFFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AFFURLConnectionOperation.h; sourceTree = "<group>"; };
 		CEFB9FC95F8CADD181EEBC92F27A11BF /* BridgeNativeVibrate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BridgeNativeVibrate.m; sourceTree = "<group>"; };
-		D1B4333D0282879A45584CEF18165686 /* AFFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFURLResponseSerialization.m; sourceTree = "<group>"; };
 		D89C3B139D25A86E23F7E8F75EFB0093 /* BridgeNativeScreenOrientation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BridgeNativeScreenOrientation.h; sourceTree = "<group>"; };
 		DB5CA4859854FDBA9539C654F7EF3DB5 /* YJHybridBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YJHybridBridge.m; sourceTree = "<group>"; };
 		E3515907DDF732926F0E180C924C9C84 /* detector.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = detector.js; sourceTree = "<group>"; };
-		EB5AEB6E48F9F927E46767242212C851 /* AFFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFURLSessionManager.m; sourceTree = "<group>"; };
 		ED15650323764744A250488A0413242F /* notification.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; path = notification.js; sourceTree = "<group>"; };
 		EE4C5E426224E67C592940C7286BD057 /* YJWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YJWebView.xcconfig; sourceTree = "<group>"; };
 		F7439EC80C0ADD66352FE736D6F56BCF /* YJProcessPool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJProcessPool.h; sourceTree = "<group>"; };
 		F92D18EA66CB1EDBEB9FD5874F00321D /* AGPushNoteView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AGPushNoteView.m; sourceTree = "<group>"; };
 		F9E94A1B2337F579264A985C74348D67 /* libYJWebView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYJWebView.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA47CF274E59D9C07CBB605619AD748C /* AFFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AFFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FCEF72CD7D5B0D2888F297B4A1AF6F83 /* YJProcessPool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YJProcessPool.m; sourceTree = "<group>"; };
 		FD0C371D1F5748E36558DE9B14668E90 /* YJWebViewProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YJWebViewProvider.h; sourceTree = "<group>"; };
 		FDE93D7A1E6694D98D7ADA5860B06021 /* BridgeNativeDetector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BridgeNativeDetector.h; sourceTree = "<group>"; };
@@ -262,7 +224,6 @@
 				FD0C371D1F5748E36558DE9B14668E90 /* YJWebViewProvider.h */,
 				B208D514D25DBC43C2DA0CA748137E9E /* YJWKWebView.h */,
 				7B6C6026EEFD61F56B0EA9678C92CC03 /* YJWKWebView.m */,
-				F1D56C25D9293FFF06162CB3F54DF22D /* AFNetworking */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -340,32 +301,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		F1D56C25D9293FFF06162CB3F54DF22D /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				7BCCC4C9644EDBBEBA96B90854CA2505 /* AFFHTTPRequestOperation.h */,
-				FA47CF274E59D9C07CBB605619AD748C /* AFFHTTPRequestOperation.m */,
-				60C5D6588D1EC2D43432FCE5AC79C4F5 /* AFFHTTPRequestOperationManager.h */,
-				C6873CEB5AA4D717EEAB21C467DE051A /* AFFHTTPRequestOperationManager.m */,
-				874CB658902B45597A8FC4D86E6FFB2D /* AFFHTTPSessionManager.h */,
-				1A7F6A5F254E6D75FE98621032C9D06F /* AFFHTTPSessionManager.m */,
-				097F696F4739D7F66F7DFA6D341BF7FF /* AFFNetworking.h */,
-				3D5128E4E217051458992B2C85F631D2 /* AFFNetworkReachabilityManager.h */,
-				A8767E40CB90BA9F61778743960B792F /* AFFNetworkReachabilityManager.m */,
-				48880B9CAFC09C46D62301CFC8495BE1 /* AFFSecurityPolicy.h */,
-				4CD281330BB471CC9D9A226BFD84E1AC /* AFFSecurityPolicy.m */,
-				C94B7B38004CCF23B9A336C0EACB7B23 /* AFFURLConnectionOperation.h */,
-				610F7F65229B677076AE3E321A1A121C /* AFFURLConnectionOperation.m */,
-				5E01AA1D89FD92788CE39BCDEABD2083 /* AFFURLRequestSerialization.h */,
-				013C45C852CFCA7AB0054E2CD6A2D0A3 /* AFFURLRequestSerialization.m */,
-				7787084C0743845B357DAB541CC013ED /* AFFURLResponseSerialization.h */,
-				D1B4333D0282879A45584CEF18165686 /* AFFURLResponseSerialization.m */,
-				C73E7C28093F9A5B152FE85F20523E09 /* AFFURLSessionManager.h */,
-				EB5AEB6E48F9F927E46767242212C851 /* AFFURLSessionManager.m */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -373,16 +308,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C19CD55966D69D924FA2DF457AF96B43 /* AFFHTTPRequestOperation.h in Headers */,
-				166A1ECF57443527DB38119B8FB8D587 /* AFFHTTPRequestOperationManager.h in Headers */,
-				F6B1D183CE5D2446A48DF6C5D9E2B896 /* AFFHTTPSessionManager.h in Headers */,
-				3472823C9064E42E87142296A455FF9C /* AFFNetworking.h in Headers */,
-				F4FF010AB9D5BA234BC8D5BE746A82B3 /* AFFNetworkReachabilityManager.h in Headers */,
-				7E5C46BF276755621493BBDC12FDC47A /* AFFSecurityPolicy.h in Headers */,
-				ADF34F964DC5C332860BD1117550608F /* AFFURLConnectionOperation.h in Headers */,
-				24EAEA4DA9C07CA173EAA402E56AA946 /* AFFURLRequestSerialization.h in Headers */,
-				AB348CD8E37B7C267ABA0FF3100FB361 /* AFFURLResponseSerialization.h in Headers */,
-				7A33F70575D701340E159B4379576E94 /* AFFURLSessionManager.h in Headers */,
 				F570652E92B77545731F6267F0F07CEB /* AGPushNoteView.h in Headers */,
 				8D45B88EDBA77B6397739A1B392492FB /* BridgeNativeDetector.h in Headers */,
 				61A9158B9888423BCDF160FE15238920 /* BridgeNativeEcho.h in Headers */,
@@ -473,15 +398,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F172C9DE15407916C97EA89AC9CAD63D /* AFFHTTPRequestOperation.m in Sources */,
-				26C069CEFEF5EEA35F3E7FF3AD2537E2 /* AFFHTTPRequestOperationManager.m in Sources */,
-				75F397E4253DDCBEB8380BEB95C9D17B /* AFFHTTPSessionManager.m in Sources */,
-				8FB67E8AF24B5720A58B653190222103 /* AFFNetworkReachabilityManager.m in Sources */,
-				76ADD577C9E8E5643C469C5D8736AAD4 /* AFFSecurityPolicy.m in Sources */,
-				224C68980F7B816A6FBEBD04C685A257 /* AFFURLConnectionOperation.m in Sources */,
-				2D1D9E645C533075343A900A3104014E /* AFFURLRequestSerialization.m in Sources */,
-				B5C5E5589E9CF33FFB4B5C626BF344F7 /* AFFURLResponseSerialization.m in Sources */,
-				1C634293BC380BB604422D884CC3FBF4 /* AFFURLSessionManager.m in Sources */,
 				ECD5E6026F8E49BE742D9A0083185AF9 /* AGPushNoteView.m in Sources */,
 				C506957A71FC81FF0BEAEF7038D802EF /* BridgeNativeDetector.m in Sources */,
 				BBFD0E0B09219DD82E77EF13E2BA7313 /* BridgeNativeEcho.m in Sources */,
